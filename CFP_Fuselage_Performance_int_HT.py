@@ -153,7 +153,6 @@ class AircraftP(Model):
     def setup(self, aircraft, state):
         # make submodels
         self.aircraft = aircraft
-        print state
         self.wingP = aircraft.wing.dynamic(state)
         self.fuseP = aircraft.fuse.dynamic(state)
         self.VTP = aircraft.VT.dynamic(aircraft.fuse,state)
@@ -347,7 +346,7 @@ class CruiseSegment(Model):
     """
 
     def setup(self, aircraft, state, Nclimb, **kwargs):
-        self.state = state[Nclimb:]
+        self.state = state[0][Nclimb:]
         self.cruiseP = aircraft.cruise_dynamic(self.state, Nclimb)
 
         return self.state, self.cruiseP
@@ -358,9 +357,19 @@ class ClimbSegment(Model):
     """
 
     def setup(self, aircraft, state, Nclimb, **kwargs):
-        self.state = state[:Nclimb]
+        self.state = state[0][:Nclimb]
+##        print state[0][1]
+        print state
+        print "-------"
         print state[0]
-        print self.state
+        print "-------"
+        print state[0][0]
+        print "-------"
+        print state[0][1]
+        print "-------"
+        print state[0][1][:3]
+##        print state[0][1][:Nclimb]
+##        print state[0][1][1]
         self.climbP = aircraft.climb_dynamic(self.state, Nclimb)
 
         return self.state, self.climbP
