@@ -65,7 +65,7 @@ class Engine(Model):
     """
     Tasopt engine model
     """
-    def setup(self, res7, cooling, N):
+    def setup(self, res7, cooling, N, state):
         """
         setup method for the engine model
 
@@ -84,13 +84,14 @@ class Engine(Model):
         self.thrust = Thrust()
         self.sizing = Sizing()
         self.constants = EngineConstants()
+        self.state = state
 
         with Vectorize(N):
             #-------------------Specified Thrust or Tt4-----------------------
             #variables for the thrust constraint
             Fspec = Variable('F_{spec}', 'N', 'Specified Total Thrust')
 ##            Tt4spec = Variable('T_{t_{4spec}}', 'K', 'Specified Combustor Exit (Station 4) Stagnation Temperature')
-            self.state= TestState()
+##            self.state= TestState()
             self.engineP = self.dynamic(self.state, res7)
             
         models = [self.compressor , self. combustor, self. turbine, self. thrust, self.fanmap, self.lpcmap, self.hpcmap, self.sizing, self.state, self.engineP]
