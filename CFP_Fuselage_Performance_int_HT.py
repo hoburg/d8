@@ -65,11 +65,11 @@ g = 9.81 * units('m*s**-2')
 class Aircraft(Model):
     "Aircraft class"
 
-    def setup(self, Nclimb, Ncruise, state, **kwargs):
+    def setup(self, Nclimb, Ncruise, enginestate, **kwargs):
         # create submodels
         self.fuse = Fuselage()
         self.wing = Wing()
-        self.engine = Engine(0, True, Nclimb + Ncruise, state)
+        self.engine = Engine(0, True, Nclimb + Ncruise, enginestate)
         self.VT = VerticalTail()
         self.HT = HorizontalTail()
 
@@ -141,7 +141,7 @@ class Aircraft(Model):
         """
         creates an aircraft cruise performance model, given a state
         """
-        return CruiseP(aircraft, state, Nsplit)
+        return CruiseP(self, state, Nsplit)
 
 
 class AircraftP(Model):
@@ -345,34 +345,45 @@ class CruiseSegment(Model):
     Combines a flight state and aircrat to form a cruise flight segment
     """
 
-    def setup(self, aircraft, state, Nclimb, **kwargs):
-        self.state = state[0][Nclimb:]
-        self.cruiseP = aircraft.cruise_dynamic(self.state, Nclimb)
+    def setup(self, aircraft, Nsplit, **kwargs):
+        self.state = FlightState()
+        self.cruiseP = aircraft.cruise_dynamic(self.state, Nsplit)
 
         return self.state, self.cruiseP
+
 
 class ClimbSegment(Model):
     """
     Combines a flight state and aircrat to form a cruise flight segment
     """
 
-    def setup(self, aircraft, state, Nclimb, **kwargs):
-        self.state = state[0][:Nclimb]
-##        print state[0][1]
-        print state
-        print "-------"
-        print state[0]
-        print "-------"
-        print state[0][0]
-        print "-------"
-        print state[0][1]
-        print "-------"
-        print state[0][1][:3]
-##        print state[0][1][:Nclimb]
-##        print state[0][1][1]
-        self.climbP = aircraft.climb_dynamic(self.state, Nclimb)
+    def setup(self, aircraft, Nsplit, **kwargs):
+        self.state = FlightState()
+        self.climbP = aircraft.climb_dynamic(self.state, Nsplit)
 
         return self.state, self.climbP
+
+class StateLinking(Model):
+    """
+    link all the state model variables
+    """
+    def setup(self, climbstate, cruisestate, enginestate, Nclimb, Ncruise):
+        statevarkeys = ['p_{sl}', 'T_{sl}', 'L_{atm}', 'M_{atm}', 'P_{atm}', 'R_{atm}',
+                        '\\rho', 'T_{atm}', '\\mu', 'T_s', 'C_1', 'h', 'hft', 'V', 'a', 'R', '\\gamma', 'M']
+        constraints = []
+        for i in range(len(statevarkeys)):
+            varkey = statevarkeys[i]
+            for i in range(Nclimb):
+                constraints.extend([
+                    climbstate[varkey][i] == enginestate[varkey][i]
+                    ])
+            for i in range(Nclimb):
+                constraints.extend([
+                    cruisestate[varkey][i] == enginestate[varkey][i+Nclimb]
+                    ])           
+        
+        return constraints
+
 
 # class HorizontalTail(Model):
 #
@@ -869,17 +880,19 @@ class Mission(Model):
 
         # vectorize
         with Vectorize(Nclimb + Ncruise):
-            state = FlightState()
+            enginestate = FlightState()
 
         # build required submodels
-        aircraft = Aircraft(Nclimb, Ncruise, state)
+        aircraft = Aircraft(Nclimb, Ncruise, enginestate)
 
         # vectorize
         with Vectorize(Nclimb):
-            climb = ClimbSegment(aircraft, state, Nclimb)
+            climb = ClimbSegment(aircraft, Nclimb)
 
         with Vectorize(Ncruise):
-            cruise = CruiseSegment(aircraft, state, Nlimb)
+            cruise = CruiseSegment(aircraft, Nclimb)
+
+        statelinking = StateLinking(climb.state, cruise.state, enginestate, Nclimb, Ncruise)
 
         # declare new variables
         W_ftotal = Variable('W_{f_{total}}', 'N', 'Total Fuel Weight')
@@ -938,16 +951,11 @@ class Mission(Model):
             dhft == hftCruise / Nclimb,
 
             # constrain the thrust
-            climb.climbP.engineP['thrust'] <= 2 * max(cruise.cruiseP.engineP['thrust']),
-            aircraft.VT['T_e'] == climb.climbP.engineP['thrust'][0],
+            aircraft.VT['T_e'] == aircraft.engine['F'][0],
 
             # set the range for each cruise segment, doesn't take credit for climb
             # down range disatnce covered
             cruise.cruiseP['Rng'] == ReqRng / (Ncruise),
-
-            # Set the TSFC
-            climb.climbP.engineP['TSFC'] == .7 * units('1/hr'),
-            cruise.cruiseP.engineP['TSFC'] == .5 * units('1/hr'),
 
             #wing constraints
             aircraft.wing['W_{fuel_{wing}}'] == W_ftotal,
@@ -957,7 +965,15 @@ class Mission(Model):
 
         self.cost = W_ftotal
 
-        return constraints, aircraft, climb, cruise
+        return constraints, aircraft, climb, cruise, statelinking
+
+def state_slice(state):
+    print len(state[0])
+    veccs = []
+    sliced_state = []
+    sliced_state = [[veccs[i] for veccs in state[0]] for i in len(state[0])]
+    
+    return sliced_state
 
 if __name__ == '__main__':
     M4a = .1025
