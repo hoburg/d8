@@ -87,7 +87,7 @@ class Aircraft(Model):
                             self.wing.wb['wwb'] == self.fuse['wtc'],
                             self.wing['V_{ne}'] == 144*units('m/s'),
                             self.VT['V_{ne}'] == 144*units('m/s'),
-                            self.engine['A_2'] == np.pi*(.5*1.75)**2*units('m^2'), # [1]
+##                            self.engine['A_2'] == np.pi*(.5*1.75)**2*units('m^2'), # [1]
 
                             # Tail cone sizing
                             3 * self.VT['M_r'] * self.VT['c_{root_{vt}}'] * \
@@ -914,8 +914,8 @@ class Mission(Model):
 
         constraints.extend([
             # weight constraints
-            TCS([aircraft['W_{fuse}'] + aircraft['W_{payload}'] + W_ftotal + aircraft['numeng']
-                 * aircraft.engine['W_{engine}'] + aircraft.wing.wb['W_{struct}'] + aircraft.VT.wb['W_{struct}'] + aircraft.HT['W_{struct}'] +
+            TCS([aircraft['W_{fuse}'] + aircraft['W_{payload}'] + W_ftotal +
+                 aircraft.wing.wb['W_{struct}'] + aircraft.VT.wb['W_{struct}'] + aircraft.HT['W_{struct}'] +
                  aircraft['numeng']*aircraft['W_{engine}'] <= W_total]),
 
             climb.climbP.aircraftP['W_{start}'][0] == W_total,
@@ -965,7 +965,7 @@ class Mission(Model):
 
         self.cost = W_ftotal
 
-        return constraints, aircraft, climb, cruise, statelinking
+        return constraints, aircraft, climb, cruise, statelinking, enginestate
 
 def state_slice(state):
     print len(state[0])
@@ -1080,8 +1080,8 @@ if __name__ == '__main__':
     m = Mission()
     m.substitutions.update(substitutions)
     m.substitutions.update({'SM_{min}' : 0.5})
-    # m = Model(m.cost,BCS(m))
-    sol = m.localsolve(solver='mosek', verbosity = 2, iteration_limit=50)
+    m = Model(m.cost,BCS(m))
+    sol = m.localsolve(solver='mosek', verbosity = 4, iteration_limit=50)
 
     if sweeps:
         if sweepSMmin:
