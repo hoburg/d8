@@ -21,6 +21,7 @@ from stand_alone_simple_profile import FlightState, Altitude, Atmosphere
 from D8_VT_yaw_rate_and_EO_simple_profile import VerticalTail, VerticalTailPerformance
 from D8_HT_simple_profile import HorizontalTail, HorizontalTailPerformance
 from Wing_simple_performance import Wing, WingPerformance
+#--new
 from TASOPT_engine import Engine
 
 sweep = 30
@@ -64,11 +65,12 @@ g = 9.81 * units('m*s**-2')
 
 class Aircraft(Model):
     "Aircraft class"
-
+    #--new
     def setup(self, Nclimb, Ncruise, enginestate, **kwargs):
         # create submodels
         self.fuse = Fuselage()
         self.wing = Wing()
+        #--new
         self.engine = Engine(0, True, Nclimb + Ncruise, enginestate)
         self.VT = VerticalTail()
         self.HT = HorizontalTail()
@@ -87,6 +89,7 @@ class Aircraft(Model):
                             self.wing.wb['wwb'] == self.fuse['wtc'],
                             self.wing['V_{ne}'] == 144*units('m/s'),
                             self.VT['V_{ne}'] == 144*units('m/s'),
+                            #--new
 ##                            self.engine['A_2'] == np.pi*(.5*1.75)**2*units('m^2'), # [1]
 
                             # Tail cone sizing
@@ -207,6 +210,7 @@ class AircraftP(Model):
             aircraft.VT['x_{CG_{vt}}'] >= xCG+(aircraft.VT['\\Delta x_{lead_v}']+aircraft.VT['\\Delta x_{trail_v}'])/2,
             aircraft.VT['x_{CG_{vt}}'] <= aircraft.fuse['l_{fuse}'],
             # Drag of a windmilling engine
+            #--new
             aircraft.VT['D_{wm}'] >= 0.5*aircraft.VT['\\rho_{TO}']*aircraft.VT['V_1']**2*aircraft.engine['A_2']*aircraft.VT['C_{D_{wm}}'],
 
             # Center of gravity constraints #TODO Refine
@@ -273,10 +277,12 @@ class ClimbP(Model):
 
         constraints.extend([
             # constraint on drag and thrust
+            #--new
             self.aircraft['numeng'] * self.aircraft.engine['F_{spec}'][:Nsplit] >= self.aircraftP[
                 'D'] + self.aircraftP['W_{avg}'] * theta,
 
             # climb rate constraints
+            #--new
             TCS([excessP + state['V'] * self.aircraftP['D'] <= state['V']
                  * aircraft['numeng'] * aircraft.engine['F_{spec}'][:Nsplit]]),
 
@@ -292,6 +298,7 @@ class ClimbP(Model):
             RngClimb == self.aircraftP['thr'] * state['V'],
 
             # Fuel burn computation
+            #--new
             self.aircraftP['W_{burn}'] == aircraft['numeng'] * aircraft.engine['TSFC'][:Nsplit] * \
             self.aircraftP['thr'] * aircraft.engine['F'][:Nsplit],
         ])
@@ -318,6 +325,7 @@ class CruiseP(Model):
 
         constraints.extend([
             # Steady level flight constraint on D
+            #--new
             self.aircraftP['D'] == aircraft[
                 'numeng'] * aircraft.engine['F_{spec}'][Nsplit:],
 
@@ -326,6 +334,7 @@ class CruiseP(Model):
                  te_exp_minus1(z_bre, nterm=3)]),
 
             # Breguet range eqn
+            #--new
             TCS([z_bre >= (aircraft.engine['TSFC'][Nsplit:] * self.aircraftP['thr'] *
                            self.aircraftP['D']) / self.aircraftP['W_{avg}']]),
 
@@ -333,6 +342,7 @@ class CruiseP(Model):
             self.aircraftP['thr'] * state['V'] == Rng,
 
             # Fuel burn computation
+            #--new
             self.aircraftP['W_{burn}'] == aircraft['numeng'] * aircraft.engine['TSFC'][Nsplit:] * \
             self.aircraftP['thr'] * aircraft.engine['F'][Nsplit:],
         ])
@@ -363,6 +373,7 @@ class ClimbSegment(Model):
 
         return self.state, self.climbP
 
+#--new
 class StateLinking(Model):
     """
     link all the state model variables
@@ -377,7 +388,7 @@ class StateLinking(Model):
                 constraints.extend([
                     climbstate[varkey][i] == enginestate[varkey][i]
                     ])
-            for i in range(Nclimb):
+            for i in range(Ncruise):
                 constraints.extend([
                     cruisestate[varkey][i] == enginestate[varkey][i+Nclimb]
                     ])           
@@ -879,19 +890,24 @@ class Mission(Model):
         Ncruise = 2
 
         # vectorize
+        #--new
         with Vectorize(Nclimb + Ncruise):
             enginestate = FlightState()
-
+        
+        #--new
         # build required submodels
         aircraft = Aircraft(Nclimb, Ncruise, enginestate)
 
+        #--new
         # vectorize
         with Vectorize(Nclimb):
             climb = ClimbSegment(aircraft, Nclimb)
 
+        #--new
         with Vectorize(Ncruise):
             cruise = CruiseSegment(aircraft, Nclimb)
 
+        #--new
         statelinking = StateLinking(climb.state, cruise.state, enginestate, Nclimb, Ncruise)
 
         # declare new variables
@@ -933,7 +949,7 @@ class Mission(Model):
                 1:] == climb.climbP.aircraftP['W_{end}'][:-1],
             cruise.cruiseP.aircraftP['W_{start}'][
                 1:] == cruise.cruiseP.aircraftP['W_{end}'][:-1],
-
+            #--new
             TCS([aircraft['W_{fuse}'] + aircraft['W_{payload}'] + aircraft['numeng'] * aircraft.engine['W_{engine}'] + \
                  aircraft.wing.wb['W_{struct}'] <= cruise.cruiseP.aircraftP['W_{end}'][-1]]),
 
@@ -951,6 +967,7 @@ class Mission(Model):
             dhft == hftCruise / Nclimb,
 
             # constrain the thrust
+            #--new
             aircraft.VT['T_e'] == aircraft.engine['F'][0],
 
             # set the range for each cruise segment, doesn't take credit for climb
@@ -964,16 +981,8 @@ class Mission(Model):
         ])
 
         self.cost = W_ftotal
-
+        #--new
         return constraints, aircraft, climb, cruise, statelinking, enginestate
-
-def state_slice(state):
-    print len(state[0])
-    veccs = []
-    sliced_state = []
-    sliced_state = [[veccs[i] for veccs in state[0]] for i in len(state[0])]
-    
-    return sliced_state
 
 if __name__ == '__main__':
     M4a = .1025
@@ -1046,6 +1055,7 @@ if __name__ == '__main__':
         '\\tan(\\Lambda_{ht})': tan(30*pi/180),
         'C_{L_{hmax}}': 2.5,
 
+        #--new
         #engine subs
         '\\pi_{tn}': .989,
         '\pi_{b}': .94,
