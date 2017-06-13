@@ -232,4 +232,3 @@ def genDesFile(sol, aircraft = 'D82', i = 0, swpt = False):
 def genDesFileSweep(sol, aircraft, n):
     for i in range(0,n):
         genDesFile(sol,True,i,aircraft)
-
