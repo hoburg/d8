@@ -1,4 +1,4 @@
-Vertical Tail
+Vertical Tail Model
 ***************
 The purpose of an aircraft’s vertical tail is two-fold. Firstly, it must
 provide stability in yaw. Secondly, it must provide adequate yaw control authority in critical flight
