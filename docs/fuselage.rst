@@ -42,16 +42,21 @@ Model Description
 
 Under construction...
 
-\subsubsection{Cross-sectional geometry constraints}
+Cross sectional geometry constraints
+------------------------------------
 
 The fuselage must be wide enough to accommodate the width of the seats in a row
 and the width of the aisle.
-\begin{equation}
-{2w_{fuse}} \geq (\mathit{SPR}) {w_{seat}} + {w_{aisle}} + 2{w_{sys}}
-\end{equation}
+
+.. math::
+	{2w_{fuse}} \geq (\mathit{SPR}) {w_{seat}} + n_{aisle} w_{aisle} + 2*{w_{sys}}
+
 The cross sectional area of the fuselage skin is lower bounded using a thin
 walled cylinder assumption.
-\begin{equation} {A_{skin}} \geq 2 \pi {R_{fuse}} {t_{skin}} \end{equation}
+
+.. math::
+	{A_{skin}} \geq 2 \pi {R_{fuse}} {t_{skin}} \end{equation}
+	
 The cross sectional area of the fuselage is lower bounded using the radius of
 the fuselage.
 \begin{equation} {A_{fuse}} \geq \pi {R_{fuse}}^{2} \end{equation}
