@@ -13,6 +13,11 @@ loads, bending loads, buoyancy weight, window weight, payload-proportional
 weights, the floor, and the tail cone. The majority of the constraints in this
 model are adapted directly from these equations.
 
+Note that this fuselage model supports both conventional tube fuselages as well
+as double-bubble fuselage as in the D8. It functions so that the variable :math:'\theta_{db}'
+governs the fuselage joint angle, and a conventional fuselage is modeled when 
+:math:'\theta_{db} = 0'. 
+
 Model Assumptions
 =================
 This model assumes a single circular-cross-section fuselage. This is an approximation,
@@ -55,114 +60,124 @@ The cross sectional area of the fuselage skin is lower bounded using a thin
 walled cylinder assumption.
 
 .. math::
-	{A_{skin}} \geq 2 \pi {R_{fuse}} {t_{skin}} \end{equation}
+	{A_{skin}} \geq 2 \pi {R_{fuse}} {t_{skin}}
 	
 The cross sectional area of the fuselage is lower bounded using the radius of
 the fuselage.
-\begin{equation} {A_{fuse}} \geq \pi {R_{fuse}}^{2} \end{equation}
 
-\subsubsection{Pressure loading constraints}
+.. math::
+	{A_{fuse}} \geq \pi {R_{fuse}}^{2}
+
+Pressure loading constraints
+----------------------------
 
 The axial and hoop stresses in the fuselage skin are constrained by the
 pressurization load due to the difference between cabin pressure and ambient
 pressure at cruise altitude. The thickness of the skin is therefore sized by
 the maximum allowable stress of the chosen material.
-\begin{align}
-{\sigma_x} &= \frac{{\Delta P_{over}}}{2}\frac{{R_{fuse}}}{{t_{shell}}}\\
-{\sigma_{\theta}} &= {\Delta P_{over}} \frac{{R_{fuse}} }{{t_{skin}}} \\
-{\sigma_{skin}} &\geq {\sigma_x} \\
-{\sigma_{skin}} &\geq {\sigma_{\theta}}
-\end{align} % PK diff
+.. math::
+	{\sigma_x} &= \frac{{\Delta P_{over}}}{2}\frac{{R_{fuse}}}{{t_{shell}}}\\
+	{\sigma_{\theta}} &= {\Delta P_{over}} \frac{{R_{fuse}} }{{t_{skin}}} \\
+	{\sigma_{skin}} &\geq {\sigma_x} \\
+	{\sigma_{skin}} &\geq {\sigma_{\theta}}
 
-\subsubsection{Floor loading constraints}
+Floor loading constraints
+-------------------------
 
 The floor must be designed to withstand at least the weight of the payload and
 seats multiplied by a safety factor for an emergency landing.
-\begin{equation}
-{P_{floor}} \geq {N_{land}} ({W_{payload}} + {W_{seat}})
-\end{equation}
+
+.. math::
+	{P_{floor}} \geq {N_{land}} ({W_{payload}} + {W_{seat}})
+
 The maximum moment and shear in the floor are determined based on this design
 load and the width of the floor, assuming that the floor/wall joints are pinned
 and there are no center supports.
-\begin{align}
-{S_{floor}} &= \frac{P_{floor}}{2}\\
-{M_{floor}} &= \frac{{P_{floor}} {w_{floor}} }{8}
-\end{align}
+
+.. math::
+	{S_{floor}} &= \frac{P_{floor}}{2}\\
+	
+	{M_{floor}} &= \frac{{P_{floor}} {w_{floor}} }{8}
 
 The floor beam cross sectional area is constrained by the maximum allowable cap
 stress and shear web stress for the beams.
-\begin{equation}
-{A_{floor}} \geq 1.5\frac{{S_{floor}}}{{\tau_{floor}}}
-+ 2\frac{{M_{floor}}}{{\sigma_{floor}} {h_{floor}}}
-\end{equation}
 
-\subsubsection{3-dimensional geometry constraints}
+.. math::
+	{A_{floor}} \geq 1.5\frac{{S_{floor}}}{{\tau_{floor}}}
+	+ 2\frac{{M_{floor}}}{{\sigma_{floor}} {h_{floor}}}
+
+3-dimensional geometry constraints
+----------------------------------
 
 The nose must be long enough to have an aerodynamic profile and to accommodate
 the cockpit. A reasonable, but arbitrary, lower bound is employed for this
 work~\cite{drela2010tasopt}.
-\begin{equation} {l_{nose}} \geq 5.2 \hspace{0.2cm} \rm{m} \end{equation}
+
+.. math::
+	{l_{nose}} \geq 5.2 \hspace{0.2cm} \rm{m}
 
 The cylindrical shell of the fuselage sits between the nosecone and tailcone.
 The variables $x_{shell1}$ and $x_{shell2}$ define the beginning and end of the
 cylindrical section of the fuselage, respectively, in the aircraft x-axis.
-\begin{align}
-{x_{shell1}} &= {l_{nose}} \\
-{x_{shell2}} &\geq {l_{nose}} + {l_{shell}}
-\end{align}
+
+.. math::
+	{x_{shell1}} &= {l_{nose}} \\
+	{x_{shell2}} &\geq {l_{nose}} + {l_{shell}}
 
 The number of seats is equal to the product of the seats per row and the number
 of rows. Note that non-integer numbers of rows are allowed and necessary for GP
 compatibility. It is assumed that the load factor is one, so that the number of
 passengers is equal to the number of seats.
-\begin{align}
-{n_{seat}} &= {(\mathit{SPR})} {n_{rows}} \\
-{n_{pass}} &= n_{seat}
-\end{align}
+
+.. math::
+	{n_{seat}} &= {(\mathit{SPR})} {n_{rows}} \\
+	{n_{pass}} &= n_{seat}
 
 The seat pitch and the number of rows of seats constrain the length of the
 shell. The passenger floor length is lower bounded by the shell length and
 twice the fuselage radius, to account for the space provided by pressure
 bulkheads.
-\begin{align}
-{l_{shell}} &\geq {n_{rows}} {p_s} \\
-{l_{floor}} &\geq 2{R_{fuse}} + {l_{shell}}
-\end{align}
+
+
+.. math:: 
+	{l_{shell}} &\geq {n_{rows}} {p_s} \\
+	{l_{floor}} &\geq 2{R_{fuse}} + {l_{shell}}
 
 The length of the fuselage is constrained by the sum of the nose, shell and tail
 cone lengths. A signomial equality is needed, because increased $l_{fuse}$ is
 not coupled directly to increased structural weight although it results in
 improved tail control authority.
-\begin{equation} l_{fuse} = l_{nose} +
-l_{shell} + l_{cone} \end{equation}
+
+.. math::
+	l_{fuse} = l_{nose} + l_{shell} + l_{cone}
 
 Other locations to constrain are the wing mid-chord and the wingbox fore and aft
 bulkheads, which serve as integration limits when calculating bending loads.
-\begin{align}
-x_f \leq x_{wing} + 0.5 c_0 r_{w/c}\\
-x_b  + 0.5 c_0 r_{w/c} \geq x_{wing}
-\end{align}
+
+.. math::
+	x_f \leq x_{wing} + 0.5 c_0 r_{w/c}\\
+	x_b  + 0.5 c_0 r_{w/c} \geq x_{wing}
 
 The skin surface area, and, in turn, skin volume for the nose, main cabin, and
 rear bulkhead are constrained. The surface area of the nose, which is
 approximated as an ellipse, is lower bounded using Cantrell's
-approximation~\cite{drela2010tasopt}.
-\begin{align}
-{S_{nose}}^{\frac85} &\geq \left(2 \pi {R_{fuse}^2}\right)^{\frac85}
+approximation (from TASOPT).
+
+.. math::
+	{S_{nose}}^{\frac85} &\geq \left(2 \pi {R_{fuse}^2}\right)^{\frac85}
 	\left(\frac13 + \frac23
 	\left(\frac{l_{nose}}{R_{fuse}}\right)^{\frac85} \right) \\
-{S_{bulk}} &= 2 \pi {R_{fuse}}^{2} \\
-{V_{cyl}} &= {A_{skin}} {l_{shell}} \\
-{V_{nose}} &= {S_{nose}} {t_{skin}} \\
-{V_{bulk}} &= {S_{bulk}} {t_{skin}}
-\end{align}
+	{S_{bulk}} &= 2 \pi {R_{fuse}}^{2} \\
+	{V_{cyl}} &= {A_{skin}} {l_{shell}} \\
+	{V_{nose}} &= {S_{nose}} {t_{skin}} \\
+	{V_{bulk}} &= {S_{bulk}} {t_{skin}}
 
 The cabin volume is constrained assuming a cylinder with hemispherical end
 caps. This is necessary for capturing buoyancy weight.
-\begin{equation}
-{V_{cabin}}\geq{A_{fuse}}\left(\frac23{l_{nose}} + {l_{shell}} +
-\frac23{R_{fuse}} \right)
-\end{equation}
+
+.. math::
+	{V_{cabin}}\geq{A_{fuse}}\left(\frac23{l_{nose}} + {l_{shell}} +
+	\frac23{R_{fuse}} \right)
 
 \subsubsection{Tail cone constraints}
 
