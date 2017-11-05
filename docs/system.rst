@@ -4,7 +4,7 @@ System-level Model
 The objective of the optimization problem presented in this work is to
 minimize fuel consumption, or equivalently fuel weight,
 :math:`W_{fuel}`, using an adaptation of the Breguet range formulation
-introduced in :raw-latex:`\cite{hoburg2014geometric}`. The purpose of
+introduced in :raw-tex:`\cite{hoburg2014geometric}`. The purpose of
 the system-level model is threefold: it enforces system-level
 performance constraints such as required range and minimum cruise speed,
 it encodes weight and drag buildups, and it constrains system-level
@@ -129,7 +129,7 @@ Flight Performance
 
 The Breguet range formulation is discretized over multiple cruise
 segments to improve accuracy, meaning the constraints
-from :raw-latex:`\cite{hoburg2014geometric}` apply during each of the
+from :raw-tex:`\cite{hoburg2014geometric}` apply during each of the
 :math:`N` flight segments. The :math:`n` subscript is used to represent
 the :math:`n^{th}` flight segment where :math:`n=1...N`. For
 readability, these subscripts are not used in the remainder of the
@@ -176,9 +176,9 @@ value.
    M &\geq M_{min}\end{aligned}
 
 The takeoff model is taken directly
-from :raw-latex:`\cite{hoburg2014geometric}`. An additional constraint
+from :raw-tex:`\cite{hoburg2014geometric}`. An additional constraint
 on takeoff velocity is added to ensure adequate margin above stall
-speed :raw-latex:`\cite{anderson2005introduction}`.
+speed :raw-tex:`\cite{anderson2005introduction}`.
 
 .. math::
 
@@ -191,10 +191,10 @@ speed :raw-latex:`\cite{anderson2005introduction}`.
 
 Atmospheric pressure, density, temperature, and speed of sound are
 constrained using the atmosphere model described in
-:raw-latex:`\cite{sp_engine}`. Dynamic viscosity is constrained using
-the viscosity model developed in :raw-latex:`\cite{kirschen_thesis}`
+:raw-tex:`\cite{sp_engine}`. Dynamic viscosity is constrained using
+the viscosity model developed in :raw-tex:`\cite{kirschen_thesis}`
 which is based off the Sutherland viscosity
-model:raw-latex:`\cite{sutherland1893lii}`.
+model:raw-tex:`\cite{sutherland1893lii}`.
 
 System-level Properties
 ~~~~~~~~~~~~~~~~~~~~~~~
