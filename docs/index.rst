@@ -27,9 +27,11 @@ Table of contents:
         Installation
         availModels
         subModels
+            system
+            wing
+            vt
+            ht
+            fuse
+            engine
+            lg
         Debugging
-        fuselage
-        wing
-        engine
-        ht
-        vt
