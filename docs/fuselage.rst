@@ -33,16 +33,6 @@ material relative to the nominal yield stress of the material.
 Model Description
 -----------------
 
-The fuselage model has
-
-84
-
-free variables and
-
-96
-
-constraints.
-
 | lcl Free Variables & Units & Description
 | :math:`A_{0h}` & :math:`~\mathrm{m^{2}}` & Horizontal bending area
   constant A0h

@@ -36,6 +36,13 @@ Table of contents:
         lg
         Debugging
 
+.. role:: cite
+
 .. raw:: latex
+
+   \providecommand*\DUrolecite[1]{\cite{#1}}
+
+.. raw:: latex
+
     \bibliographystyle{plain}
     \bibliography{references.bib}
