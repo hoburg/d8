@@ -35,3 +35,6 @@ Table of contents:
         engine
         lg
         Debugging
+
+
+.. bibliography:: references.bib

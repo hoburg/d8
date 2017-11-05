@@ -1,15 +1,15 @@
 Fuselage Model
 ==============
 
-At a high level, the purpose of a conventional commercial aircraft
+The purpose of a conventional commercial aircraft
 fuselage can be decomposed into two primary functions: integrating and
 connecting all of the subsystems (e.g. wing, tail, landing gear), and
 carrying the payload, which typically consists of passengers, luggage,
 and sometimes cargo. The design of the fuselage is therefore coupled
 with virtually every aircraft subsystem.
 
-Drela :raw-latex:`\cite{drela2010tasopt}` performs a detailed, but still
-approximate, analysis of fuselage structure and weight, considering
+A detailed but still approximate analysis of fuselage structure and weight
+is done in TASOPT :cite:'drela2010tasopt', considering
 pressure loads, torsion loads, bending loads, buoyancy weight, window
 weight, payload-proportional weights, the floor, and the tail cone. The
 majority of the constraints in this model are adapted directly from
@@ -24,7 +24,7 @@ A320 do not have perfectly circular cross sections.
 
 The floor structural model and the horizontal bending model assume
 uniform floor loading. The model leverages the analytical bending models
-from Drela :raw-latex:`\cite{drela2010tasopt}`, which makes assumptions
+from Drela :cite:`drela2010tasopt`, which makes assumptions
 about symmetry in bending loads. Shell buckling is not explicitly
 modeled while designing bending structure, but is accounted for by the
 implementation of a lower yield stress for bending reinforcement
