@@ -189,35 +189,44 @@ cross sectional area and the maximum shear stress of the cone material,
 bounds the necessary cone skin thickness. The cone cross sectional area,
 which varies along the cone, is coarsely approximated to be the
 fuselage cross sectional area (i.e. the cross sectional area of the cone base).
-\begin{align}
-\label{eq:Qv1} {Q_v} &= \frac{{L_{vt_{max}}}
-{b_{vt}}}{3} \frac{{1 + 2{\lambda_v}}} {{1 + {\lambda_v}}} \\
-\label{eq:Qv2}
-{t_{cone}}&= \frac{Q_v}{2{A_{fuse}} {\tau_{cone}} }
-\end{align}
+
+.. math::
+    \label{eq:Qv1} {Q_v} &= \frac{{L_{vt_{max}}}
+    {b_{vt}}}{3} \frac{{1 + 2{\lambda_v}}} {{1 + {\lambda_v}}} \\
+    \label{eq:Qv2}
+    {t_{cone}}&= \frac{Q_v}{2{A_{fuse}} {\tau_{cone}} }
+
 The volume of the cone is a definite integral from the base to the tip of the
 cone. This integral is evaluated~\cite{drela2010tasopt} and combined with
 Equations \eqref{eq:Qv1} and \eqref{eq:Qv2} to give a single signomial constraint on
 the cone skin volume.
-\begin{equation}
-R_{fuse}\tau_{cone}(1+p_{\lambda_v})V_{cone} \frac{1+\lambda_{cone}}{4 l_{cone}}
-\geq L_{vt_{max}} b_{vt} \frac{p_{\lambda_v}}{3}
-\end{equation}
+
+.. math::
+    R_{fuse}\tau_{cone}(1+p_{\lambda_v})V_{cone} \frac{1+\lambda_{cone}}{4 l_{cone}}
+    \geq L_{vt_{max}} b_{vt} \frac{p_{\lambda_v}}{3}
+
 A change of variables is used for compatibility with the tail model, which uses
 $p_{\lambda_v} = 1 + 2\lambda_v$ to make a structural constraint
 \gls{GP}-compatible. The same taper lower bound is introduced as in the tail
 model.
-\begin{equation} {p_{\lambda_v}} \geq 1.6 \end{equation}
+
+.. math::
+    {p_{\lambda_v}} \geq 1.6
+
 The cone skin shear stress is constrained to equal the maximum allowable stress
 in the skin material.
-\begin{equation} {\tau_{cone}} = {\sigma_{skin}} \end{equation}
+.. math::
+    {\tau_{cone}} = {\sigma_{skin}}
+
 The tail cone taper ratio constrains the length of the cone relative to the
 radius of the fuselage.
-\begin{equation}
-{l_{cone}} = \frac{{R_{fuse}}}{{\lambda_{cone}}}
-\end{equation}
 
-\subsubsection{Fuselage area moment of inertia constraints}
+.. math::
+    {l_{cone}} = \frac{{R_{fuse}}}{{\lambda_{cone}}}
+
+
+Fuselage area moment of inertia constraints
+-------------------------------------------
 
 The fuselage shell consists of the skin and stringers. Its area moment of
 inertia determines how effectively the fuselage is able to resist bending
@@ -225,10 +234,11 @@ loads. A shell with uniform skin thickness and stringer density has a constant
 area moment of inertia in both of its bending axes, shown by the dark red line
 in the lower plot of Figure~\ref{fig:fuse_bending_loads}.
 
-To be consistent with~\cite{drela2010tasopt}, the horizontal bending
+To be consistent with TASOPT, the horizontal bending
 moments are defined as the moments around the aircraft's y-axis, caused by horizontal
 tail loads and fuselage inertial loads, and vertical bending moments as the moments
 around the aircraft's z-axis, caused by vertical tail loads.
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{figs/fuse_bending_loads.png}
@@ -243,43 +253,46 @@ The effective modulus-weight shell thickness is lower bounded by assuming that
 only the skin and stringers contribute to bending. This constraint also uses an
 assumed fractional weight of stringers that scales with the thickness of the
 skin.
-\begin{equation}
-{t_{shell}} \geq {t_{skin}}\left(1 + {f_{string}} {r_E}
-\frac{{\rho_{skin}} }{{\rho_{bend}}} \right)
-\end{equation}
+
+.. math::
+    {t_{shell}} \geq {t_{skin}}\left(1 + {f_{string}} {r_E}
+    \frac{{\rho_{skin}} }{{\rho_{bend}}} \right)
 
 It is important to consider the effects of pressurization on the yield strength
 of the bending material. Since pressurization stresses the airframe, the actual
 yield strength of the fuselage bending material is lower than its nominal yield
 strength, an effect captured using posynomial constraints.
-\begin{align}
-\sigma_{M_h} + r_E \frac{\Delta P_{over} R_{fuse}}{2 t_{shell}}&\leq
+
+.. math::
+    \sigma_{M_h} + r_E \frac{\Delta P_{over} R_{fuse}}{2 t_{shell}}&\leq
 	\sigma_{bend} \\
-\sigma_{M_v} + r_E \frac{\Delta P_{over} R_{fuse}}{2 t_{shell}}&\leq
+    \sigma_{M_v} + r_E \frac{\Delta P_{over} R_{fuse}}{2 t_{shell}}&\leq
 	\sigma_{bend}
-\end{align}
+
 
 The aircraft shell, which is composed of the pressurized skin and stringers,
 must satisfy the following horizontal and vertical area moment of inertia
 constraints.
-\begin{align}
-I_{hshell} &\leq \pi R_{fuse}^3 t_{shell} \\
-I_{vshell} &\leq \pi R_{fuse}^3 t_{shell}
-\end{align}
 
-\subsubsection{Horizontal bending model}
+.. math::
+    I_{hshell} &\leq \pi R_{fuse}^3 t_{shell} \\
+    I_{vshell} &\leq \pi R_{fuse}^3 t_{shell}
+
+Horizontal bending model
+------------------------
 
 There are two load cases that determine the required \gls{HBM}: maximum load
 factor (MLF) at $V_{ne}$, where
-\begin{align}
-N &= N_{lift} \\
-L_{ht} &= L_{ht_{max}}
-\end{align}
+
+.. math::
+    N &= N_{lift} \\
+    L_{ht} &= L_{ht_{max}}
+
 and emergency landing impact, where
-\begin{align}
-N &= N_{land} \\
-L_{ht} &= 0.
-\end{align}
+
+.. math::
+    N &= N_{land} \\
+    L_{ht} &= 0.
 
 Both load cases are considered at the aircraft's maximum takeoff weight (MTOW).
 The constraints for each case are distinguished by the subscripts $MLF$ and
@@ -299,29 +312,31 @@ tail.
 Several intermediate variables are introduced and used in constraints that
 capture \gls{HBM} relationships. $A_{0h}$ represents the \gls{HBM} area that is
 contributed by the aircraft shell.
-\begin{equation} A_{0h} = \frac{I_{hshell}} {r_{E} h_{fuse}^2} \end{equation}
+
+.. math::
+    A_{0h} = \frac{I_{hshell}} {r_{E} h_{fuse}^2}
 
 Variables $A_{1h_{Land}}$ and $A_{1h_{MLF}}$ are the \gls{HBM} lengths that are
 required to sustain bending loads from the tail. Note that as the distance from
 the tail increases, the moment exerted from the tail increases linearly.
-\begin{align}
-A_{1h_{Land}} &\geq N_{land} \frac{W_{tail} + W_{apu}}{h_{fuse} \sigma_{M_h}}\\
-A_{1h_{MLF}} &\geq N_{lift} \frac{W_{tail} + W_{apu} + r_{M_h}
-L_{ht_{max}}}{h_{fuse} \sigma_{M_h}}
-\end{align}
+
+.. math::
+    A_{1h_{Land}} &\geq N_{land} \frac{W_{tail} + W_{apu}}{h_{fuse} \sigma_{M_h}}\\
+    A_{1h_{MLF}} &\geq N_{lift} \frac{W_{tail} + W_{apu} + r_{M_h}
+    L_{ht_{max}}}{h_{fuse} \sigma_{M_h}}
 
 Variables $A_{2h_{Land}}$ and $A_{2h_{MLF}}$ represent the \gls{HBM} required to
 sustain the distributed loads in the fuselage. As the distance from the nose or
 the tail increases, the moment exerted due to the distributed load grows with
 the square of length.
-\begin{align}
-A_{2h_{Land}} &\geq N_{land} \frac{W_{payload} + W_{padd} + W_{shell} +
-W_{window} + W_{insul} + W_{floor} + W_{seat}} {2 l_{shell} h_{fuse}
-\sigma_{bend}} \\
-A_{2h_{MLF}} &\geq N_{lift} \frac{W_{payload} + W_{padd} + W_{shell} +
-W_{window} + W_{insul} + W_{floor }+ W_{seat}} {2 l_{shell} h_{fuse}
-\sigma_{M_h}}
-\end{align}
+
+.. math::
+    A_{2h_{Land}} &\geq N_{land} \frac{W_{payload} + W_{padd} + W_{shell} +
+    W_{window} + W_{insul} + W_{floor} + W_{seat}} {2 l_{shell} h_{fuse}
+    \sigma_{bend}} \\
+    A_{2h_{MLF}} &\geq N_{lift} \frac{W_{payload} + W_{padd} + W_{shell} +
+    W_{window} + W_{insul} + W_{floor }+ W_{seat}} {2 l_{shell} h_{fuse}
+    \sigma_{M_h}}
 
 Bending reinforcement material in the aircraft exists where the shell inertia is
 insufficient to sustain the local bending moment. Constraints are used to
@@ -331,26 +346,26 @@ to ensure a meaningful solution.  Constraints \eqref{eq:dupBend_1} through
 \eqref{eq:dupBend_2} occur for both aforementioned load cases in the model (with
 subscript $\zeta$ replaced by $MLF$ or $Land$) for worst-case fuselage sizing,
 but have been included once in the paper to reduce redundancy.
-\begin{align}
+.. math::
 \label{eq:dupBend_1} A_{0h} &= A_{2h_\zeta} (x_{shell2} - x_{hbend_\zeta}) ^ 2 +
 A_{1h_\zeta}  (x_{tail} - x_{hbend_\zeta}) \\ x_{hbend_\zeta} &\geq x_{wing}\\ x_{hbend_\zeta}
-&\leq l_{fuse}  \end{align}
+&\leq l_{fuse}
 
 To be able to constrain the volume of \gls{HBM} required, the area of \gls{HBM}
 required must be constrained and integrated over the length of the fuselage. As
 shown by \cite{drela2010tasopt}, with some conservative approximation, the
 volume of \gls{HBM} may be determined through the integration of the forward
 and rear wingbox \gls{HBM} areas over the rear fuselage.
-\begin{align}
+.. math::
 A_{hbendf_\zeta} &\geq A_{2h_\zeta} (x_{shell2} - x_{f})^2 + A_{1h_\zeta}
 	(x_{tail} - x_{f}) - A_{0h} \\
 A_{hbendb_\zeta} &\geq A_{2h_\zeta} (x_{shell2} - x_{b})^2 + A_{1h_\zeta}
 	(x_{tail} - x_{b}) - A_{0h}
-\end{align}
+
 
 \gls{HBM} volumes forward, over and behind the wingbox are lower bounded by the
 integration of the \gls{HBM} areas over the three fuselage sections.
-\begin{align}
+.. math::
 V_{hbend_{f}} &\geq \frac{A_{2h_\zeta}} {3} ((x_{shell2} - x_{f})^3 -
 	(x_{shell2} - x_{hbend_\zeta})^3) \\
 &+ \frac{A_{1h_\zeta}} {2} ((x_{tail} - x_{f})^2 - (x_{tail} -
@@ -361,13 +376,13 @@ V_{hbend_{b}} &\geq \frac{A_{2h_\zeta}}{3} ((x_{shell2} - x_{b})^3 -
 	x_{hbend_\zeta})^2) - A_{0h} (x_{hbend_\zeta} - x_{b}) \nonumber\\
 V_{hbend_{c}} &\geq 0.5 (A_{hbendf_\zeta} + A_{hbendb_\zeta}) c_{0} r_{w/c}
 \label{eq:dupBend_2}
-\end{align}
+
 
 The total \gls{HBM} volume is lower bounded by the sum of the volumes of
 \gls{HBM} required in each fuselage section.
-\begin{equation}
+.. math::
 V_{hbend} \geq V_{hbend_{c}} + V_{hbend_{f}} + V_{hbend_{b}}
-\end{equation}
+
 
 \subsubsection{Vertical bending model}
 
@@ -383,126 +398,126 @@ $B_{1v}$ is the \gls{VBM} length required to sustain the maximum vertical tail
 load $L_{vt_{max}}$.  When multiplied by the moment arm of the tail relative to
 the fuselage cross-sectional location, it gives the local \gls{VBM} area
 required to sustain the loads.
-\begin{equation}
+.. math::
 B_{1v} = \frac{r_{M_v} L_{vt_{max}}} {w_{fuse} \sigma_{M_{v}}}
-\end{equation}
+
 
 $B_{0v}$ is the equivalent \gls{VBM} area provided by the fuselage shell.
-\begin{equation} {B_{0v}} = \frac{{I_{vshell}}}{{r_E} {w_{fuse}}^{2}}
-\end{equation}
+.. math:: {B_{0v}} = \frac{{I_{vshell}}}{{r_E} {w_{fuse}}^{2}}
+
 
 Since tail loads are the only vertical loads to consider, the location forward
 of which additional bending material is required can be determined. $x_{vbend}$
 is the location where the vertical bending moment of the inertia of the
 fuselage is exactly enough to sustain the maximum vertical bending loads from
 the tail, expressed by a signomial equality.
-\begin{align} B_{0v} &= B_{1v} (x_{tail} - x_{vbend}) \\ x_{vbend}
+.. math:: B_{0v} &= B_{1v} (x_{tail} - x_{vbend}) \\ x_{vbend}
 &\geq x_{wing} \\ x_{vbend} &\leq l_{fuse}
-\end{align}
+
 
 The \gls{VBM} area required at the rear of the wingbox is lower bounded by the
 tail bending moment area minus the shell vertical bending moment area.
-\begin{equation}
+.. math::
 A_{vbend_{b}} \geq B_{1v} (x_{tail} - x_{b}) - B_{0v}
-\end{equation}
+
 
 The vertical bending volume rear of the wingbox is then constrained by
 integrating $A_{vbend}$ over the rear fuselage, which yields the following
 constraint.
-\begin{equation}
+.. math::
 V_{vbend_{b}} \geq 0.5 B_{1v} ((x_{tail}-x_{b})^2 - (x_{tail} - x_{vbend})^2) -
 B_{0v} (x_{vbend} - x_{b})
-\end{equation}
+
 
 The vertical bending volume over the wingbox is the average of the bending area
 required in the front and back of the wingbox. Since no vertical bending
 reinforcement is required in the forward fuselage, the resulting constraint is
 simply:
-\begin{equation}
+.. math::
 V_{vbend_{c}} \geq 0.5 A_{vbend_{b}} c_{0} r_{w/c}
-\end{equation}
+
 
 The total vertical bending reinforcement volume is the sum of the volumes over
 the wingbox and the rear fuselage.
-\begin{equation}
+.. math::
 V_{vbend} \geq V_{vbend_{b}} + V_{vbend_{c}}
-\end{equation}
+
 
 \subsubsection{Weight build-up constraints}
 
 The weight of the fuselage skin is the product of the skin volumes (bulkhead,
 cylindrical shell, and nosecone) and the skin density.
-\begin{equation}
+.. math::
 {W_{skin}} \geq {\rho_{skin}} {g}  \left({V_{bulk}} + {V_{cyl}}
 + {V_{nose}} \right)
-\end{equation}
+
 The weight of the fuselage shell is then constrained by accounting for the
 weights of the frame, stringers, and other structural components, all of which
 are assumed to scale with the weight of the skin.
-\begin{equation} {W_{shell}} \geq {W_{skin}}\left(1 + {f_{fadd}} +  {f_{frame}}
+.. math:: {W_{shell}} \geq {W_{skin}}\left(1 + {f_{fadd}} +  {f_{frame}}
 +  {f_{string}} \right)
-\end{equation}
+
 
 The weight of the floor is lower bounded by the density of the floor beams
 multiplied by the floor beam volume, in addition to an assumed weight/area
 density for planking.
-\begin{align}
+.. math::
 {V_{floor}} &\geq {A_{floor}} {w_{floor}} \\
 {W_{floor}}&\geq{V_{floor}}{\rho_{floor}}{g}+{W''_{floor}}{l_{floor}} {w_{floor}}
-\end{align}
+
 
 As with the shell, the tail cone weight is bounded using assumed proportional
 weights for additional structural elements, stringers, and frames.
-\begin{equation}
+.. math::
 {W_{cone}}\geq{\rho_{cone}}{g}{V_{cone}}\left(1+{f_{fadd}}+{f_{frame}} +
 f_{string}\right)
-\end{equation} % PK different
+  % PK different
 
 The weight of the horizontal and vertical bending material is the product of
 the bending material density and the \gls{HBM} and \gls{VBM} volumes required
 respectively.
-\begin{align}
+.. math::
 W_{hbend} &\geq \rho_{bend} g V_{hbend} \\
 W_{vbend} &\geq \rho_{bend} g V_{vbend}
-\end{align}
+
 
 The weight of luggage is lower bounded by a buildup of 2-checked-bag
 customers, 1-checked-bag customers, and average carry-on weight.
-\begin{equation}
+.. math::
 {W_{lugg}} \geq 2{W_{checked}} {f_{lugg,2}} {n_{pass}} +
 {W_{checked}} {f_{lugg,1}} {n_{pass}} + {W_{carry on}}
-\end{equation}
+
 
 The window and insulation weight are lower bounded using assumed weight/length
 and weight/area densities respectively. It is assumed that only the passenger
 compartment of the the cabin is insulated and that the passenger compartment
 cross sectional area is approximately 55\% of the fuselage cross sectional
 area.
-\begin{align}
+.. math::
 {W_{window}} &= {W'_{window}} {l_{shell}} \\
 {W_{insul}} &\geq {W''_{insul}} \left( 0.55\left({S_{bulk}}
 + {S_{nose}} \right) + 1.1\pi{R_{fuse}} {l_{shell}} \right)
-\end{align}
+
 
 The APU and other payload
 proportional weights are accounted for using weight fractions.
 $W_{padd}$ includes flight attendants, food, galleys, toilets, furnishing, doors,
 lighting, air conditioning, and in-flight entertainment systems. The total seat
 weight is a product of the weight per seat and the number of seats.
-\begin{align}
+.. math::
 {W_{apu}} &= {W_{payload}} {f_{apu}} \\
 {W_{padd}} &= {W_{payload}} {f_{padd}} \\
 {W_{seat}} &= {W'_{seat}} {n_{seat}}
-\end{align}
+
 
 The effective buoyancy weight of the aircraft is constrained using a specified
 cabin pressure $p_{cabin}$, the ideal gas law and the approximated cabin
 volume.  A conservative approximation for the buoyancy weight that does not
 subtract the ambient air density from the cabin air density is used.
-\begin{align}
+.. math::
 \rho_{cabin}&= \frac{p_{cabin}}{{R} {T_{cabin}}} \\
 {W_{buoy}} &= \rho_{cabin} {g} {V_{cabin}}
-\end{align}
+
 
 There are two methods in the model that can be used to lower bound the payload
 weight. The first is the sum of the cargo, luggage, and passenger weights
@@ -511,29 +526,31 @@ variable $W_{avg. pass_{total}}$, which is an average payload weight per
 passenger metric (Constraint~\eqref{eq:payload2nd}). For the purposes of this
 paper, the second method is used, and as a result Constraint~\eqref{eq:payload1st}
 is inactive.
-\begin{align}
-W_{pass} &= W_{avg. pass} n_{pass} \\
-{W_{payload}} &\geq {W_{cargo}} + {W_{lugg}} + {W_{pass}}\label{eq:payload1st} \\
-{W_{payload}} &\geq {W_{avg. pass_{total}}} {{n_{pass}}} \label{eq:payload2nd}
-\end{align}
+
+.. math::
+    W_{pass} &= W_{avg. pass} n_{pass} \\
+    {W_{payload}} &\geq {W_{cargo}} + {W_{lugg}} + {W_{pass}}\label{eq:payload1st} \\
+    {W_{payload}} &\geq {W_{avg. pass_{total}}} {{n_{pass}}} \label{eq:payload2nd}
+
 
 The total weight of the fuselage is lower bounded by the sum of all of the
 constituent weights. The fixed weight $W_{fix}$ incorporates pilots, cockpit
 windows, cockpit seats, flight instrumentation, navigation and communication
 equipment, which are expected to be roughly the same for all
 aircraft~\cite{drela2010tasopt}.
-\begin{align}
+
+.. math::
 {W_{fuse}} &\geq {W_{apu}} + {W_{buoy}} + {W_{cone}} + {W_{floor}} + W_{hbend}
 	+ W_{vbend} + {W_{insul}} \\ &+ {W_{padd}} + {W_{seat}} + {W_{shell}} +
 	{W_{window}} + {W_{fix}} \nonumber
-\end{align}
+
 
 \subsubsection{Aerodynamic constraints}
 
 The drag of the fuselage is constrained using $C_{D_{fuse}}$ from TASOPT, which
 calculates the drag using a pseudo-axisymmetric viscous/inviscid calculation,
 and scaling appropriately by fuselage dimensions and Mach number.
-\begin{equation}
+.. math::
 D_{fuse} = \frac{1}{2} \rho_{\infty} V_{\infty}^2 C_{D_{fuse}} \left( l_{fuse} R_{fuse}
 \frac{M^2}{M_{fuseD}^2} \right)
-\end{equation}
+
