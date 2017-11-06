@@ -36,4 +36,4 @@ Table of contents:
         lg
         Debugging
 
-.. bibliography:: refs.bib
+.. bibliography:: references.bib
