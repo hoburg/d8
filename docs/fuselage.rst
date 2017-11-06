@@ -35,7 +35,7 @@ Model Description
 
 .. raw:: latex
 
-    \begin{supertabular}{lcl}
+    \begin{tabular}{lcl}
     \toprule
     Free Variables & Units & Description \\ \midrule
     $A_{0h}$ & $~\mathrm{m^{2}}$ & Horizontal bending area constant A0h \\
@@ -129,7 +129,7 @@ Model Description
     $x_{vbend}$ & $~\mathrm{ft}$ & Vertical zero bending location \\
     $x_{wing}$ & $~\mathrm{m}$ & x-location of wing c/4 \\
     \bottomrule
-    \end{supertabular}
+    \end{tabular}
 
 | lcl Constants & Units & Description
 | :math:`M_{fuseD}` & :math:`~[-]` & Fuselage drag reference Mach number

@@ -38,8 +38,8 @@ The horizontal tail model has 50 free variables and 33 constraints.
   velocity
 | :math:`V_{ht}` & :math:`~[-]` & Horizontal tail volume
 | :math:`W_{ht}` & :math:`~\mathrm{[lbf]}` & Horizontal tail weight
-| :math:`\AR_w` & :math:`~[-]` & Wing aspect ratio
-| :math:`\AR_{ht}` & :math:`~[-]` & Horizontal tail aspect ratio
+| :math:`AR_w` & :math:`~[-]` & Wing aspect ratio
+| :math:`AR_{ht}` & :math:`~[-]` & Horizontal tail aspect ratio
 | :math:`\Delta x_{lead_{ht}}` & :math:`~\mathrm{[m]}` & Distance from
   CG to HT leading edge
 | :math:`\Delta x_{trail_{ht}}` & :math:`~\mathrm{[m]}` & Distance from
@@ -148,16 +148,16 @@ elliptically loaded wing.
 .. math::
 
    \begin{aligned}
-   \epsilon &\approx \frac{2 C_{L_w}}{\pi \AR_w} \\
+   \epsilon &\approx \frac{2 C_{L_w}}{\pi AR_w} \\
    \implies \frac{\partial \epsilon}{\partial \alpha} &\approx
-   \frac{2 C_{L_{\alpha,w}}}{\pi \AR_w}\end{aligned}
+   \frac{2 C_{L_{\alpha,w}}}{\pi AR_w}\end{aligned}
 
  Thus, an additional posynomial constraint is introduced to constrain
 the corrected lift curve slope.
 
 .. math::
 
-   C_{L_{\alpha,ht}} + \frac{2 C_{L_{\alpha,w}} }{\pi \AR_w}  \eta_{ht} C_{L_{\alpha,ht_0}}
+   C_{L_{\alpha,ht}} + \frac{2 C_{L_{\alpha,w}} }{\pi AR_w}  \eta_{ht} C_{L_{\alpha,ht_0}}
    \leq C_{L_{\alpha,ht_0}} \eta_{ht}
 
 Minimum Stability Margin

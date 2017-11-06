@@ -26,7 +26,7 @@ Model Description
 The vertical tail model has 42 free variables and 31 constraints.
 
 | lcl Free Variables & Units & Description
-| :math:`\AR_{vt}` & :math:`~[-]` & Vertical tail aspect ratio
+| :math:`AR_{vt}` & :math:`~[-]` & Vertical tail aspect ratio
 | :math:`C_{D_{p_{vt}}}` & :math:`~[-]` & Viscous drag coefficient
 | :math:`C_{L_{vt,EO}}` & :math:`~[-]` & Vertical tail lift coefficient
   during engine out
@@ -173,7 +173,7 @@ critical engine failure.
 coefficient using finite wing
 theory :raw-tex:`\cite{andersonfundamentals}`.
 
-.. math:: C_{L_{vt,EO}}\left(1 + \frac{c_{l_{vt,EO}}}{\pi e_{vt} \AR_{vt}}\right) \leq c_{l_{vt,EO}}
+.. math:: C_{L_{vt,EO}}\left(1 + \frac{c_{l_{vt,EO}}}{\pi e_{vt} AR_{vt}}\right) \leq c_{l_{vt,EO}}
 
  The windmill drag can, to a first approximation, be lower bounded using
 a drag coefficient and a reference

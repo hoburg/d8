@@ -65,7 +65,7 @@ Model Description
 | :math:`W_{vt}` | :math:`~\mathrm{[lbf]}` | Vertical tail weight|
 | :math:`W_{wing}` | :math:`~\mathrm{[lbf]}` | Wing weight|
 | :math:`W_{zf}` | :math:`~\mathrm{[lbf]}` | Zero fuel weight|
-| :math:`\AR_w` | :math:`~[-]` | Wing aspect ratio|
+| :math:`AR_w` | :math:`~[-]` | Wing aspect ratio|
 | :math:`\left(\frac{L}{D}\right)` | :math:`~[-]` | Lift/drag ratio|
 | :math:`\xi` | :math:`~[-]` | Takeoff parameter|
 | :math:`a` | :math:`~\mathrm{[\tfrac{m}{s}]}` | Speed of sound|

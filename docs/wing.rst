@@ -19,7 +19,7 @@ Model Description
 The wing model has 52 free variables and 49 constraints.
 
 | lcl Free Variables & Units & Description
-| :math:`\AR_w` & :math:`~[-]` & Wing aspect ratio
+| :math:`AR_w` & :math:`~[-]` & Wing aspect ratio
 | :math:`C_{D_w}` & :math:`~[-]` & Drag coefficient, wing
 | :math:`C_{D_{i_w}}` & :math:`~[-]` & Wing induced drag coefficient
 | :math:`C_{D_{p_w}}` & :math:`~[-]` & Wing parasitic drag coefficient
@@ -240,7 +240,7 @@ attack, which is limited by a maximum angle of attack due to stall.
 curve slope of a wing or tail, based on empirical
 results :raw-tex:`\cite{kroo2001aircraft}`.
 
-.. math:: C_{L_{\alpha,w}} = \frac{2 \pi \AR_{w}}{2+\sqrt{(\AR_{w}/\eta_w)^2(1+\tan^2\Lambda - M^2)+4}}
+.. math:: C_{L_{\alpha,w}} = \frac{2 \pi AR_{w}}{2+\sqrt{(AR_{w}/\eta_w)^2(1+\tan^2\Lambda - M^2)+4}}
 
  This relationship can be used as a signomial inequality to constrain
 the lift curve slope, although some algebraic manipulation is needed.
@@ -248,14 +248,14 @@ the lift curve slope, although some algebraic manipulation is needed.
 .. math::
 
    \begin{aligned}
-   C_{L_{\alpha,w}} &\leq \frac{2\pi\AR_{w}}{2+\sqrt{(\AR_{w}/\eta_w)^2(1+\tan^2\Lambda-M^2)+4}}
+   C_{L_{\alpha,w}} &\leq \frac{2\piAR_{w}}{2+\sqrt{(AR_{w}/\eta_w)^2(1+\tan^2\Lambda-M^2)+4}}
     \\
-   (\AR_{w}/\eta_w)^2(1+\tan^2\Lambda - M^2)+4 &\leq \left( \frac{2\pi \AR_{w}}{C_{L_{\alpha,w}}}
+   (AR_{w}/\eta_w)^2(1+\tan^2\Lambda - M^2)+4 &\leq \left( \frac{2\pi AR_{w}}{C_{L_{\alpha,w}}}
     - 2 \right)^2 \\
-   (\AR_{w}/\eta_w)^2(1+\tan^2\Lambda - M^2) &\leq \frac{4 \pi^2 \AR_{w}^2}{C_{L_{\alpha,w}}^2}
-    - \frac{8 \pi \AR_{w}}{C_{L_{\alpha,w}}} \\
+   (AR_{w}/\eta_w)^2(1+\tan^2\Lambda - M^2) &\leq \frac{4 \pi^2 AR_{w}^2}{C_{L_{\alpha,w}}^2}
+    - \frac{8 \pi AR_{w}}{C_{L_{\alpha,w}}} \\
    \frac{C_{L_{\alpha,w}}^2}{\eta_w^2}\left(1 + \tan^2\Lambda - M^2\right) +
-   \frac{8\pi C_{L_{\alpha,w}}}{\AR_{w}} &\leq 4\pi^2 \end{aligned}
+   \frac{8\pi C_{L_{\alpha,w}}}{AR_{w}} &\leq 4\pi^2 \end{aligned}
 
  Maximum wing lift is constrained using an assumed load factor,
 :math:`N_{lift}`.
@@ -294,20 +294,20 @@ which comprises 12 monomial and posynomial constraints.
 
    \begin{aligned}
    {W_{struct_{w}}} &\geq ({W_{cap}} + {W_{web}}) \\
-   {W_{cap}} &\geq  \frac{8{\rho_{cap}} {g} {w} {t_{cap}} {S_{w}}^{1.5} {\nu}}{3{\AR_{w}}^{0.5}} \\
-   {W_{web}} &\geq \frac{8{\rho_{web}}{g}{r_h}{\tau_{w}}{t_{web}}{S_{w}}^{1.5}{\nu}}{3{\AR_{w}}^{0.5}} \\
+   {W_{cap}} &\geq  \frac{8{\rho_{cap}} {g} {w} {t_{cap}} {S_{w}}^{1.5} {\nu}}{3{AR_{w}}^{0.5}} \\
+   {W_{web}} &\geq \frac{8{\rho_{web}}{g}{r_h}{\tau_{w}}{t_{web}}{S_{w}}^{1.5}{\nu}}{3{AR_{w}}^{0.5}} \\
    {\nu}^{3.94} &\geq 0.14{p_{w}}^{0.56} + \frac{0.86}{{p_{w}}^{2.4}} \\
    {p_{w}} &\geq 1 + 2{\lambda_{w}} \\
    2{q_{w}} &\geq 1 + {p_{w}} \\
    \frac{0.92^2}{2}{\tau_{w}}^{2}{t_{cap}}{w} &\geq 0.92{\tau_{w}}{t_{cap}}^{2}{w} + {I_{cap}} \\
-   \frac{{\AR_{w}} {M_r} {N_{lift}} {\tau_{w}} {q_{w}}^{2}}{{I_{cap}} {S_{w}} {\sigma_{max}}} &\leq 8 \\
-   \frac{{\AR_{w}}{L_{w_{max}}}{N_{lift}}{q_{w}}^{2}}{{S_{w}}{\sigma_{max,shear}}{\tau_{w}}{t_{web}}}&\leq 12 \\
-   {\AR_{w}} &= \frac{{b_{w}}^{2}}{{S_{w}}} \\
+   \frac{{AR_{w}} {M_r} {N_{lift}} {\tau_{w}} {q_{w}}^{2}}{{I_{cap}} {S_{w}} {\sigma_{max}}} &\leq 8 \\
+   \frac{{AR_{w}}{L_{w_{max}}}{N_{lift}}{q_{w}}^{2}}{{S_{w}}{\sigma_{max,shear}}{\tau_{w}}{t_{web}}}&\leq 12 \\
+   {AR_{w}} &= \frac{{b_{w}}^{2}}{{S_{w}}} \\
    {\tau_{w}} &\leq 0.14 \end{aligned}
 
  The original root bending moment constraint,
 
-.. math:: {M_r} \geq \frac{{\AR_{w}} {L_{w_{max}}} {p_{w}}}{24},
+.. math:: {M_r} \geq \frac{{AR_{w}} {L_{w_{max}}} {p_{w}}}{24},
 
  is replaced with a more sophisticated signomial constraint that
 considers the load relief effect due to the weight of the engine and the
@@ -401,14 +401,14 @@ adjustment factor for wingtip devices.
            C_{L_w}^{-1.44} \nonumber \\
    \label{eq:wingRe}
    Re_w &= \frac{\rho_{\infty} V_{\infty} \bar{c}_w}{\mu} \\
-   C_{D_{i_w}} &\geq f_{tip} \frac{C_{L_w}^2}{\pi e \AR_{w}} \label{eq:induceddrag}\end{aligned}
+   C_{D_{i_w}} &\geq f_{tip} \frac{C_{L_w}^2}{\pi e AR_{w}} \label{eq:induceddrag}\end{aligned}
 
 The Oswald efficiency is constrained by a relationship
 from :raw-tex:`\cite{nita2012estimating}`, in which the authors fit a
 polynomial function to empirical data. Given that all polynomials are
 signomials, this can easily be used in the framework.
 
-.. math:: e\leq \frac{1}{1 + f(\lambda_w) \AR_{w} }
+.. math:: e\leq \frac{1}{1 + f(\lambda_w) AR_{w} }
 
 .. math::
 
@@ -421,10 +421,10 @@ imposed by this pair of constraints, in .
 
 .. figure:: figs/e_fit.eps
    :alt: Empirical relationship for Oswald efficiency as a function of
-   taper for a wing with :math:`\AR_{w}`\ =10
+   taper for a wing with :math:`AR_{w}`\ =10
 
    Empirical relationship for Oswald efficiency as a function of taper
-   for a wing with :math:`\AR_{w}`\ =10
+   for a wing with :math:`AR_{w}`\ =10
 
 Wing Aerodynamic Center
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -457,7 +457,7 @@ offset :math:`\delta x(y)` are given by:
 integral and relaxing the equality, :math:`\Delta x_{ac_w}` can be
 constrained as follows.
 
-.. math:: \Delta x_{ac_w} \geq \frac{1}{4} \tan(\Lambda) \AR_{w} c_{root_{w}} \left(\frac{1}{3} + \frac{2}{3} \lambda_w \right)
+.. math:: \Delta x_{ac_w} \geq \frac{1}{4} \tan(\Lambda) AR_{w} c_{root_{w}} \left(\frac{1}{3} + \frac{2}{3} \lambda_w \right)
 
 Fuel Volume
 ~~~~~~~~~~~
