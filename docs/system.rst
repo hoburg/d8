@@ -137,9 +137,10 @@ manuscript, but still apply.
    W_{start_{0}} &= W \\
    W_{end_{N}} &\geq W_{dry} + W_{payload} + f_{fuel_{res}} W_{f_{primary}}\\
    W_{avg_{n}} &\geq \sqrt{W_{start_{n}} W_{end_{N}}} + W_{buoy_{n}} \\
-   \left(\frac{L}{D}\right)_{n} &= \frac{W_{avg_{n}}}{D_{n}}\end{aligned}
+   \left(\frac{L}{D}\right)_{n} &= \frac{W_{avg_{n}}}{D_{n}}
+   \end{aligned}
 
- In the remainder of this manuscript, :math:`W` refers to the
+In the remainder of this manuscript, :math:`W` refers to the
 corresponding flight segment’s :math:`W_{avg}`.
 
 The dry weight and drag of the aircraft are constrained using simple

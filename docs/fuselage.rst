@@ -253,12 +253,12 @@ in a row and the width of the aisle.
 
 .. math:: {2w_{fuse}} \geq (\mathit{SPR}) {w_{seat}} + {w_{aisle}} + 2{w_{sys}}
 
- The cross sectional area of the fuselage skin is lower bounded using a
+The cross sectional area of the fuselage skin is lower bounded using a
 thin walled cylinder assumption.
 
 .. math:: {A_{skin}} \geq 2 \pi {R_{fuse}} {t_{skin}}
 
- The cross sectional area of the fuselage is lower bounded using the
+The cross sectional area of the fuselage is lower bounded using the
 radius of the fuselage.
 
 .. math:: {A_{fuse}} \geq \pi {R_{fuse}}^{2}
@@ -288,7 +288,7 @@ landing.
 
 .. math:: {P_{floor}} \geq {N_{land}} ({W_{payload}} + {W_{seat}})
 
- The maximum moment and shear in the floor are determined based on this
+The maximum moment and shear in the floor are determined based on this
 design load and the width of the floor, assuming that the floor/wall
 joints are pinned and there are no center supports.
 
@@ -413,7 +413,7 @@ the cone base).
    \label{eq:Qv2}
    {t_{cone}}&= \frac{Q_v}{2{A_{fuse}} {\tau_{cone}} }\end{aligned}
 
- The volume of the cone is a definite integral from the base to the tip
+The volume of the cone is a definite integral from the base to the tip
 of the cone. This integral is
 evaluated :raw-tex:`\cite{drela2010tasopt}` and combined with
 Equations and to give a single signomial constraint on the cone skin
@@ -424,19 +424,19 @@ volume.
    R_{fuse}\tau_{cone}(1+p_{\lambda_v})V_{cone} \frac{1+\lambda_{cone}}{4 l_{cone}}
    \geq L_{vt_{max}} b_{vt} \frac{p_{\lambda_v}}{3}
 
- A change of variables is used for compatibility with the tail model,
+A change of variables is used for compatibility with the tail model,
 which uses :math:`p_{\lambda_v} = 1 + 2\lambda_v` to make a structural
 constraint -compatible. The same taper lower bound is introduced as in
 the tail model.
 
 .. math:: {p_{\lambda_v}} \geq 1.6
 
- The cone skin shear stress is constrained to equal the maximum
+The cone skin shear stress is constrained to equal the maximum
 allowable stress in the skin material.
 
 .. math:: {\tau_{cone}} = {\sigma_{skin}}
 
- The tail cone taper ratio constrains the length of the cone relative to
+The tail cone taper ratio constrains the length of the cone relative to
 the radius of the fuselage.
 
 .. math:: {l_{cone}} = \frac{{R_{fuse}}}{{\lambda_{cone}}}
@@ -700,7 +700,7 @@ The weight of the fuselage skin is the product of the skin volumes
    {W_{skin}} \geq {\rho_{skin}} {g}  \left({V_{bulk}} + {V_{cyl}}  
    + {V_{nose}} \right)
 
- The weight of the fuselage shell is then constrained by accounting for
+The weight of the fuselage shell is then constrained by accounting for
 the weights of the frame, stringers, and other structural components,
 all of which are assumed to scale with the weight of the skin.
 
@@ -728,7 +728,7 @@ frames.
    {W_{cone}}\geq{\rho_{cone}}{g}{V_{cone}}\left(1+{f_{fadd}}+{f_{frame}} +
    f_{string}\right)
 
- The weight of the horizontal and vertical bending material is the
+The weight of the horizontal and vertical bending material is the
 product of the bending material density and the and volumes required
 respectively.
 
