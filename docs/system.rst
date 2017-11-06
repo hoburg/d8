@@ -22,9 +22,9 @@ sophisticated mission profile is left for future work.
 Model Description
 -----------------
 
-+---------------------------------------+
++----------------+-------+--------------+
 | Free Variables | Units | Description |
-+=========================================+
++================+=======+================+
 | :math:`C_D` | :math:`~[-]` | Drag coefficient|
 | :math:`D` | :math:`~\mathrm{[N]}` | Total aircraft drag (cruise)|
 | :math:`D_{fuse}` | :math:`~\mathrm{[N]}` | Fuselage drag|
@@ -86,7 +86,7 @@ Model Description
 | :math:`x_{wing}` | :math:`~\mathrm{[m]}` | Wing centroid|
 | :math:`y` | :math:`~[-]` | Takeoff parameter|
 | :math:`z_{bre}` | :math:`~[-]` | Breguet parameter|
-+----------------------------------------------------+
++-----------------+--------------+-------------------+
 
 [tab:ac\_fixedvars]
 
