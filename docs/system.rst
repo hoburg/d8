@@ -22,86 +22,87 @@ sophisticated mission profile is left for future work.
 Model Description
 -----------------
 
-[tab:ac\_freevars]
-
-| lcl Free Variables & Units & Description
-| :math:`C_D` & :math:`~[-]` & Drag coefficient
-| :math:`D` & :math:`~\mathrm{[N]}` & Total aircraft drag (cruise)
-| :math:`D_{fuse}` & :math:`~\mathrm{[N]}` & Fuselage drag
-| :math:`D_{ht}` & :math:`~\mathrm{[N]}` & Horizontal tail drag
-| :math:`D_{vt}` & :math:`~\mathrm{[N]}` & Vertical tail drag
-| :math:`D_{wing}` & :math:`~\mathrm{[N]}` & Wing drag
-| :math:`\Delta x_{ac_w}` & :math:`~\mathrm{[m]}` & Wing aerodynamic
-  center shift
-| :math:`f_{fuel}` & :math:`~\mathrm{[-]}` & Percent fuel remaining
-| :math:`I_{z_{fuse}}` & :math:`~\mathrm{[kg m^2]}` & Fuselage moment of
-  inertia
-| :math:`I_{z_{tail}}` & :math:`~\mathrm{[kg m^2]}` & Tail moment of
-  inertia
-| :math:`I_{z_{wing}}` & :math:`~\mathrm{[kg m^2]}` & Wing moment of
-  inertia
-| :math:`I_{z}` & :math:`~\mathrm{[kg m^2]}` & Total aircraft moment of
-  inertia
-| :math:`l_{fuse}` & :math:`~\mathrm{[m]}` & Fuselage length
-| :math:`l_{vt}` & :math:`~\mathrm{[m]}` & Vertical tail moment arm
-| :math:`M` & :math:`~[-]` & Cruise Mach number
-| :math:`R` & :math:`~\mathrm{[nm]}` & Segment range
-| :math:`S_w` & :math:`~\mathrm{[m^{2}]}` & Wing reference area
-| :math:`V_{TO}` & :math:`~\mathrm{[\tfrac{m}{s}]}` & Takeoff velocity
-| :math:`V_{\infty}` & :math:`~\mathrm{[\tfrac{m}{s}]}` & Cruise
-  velocity
-| :math:`W` & :math:`~\mathrm{[lbf]}` & Aircraft takeoff weight
-| :math:`W_{avg}` & :math:`~\mathrm{[lbf]}` & Flight segment average
-  aircraft weight
-| :math:`W_{buoy}` & :math:`~\mathrm{[lbf]}` & Buoyancy weight
-| :math:`W_{dry}` & :math:`~\mathrm{[lbf]}` & Aircraft dry weight
-| :math:`W_{end}` & :math:`~\mathrm{[lbf]}` & Aircraft weight at end of
-  flight segment
-| :math:`W_{fuel}` & :math:`~\mathrm{[lbf]}` & Fuel weight
-| :math:`W_{f_{primary}}` & :math:`~\mathrm{[lbf]}` & Total fuel weight
-  less reserves
-| :math:`W_{fuel_{wing}}` & :math:`~\mathrm{[lbf]}` & Maximum fuel
-  weight carried in wing
-| :math:`W_{fuse}` & :math:`~\mathrm{[lbf]}` & Fuselage weight
-| :math:`W_{hpesys}` & :math:`~\mathrm{[lbf]}` & Power system weight
-| :math:`W_{ht}` & :math:`~\mathrm{[lbf]}` & Horizontal tail weight
-| :math:`W_{lg}` & :math:`~\mathrm{[lbf]}` & Landing gear weight
-| :math:`W_{misc}` & :math:`~\mathrm{[lbf]}` & Miscellanous system
-  weight
-| :math:`W_{mg}` & :math:`~\mathrm{[lbf]}` & Main landing gear weight
-| :math:`W_{ng}` & :math:`~\mathrm{[lbf]}` & Nose landing gear weight
-| :math:`W_{pay}` & :math:`~\mathrm{[lbf]}` & Payload weight
-| :math:`W_{start}` & :math:`~\mathrm{[lbf]}` & Aircraft weight at start
-  of flight segment
-| :math:`W_{tail}` & :math:`~\mathrm{[lbf]}` & Total tail weight
-| :math:`W_{vt}` & :math:`~\mathrm{[lbf]}` & Vertical tail weight
-| :math:`W_{wing}` & :math:`~\mathrm{[lbf]}` & Wing weight
-| :math:`W_{zf}` & :math:`~\mathrm{[lbf]}` & Zero fuel weight
-| :math:`\AR_w` & :math:`~[-]` & Wing aspect ratio
-| :math:`\left(\frac{L}{D}\right)` & :math:`~[-]` & Lift/drag ratio
-| :math:`\xi` & :math:`~[-]` & Takeoff parameter
-| :math:`a` & :math:`~\mathrm{[\tfrac{m}{s}]}` & Speed of sound
-| :math:`b_w` & :math:`~\mathrm{[m]}` & Wing span
-| :math:`c_{root_{w}}` & :math:`~\mathrm{[m]}` & Wing root chord
-| :math:`t` & :math:`~\mathrm{[min]}` & Flight time
-| :math:`x_{CG}` & :math:`~\mathrm{[m]}` & x-location of CG
-| :math:`x_{CG_{lg}}` & :math:`~\mathrm{[m]}` & x-location of landing
-  gear CG
-| :math:`x_{CG_{misc}}` & :math:`~\mathrm{[m]}` & x-location of
-  miscellanous systems CG
-| :math:`x_{TO}` & :math:`~\mathrm{[m]}` & Takeoff distance
-| :math:`x_{b}` & :math:`~\mathrm{[m]}` & Wing box forward bulkhead
-  location
-| :math:`x_{misc}` & :math:`~\mathrm{[m]}` & Miscellaneous systems
-  centroid
-| :math:`x_{hpesys}` & :math:`~\mathrm{[m]}` & Power systems centroid
-| :math:`x_{lg}` & :math:`~\mathrm{[m]}` & Landing gear centroid
-| :math:`x_{mg}` & :math:`~\mathrm{[m]}` & Main landing gear centroid
-| :math:`x_{ng}` & :math:`~\mathrm{[m]}` & Nose landing gear centroid
-| :math:`x_{tail}` & :math:`~\mathrm{[m]}` & Tail centroid
-| :math:`x_{wing}` & :math:`~\mathrm{[m]}` & Wing centroid
-| :math:`y` & :math:`~[-]` & Takeoff parameter
-| :math:`z_{bre}` & :math:`~[-]` & Breguet parameter
++---------------------------------------+
+| Free Variables | Units | Description |
++=========================================+
+| :math:`C_D` | :math:`~[-]` | Drag coefficient|
+| :math:`D` | :math:`~\mathrm{[N]}` | Total aircraft drag (cruise)|
+| :math:`D_{fuse}` | :math:`~\mathrm{[N]}` | Fuselage drag|
+| :math:`D_{ht}` | :math:`~\mathrm{[N]}` | Horizontal tail drag|
+| :math:`D_{vt}` | :math:`~\mathrm{[N]}` | Vertical tail drag|
+| :math:`D_{wing}` | :math:`~\mathrm{[N]}` | Wing drag|
+| :math:`\Delta x_{ac_w}` | :math:`~\mathrm{[m]}` | Wing aerodynamic
+  center shift|
+| :math:`f_{fuel}` | :math:`~\mathrm{[-]}` | Percent fuel remaining|
+| :math:`I_{z_{fuse}}` | :math:`~\mathrm{[kg m^2]}` | Fuselage moment of
+  inertia|
+| :math:`I_{z_{tail}}` | :math:`~\mathrm{[kg m^2]}` | Tail moment of
+  inertia|
+| :math:`I_{z_{wing}}` | :math:`~\mathrm{[kg m^2]}` | Wing moment of
+  inertia|
+| :math:`I_{z}` | :math:`~\mathrm{[kg m^2]}` | Total aircraft moment of
+  inertia|
+| :math:`l_{fuse}` | :math:`~\mathrm{[m]}` | Fuselage length |
+| :math:`l_{vt}` | :math:`~\mathrm{[m]}` | Vertical tail moment arm|
+| :math:`M` | :math:`~[-]` | Cruise Mach number|
+| :math:`R` | :math:`~\mathrm{[nm]}` | Segment range|
+| :math:`S_w` | :math:`~\mathrm{[m^{2}]}` | Wing reference area|
+| :math:`V_{TO}` | :math:`~\mathrm{[\tfrac{m}{s}]}` | Takeoff velocity|
+| :math:`V_{\infty}` | :math:`~\mathrm{[\tfrac{m}{s}]}` | Cruise
+  velocity|
+| :math:`W` | :math:`~\mathrm{[lbf]}` | Aircraft takeoff weight|
+| :math:`W_{avg}` | :math:`~\mathrm{[lbf]}` | Flight segment average
+  aircraft weight|
+| :math:`W_{buoy}` | :math:`~\mathrm{[lbf]}` | Buoyancy weight|
+| :math:`W_{dry}` | :math:`~\mathrm{[lbf]}` | Aircraft dry weight|
+| :math:`W_{end}` | :math:`~\mathrm{[lbf]}` | Aircraft weight at end of
+  flight segment|
+| :math:`W_{fuel}` | :math:`~\mathrm{[lbf]}` | Fuel weight|
+| :math:`W_{f_{primary}}` | :math:`~\mathrm{[lbf]}` | Total fuel weight
+  less reserves|
+| :math:`W_{fuel_{wing}}` | :math:`~\mathrm{[lbf]}` | Maximum fuel
+  weight carried in wing|
+| :math:`W_{fuse}` | :math:`~\mathrm{[lbf]}` | Fuselage weight|
+| :math:`W_{hpesys}` | :math:`~\mathrm{[lbf]}` | Power system weight|
+| :math:`W_{ht}` | :math:`~\mathrm{[lbf]}` | Horizontal tail weight|
+| :math:`W_{lg}` | :math:`~\mathrm{[lbf]}` | Landing gear weight|
+| :math:`W_{misc}` | :math:`~\mathrm{[lbf]}` | Miscellanous system
+  weight|
+| :math:`W_{mg}` | :math:`~\mathrm{[lbf]}` | Main landing gear weight|
+| :math:`W_{ng}` | :math:`~\mathrm{[lbf]}` | Nose landing gear weight|
+| :math:`W_{pay}` | :math:`~\mathrm{[lbf]}` | Payload weight|
+| :math:`W_{start}` | :math:`~\mathrm{[lbf]}` | Aircraft weight at start
+  of flight segment|
+| :math:`W_{tail}` | :math:`~\mathrm{[lbf]}` | Total tail weight|
+| :math:`W_{vt}` | :math:`~\mathrm{[lbf]}` | Vertical tail weight|
+| :math:`W_{wing}` | :math:`~\mathrm{[lbf]}` | Wing weight|
+| :math:`W_{zf}` | :math:`~\mathrm{[lbf]}` | Zero fuel weight|
+| :math:`\AR_w` | :math:`~[-]` | Wing aspect ratio|
+| :math:`\left(\frac{L}{D}\right)` | :math:`~[-]` | Lift/drag ratio|
+| :math:`\xi` | :math:`~[-]` | Takeoff parameter|
+| :math:`a` | :math:`~\mathrm{[\tfrac{m}{s}]}` | Speed of sound|
+| :math:`b_w` | :math:`~\mathrm{[m]}` | Wing span|
+| :math:`c_{root_{w}}` | :math:`~\mathrm{[m]}` | Wing root chord|
+| :math:`t` | :math:`~\mathrm{[min]}` | Flight time|
+| :math:`x_{CG}` | :math:`~\mathrm{[m]}` | x-location of CG|
+| :math:`x_{CG_{lg}}` | :math:`~\mathrm{[m]}` | x-location of landing
+  gear CG|
+| :math:`x_{CG_{misc}}` | :math:`~\mathrm{[m]}` | x-location of
+  miscellanous systems CG|
+| :math:`x_{TO}` | :math:`~\mathrm{[m]}` | Takeoff distance
+| :math:`x_{b}` | :math:`~\mathrm{[m]}` | Wing box forward bulkhead
+  location|
+| :math:`x_{misc}` | :math:`~\mathrm{[m]}` | Miscellaneous systems
+  centroid|
+| :math:`x_{hpesys}` | :math:`~\mathrm{[m]}` | Power systems centroid|
+| :math:`x_{lg}` | :math:`~\mathrm{[m]}` | Landing gear centroid|
+| :math:`x_{mg}` | :math:`~\mathrm{[m]}` | Main landing gear centroid|
+| :math:`x_{ng}` | :math:`~\mathrm{[m]}` | Nose landing gear centroid|
+| :math:`x_{tail}` | :math:`~\mathrm{[m]}` | Tail centroid|
+| :math:`x_{wing}` | :math:`~\mathrm{[m]}` | Wing centroid|
+| :math:`y` | :math:`~[-]` | Takeoff parameter|
+| :math:`z_{bre}` | :math:`~[-]` | Breguet parameter|
++----------------------------------------------------+
 
 [tab:ac\_fixedvars]
 
