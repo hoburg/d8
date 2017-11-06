@@ -33,138 +33,103 @@ material relative to the nominal yield stress of the material.
 Model Description
 -----------------
 
-| lcl Free Variables & Units & Description
-| :math:`A_{0h}` & :math:`~\mathrm{m^{2}}` & Horizontal bending area
-  constant A0h
-| :math:`A_{1h_{Land}}` & :math:`~\mathrm{m}` & Horizontal bending area
-  constant A1h (landing case)
-| :math:`A_{1h_{MLF}}` & :math:`~\mathrm{m}` & Horizontal bending area
-  constant A1h (max aero load case)
-| :math:`A_{2h_{Land}}` & :math:`~[-]` & Horizontal bending area
-  constant A2h (landing case)
-| :math:`A_{2h_{MLF}}` & :math:`~[-]` & Horizontal bending area constant
-  A2h (max aero load case)
-| :math:`A_{floor}` & :math:`~\mathrm{m^{2}}` & Floor beam x-sectional
-  area
-| :math:`A_{fuse}` & :math:`~\mathrm{m^{2}}` & Fuselage x-sectional area
-| :math:`A_{hbendb_{Land}}` & :math:`~\mathrm{m^{2}}` & Horizontal
-  bending area at rear wingbox (landing case)
-| :math:`A_{hbendb_{MLF}}` & :math:`~\mathrm{m^{2}}` & Horizontal
-  bending area at rear wingbox (max aero load case)
-| :math:`A_{hbendf_{Land}}` & :math:`~\mathrm{m^{2}}` & Horizontal
-  bending area at front wingbox (landing case)
-| :math:`A_{hbendf_{MLF}}` & :math:`~\mathrm{m^{2}}` & Horizontal
-  bending area at front wingbox (max aero load case)
-| :math:`A_{skin}` & :math:`~\mathrm{m^{2}}` & Skin cross sectional area
-| :math:`A_{vbend_{b}}` & :math:`~\mathrm{m^{2}}` & Vertical bending
-  material area at rear wingbox
-| :math:`B_{0v}` & :math:`~\mathrm{m^{2}}` & Vertical bending area
-  constant B0
-| :math:`B_{1v}` & :math:`~\mathrm{m}` & Vertical bending area constant
-  B1
-| :math:`C_{D_{fuse}}` & :math:`~[-]` & Fuselage drag coefficient
-| :math:`D_{fuse}` & :math:`~\mathrm{N}` & Fuselage drag
-| :math:`I_{h_{shell}}` & :math:`~\mathrm{m^{4}}` & Shell horizontal
-  bending inertia
-| :math:`I_{v_{shell}}` & :math:`~\mathrm{m^{4}}` & Shell vertical
-  bending inertia
-| :math:`L_{ht_{max}}` & :math:`~\mathrm{N}` & Horizontal tail maximum
-  load
-| :math:`L_{vt_{max}}` & :math:`~\mathrm{N}` & Vertical tail maximum
-  load
-| :math:`M` & :math:`~[-]` & Cruise Mach number
-| :math:`M_{floor}` & :math:`~\mathrm{N\cdot m}` & Max bending moment in
-  floor beams
-| :math:`P_{floor}` & :math:`~\mathrm{N}` & Distributed floor load
-| :math:`R_{fuse}` & :math:`~\mathrm{m}` & Fuselage radius
-| :math:`S_{bulk}` & :math:`~\mathrm{m^{2}}` & Bulkhead surface area
-| :math:`S_{floor}` & :math:`~\mathrm{N}` & Maximum shear in floor beams
-| :math:`S_{nose}` & :math:`~\mathrm{m^{2}}` & Nose surface area
-| :math:`V_{\infty}` & :math:`~\mathrm{[\tfrac{m}{s}]}` & Cruise
-  velocity
-| :math:`V_{bulk}` & :math:`~\mathrm{m^{3}}` & Bulkhead skin volume
-| :math:`V_{cabin}` & :math:`~\mathrm{m^{3}}` & Cabin volume
-| :math:`V_{cone}` & :math:`~\mathrm{m^{3}}` & Cone skin volume
-| :math:`V_{cyl}` & :math:`~\mathrm{m^{3}}` & Cylinder skin volume
-| :math:`V_{floor}` & :math:`~\mathrm{m^{3}}` & Floor volume
-| :math:`V_{hbend_{b}}` & :math:`~\mathrm{m^{3}}` & Horizontal bending
-  material volume b
-| :math:`V_{hbend_{c}}` & :math:`~\mathrm{m^{3}}` & Horizontal bending
-  material volume c
-| :math:`V_{hbend_{f}}` & :math:`~\mathrm{m^{3}}` & Horizontal bending
-  material volume f
-| :math:`V_{hbend}` & :math:`~\mathrm{m^{3}}` & Horizontal bending
-  material volume
-| :math:`V_{nose}` & :math:`~\mathrm{m^{3}}` & Nose skin volume
-| :math:`V_{vbend_{b}}` & :math:`~\mathrm{m^{3}}` & Vertical bending
-  material volume b
-| :math:`V_{vbend_{c}}` & :math:`~\mathrm{m^{3}}` & Vertical bending
-  material volume c
-| :math:`V_{vbend}` & :math:`~\mathrm{m^{3}}` & Vertical bending
-  material volume
-| :math:`W_{apu}` & :math:`~\mathrm{lbf}` & APU weight
-| :math:`W_{buoy}` & :math:`~\mathrm{lbf}` & Buoyancy weight
-| :math:`W_{cone}` & :math:`~\mathrm{lbf}` & Cone weight
-| :math:`W_{fix}` & :math:`~\mathrm{lbf}` & Fixed weights (pilots,
-  cockpit seats, navcom)
-| :math:`W_{floor}` & :math:`~\mathrm{lbf}` & Floor weight
-| :math:`W_{fuse}` & :math:`~\mathrm{lbf}` & Fuselage weight
-| :math:`W_{hbend}` & :math:`~\mathrm{lbf}` & Horizontal bending
-  material weight
-| :math:`W_{insul}` & :math:`~\mathrm{lbf}` & Insulation material weight
-| :math:`W_{lugg}` & :math:`~\mathrm{lbf}` & Passenger luggage weight
-| :math:`W_{padd}` & :math:`~\mathrm{lbf}` & Misc weights (galley,
-  toilets, doors etc.)
-| :math:`W_{pass}` & :math:`~\mathrm{lbf}` & Passenger weight
-| :math:`W_{payload}` & :math:`~\mathrm{lbf}` & Payload weight
-| :math:`W_{seat}` & :math:`~\mathrm{lbf}` & Seating weight
-| :math:`W_{shell}` & :math:`~\mathrm{lbf}` & Shell weight
-| :math:`W_{skin}` & :math:`~\mathrm{lbf}` & Skin weight
-| :math:`W_{tail}` & :math:`~\mathrm{lbf}` & Total tail weight
-| :math:`W_{vbend}` & :math:`~\mathrm{lbf}` & Vertical bending material
-  weight
-| :math:`W_{window}` & :math:`~\mathrm{lbf}` & Window weight
-| :math:`\lambda_{cone}` & :math:` ` [-]:math:` ` & Tailcone radius
-  taper ratio
-| :math:`\rho_{\infty}` & :math:`~\mathrm{[\tfrac{kg}{m^3}]}` &
-  Freestream density
-| :math:`\rho_{cabin}` & :math:`~\mathrm{\tfrac{kg}{m^{3}}}` & Cabin air
-  density
-| :math:`\sigma_x` & :math:`~\mathrm{\tfrac{N}{m^{2}}}` & Axial stress
-  in skin
-| :math:`\sigma_{M_h}` & :math:`~\mathrm{\tfrac{N}{m^{2}}}` & Horizontal
-  bending material stress
-| :math:`\sigma_{M_v}` & :math:`~\mathrm{\tfrac{N}{m^{2}}}` & Vertical
-  bending material stress
-| :math:`\sigma_{\theta}` & :math:`~\mathrm{\tfrac{N}{m^{2}}}` & Skin
-  hoop stress
-| :math:`\tau_{cone}` & :math:`~\mathrm{\tfrac{N}{m^{2}}}` & Shear
-  stress in tail cone
-| :math:`c_0` & :math:`~\mathrm{m}` & Root chord of the wing
-| :math:`h_{fuse}` & :math:`~\mathrm{m}` & Fuselage height
-| :math:`l_{cone}` & :math:`~\mathrm{m}` & Cone length
-| :math:`l_{floor}` & :math:`~\mathrm{m}` & Floor length
-| :math:`l_{fuse}` & :math:`~\mathrm{m}` & Fuselage length
-| :math:`l_{shell}` & :math:`~\mathrm{m}` & Shell length
-| :math:`n_{rows}` & :math:` ` [-]:math:` ` & Number of rows
-| :math:`n_{seat}` & :math:` ` [-]:math:` ` & Number of seats
-| :math:`t_{shell}` & :math:`~\mathrm{m}` & Shell thickness
-| :math:`t_{skin}` & :math:`~\mathrm{m}` & Skin thickness
-| :math:`w_{aisle}` & :math:`~\mathrm{m}` & Aisle width
-| :math:`w_{floor}` & :math:`~\mathrm{m}` & Floor half-width
-| :math:`w_{fuse}` & :math:`~\mathrm{m}` & Fuselage half-width
-| :math:`x_b` & :math:`~\mathrm{m}` & x-location of back of wingbox
-| :math:`x_f` & :math:`~\mathrm{m}` & x-location of front of wingbox
-| :math:`x_{hbend_{Land}}` & :math:`~\mathrm{ft}` & Horizontal zero
-  bending location (landing case)
-| :math:`x_{hbend_{MLF}}` & :math:`~\mathrm{ft}` & Horizontal zero
-  bending location (maximum aero load case)
-| :math:`x_{shell1}` & :math:`~\mathrm{m}` & Start of cylinder section
-| :math:`x_{shell2}` & :math:`~\mathrm{m}` & End of cylinder section
-| :math:`x_{tail}` & :math:`~\mathrm{m}` & x-location of tail
-| :math:`x_{vbend}` & :math:`~\mathrm{ft}` & Vertical zero bending
-  location
-| :math:`x_{wing}` & :math:`~\mathrm{m}` & x-location of wing c/4
+.. raw:: latex
+
+    \begin{supertabular}{lcl}
+    \toprule
+    Free Variables & Units & Description \\ \midrule
+    $A_{0h}$ & $~\mathrm{m^{2}}$ & Horizontal bending area constant A0h \\
+    $A_{1h_{Land}}$ & $~\mathrm{m}$ & Horizontal bending area constant A1h (landing case) \\
+    $A_{1h_{MLF}}$ & $~\mathrm{m}$ & Horizontal bending area constant A1h (max aero load case) \\
+    $A_{2h_{Land}}$ & $~[-]$ & Horizontal bending area constant A2h (landing case) \\
+    $A_{2h_{MLF}}$ & $~[-]$ & Horizontal bending area constant A2h (max aero load case) \\
+    $A_{floor}$ & $~\mathrm{m^{2}}$ & Floor beam x-sectional area \\
+    $A_{fuse}$ & $~\mathrm{m^{2}}$ & Fuselage x-sectional area \\
+    $A_{hbendb_{Land}}$ & $~\mathrm{m^{2}}$ & Horizontal bending area at rear wingbox (landing case) \\
+    $A_{hbendb_{MLF}}$ & $~\mathrm{m^{2}}$ & Horizontal bending area at rear wingbox (max aero load case) \\
+    $A_{hbendf_{Land}}$ & $~\mathrm{m^{2}}$ & Horizontal bending area at front wingbox (landing case) \\
+    $A_{hbendf_{MLF}}$ & $~\mathrm{m^{2}}$ & Horizontal bending area at front wingbox (max aero load case) \\
+    $A_{skin}$ & $~\mathrm{m^{2}}$ & Skin cross sectional area \\
+    $A_{vbend_{b}}$ & $~\mathrm{m^{2}}$ & Vertical bending material area at rear wingbox \\
+    $B_{0v}$ & $~\mathrm{m^{2}}$ & Vertical bending area constant B0 \\
+    $B_{1v}$ & $~\mathrm{m}$ & Vertical bending area constant B1 \\
+    $C_{D_{fuse}}$ & $~[-]$ & Fuselage drag coefficient \\
+    $D_{fuse}$ & $~\mathrm{N}$ & Fuselage drag \\
+    $I_{h_{shell}}$ & $~\mathrm{m^{4}}$ & Shell horizontal bending inertia \\
+    $I_{v_{shell}}$ & $~\mathrm{m^{4}}$ & Shell vertical bending inertia \\
+    $L_{ht_{max}}$ & $~\mathrm{N}$ & Horizontal tail maximum load \\
+    $L_{vt_{max}}$ & $~\mathrm{N}$ & Vertical tail maximum load \\
+    $M$ & $~[-]$ & Cruise Mach number \\
+    $M_{floor}$ & $~\mathrm{N\cdot m}$ & Max bending moment in floor beams \\
+    $P_{floor}$ & $~\mathrm{N}$ & Distributed floor load \\
+    $R_{fuse}$ & $~\mathrm{m}$ & Fuselage radius \\
+    $S_{bulk}$ & $~\mathrm{m^{2}}$ & Bulkhead surface area \\
+    $S_{floor}$ & $~\mathrm{N}$ & Maximum shear in floor beams \\
+    $S_{nose}$ & $~\mathrm{m^{2}}$ & Nose surface area \\
+    $V_{\infty}$ & $~\mathrm{[\tfrac{m}{s}]}$ & Cruise velocity \\
+    $V_{bulk}$ & $~\mathrm{m^{3}}$ & Bulkhead skin volume \\
+    $V_{cabin}$ & $~\mathrm{m^{3}}$ & Cabin volume \\
+    $V_{cone}$ & $~\mathrm{m^{3}}$ & Cone skin volume \\
+    $V_{cyl}$ & $~\mathrm{m^{3}}$ & Cylinder skin volume \\
+    $V_{floor}$ & $~\mathrm{m^{3}}$ & Floor volume \\
+    $V_{hbend_{b}}$ & $~\mathrm{m^{3}}$ & Horizontal bending material volume b \\
+    $V_{hbend_{c}}$ & $~\mathrm{m^{3}}$ & Horizontal bending material volume c \\
+    $V_{hbend_{f}}$ & $~\mathrm{m^{3}}$ & Horizontal bending material volume f \\
+    $V_{hbend}$ & $~\mathrm{m^{3}}$ & Horizontal bending material volume \\
+    $V_{nose}$ & $~\mathrm{m^{3}}$ & Nose skin volume \\
+    $V_{vbend_{b}}$ & $~\mathrm{m^{3}}$ & Vertical bending material volume b \\
+    $V_{vbend_{c}}$ & $~\mathrm{m^{3}}$ & Vertical bending material volume c \\
+    $V_{vbend}$ & $~\mathrm{m^{3}}$ & Vertical bending material volume \\
+    $W_{apu}$ & $~\mathrm{lbf}$ & APU weight \\
+    $W_{buoy}$ & $~\mathrm{lbf}$ & Buoyancy weight \\
+    $W_{cone}$ & $~\mathrm{lbf}$ & Cone weight \\
+    $W_{fix}$ & $~\mathrm{lbf}$ & Fixed weights (pilots, cockpit seats, navcom) \\
+    $W_{floor}$ & $~\mathrm{lbf}$ & Floor weight \\
+    $W_{fuse}$ & $~\mathrm{lbf}$ & Fuselage weight \\
+    $W_{hbend}$ & $~\mathrm{lbf}$ & Horizontal bending material weight \\
+    $W_{insul}$ & $~\mathrm{lbf}$ & Insulation material weight \\
+    $W_{lugg}$ & $~\mathrm{lbf}$ & Passenger luggage weight \\
+    $W_{padd}$ & $~\mathrm{lbf}$ & Misc weights (galley, toilets, doors etc.) \\
+    $W_{pass}$ & $~\mathrm{lbf}$ & Passenger weight \\
+    $W_{payload}$ & $~\mathrm{lbf}$ & Payload weight \\
+    $W_{seat}$ & $~\mathrm{lbf}$ & Seating weight \\
+    $W_{shell}$ & $~\mathrm{lbf}$ & Shell weight \\
+    $W_{skin}$ & $~\mathrm{lbf}$ & Skin weight \\
+    $W_{tail}$ & $~\mathrm{lbf}$ & Total tail weight \\
+    $W_{vbend}$ & $~\mathrm{lbf}$ & Vertical bending material weight \\
+    $W_{window}$ & $~\mathrm{lbf}$ & Window weight \\
+    $\lambda_{cone}$ & $ $~[-]$ $ & Tailcone radius taper ratio \\
+    $\rho_{\infty}$ & $~\mathrm{[\tfrac{kg}{m^3}]}$ & Freestream density \\
+    $\rho_{cabin}$ & $~\mathrm{\tfrac{kg}{m^{3}}}$ & Cabin air density \\
+    $\sigma_x$ & $~\mathrm{\tfrac{N}{m^{2}}}$ & Axial stress in skin \\
+    $\sigma_{M_h}$ & $~\mathrm{\tfrac{N}{m^{2}}}$ & Horizontal bending material stress \\
+    $\sigma_{M_v}$ & $~\mathrm{\tfrac{N}{m^{2}}}$ & Vertical bending material stress \\
+    $\sigma_{\theta}$ & $~\mathrm{\tfrac{N}{m^{2}}}$ & Skin hoop stress \\
+    $\tau_{cone}$ & $~\mathrm{\tfrac{N}{m^{2}}}$ & Shear stress in tail cone \\
+    $c_0$ & $~\mathrm{m}$ & Root chord of the wing \\
+    $h_{fuse}$ & $~\mathrm{m}$ & Fuselage height \\
+    $l_{cone}$ & $~\mathrm{m}$ & Cone length \\
+    $l_{floor}$ & $~\mathrm{m}$ & Floor length \\
+    $l_{fuse}$ & $~\mathrm{m}$ & Fuselage length \\
+    $l_{shell}$ & $~\mathrm{m}$ & Shell length \\
+    $n_{rows}$ & $ $~[-]$ $ & Number of rows \\
+    $n_{seat}$ & $ $~[-]$ $ & Number of seats \\
+    $t_{shell}$ & $~\mathrm{m}$ & Shell thickness \\
+    $t_{skin}$ & $~\mathrm{m}$ & Skin thickness \\
+    $w_{aisle}$ & $~\mathrm{m}$ & Aisle width \\
+    $w_{floor}$ & $~\mathrm{m}$ & Floor half-width \\
+    $w_{fuse}$ & $~\mathrm{m}$ & Fuselage half-width \\
+    $x_b$ & $~\mathrm{m}$ & x-location of back of wingbox \\
+    $x_f$ & $~\mathrm{m}$ & x-location of front of wingbox \\
+    $x_{hbend_{Land}}$ & $~\mathrm{ft}$ & Horizontal zero bending location (landing case) \\
+    $x_{hbend_{MLF}}$ & $~\mathrm{ft}$ & Horizontal zero bending location (maximum aero load case) \\
+    $x_{shell1}$ & $~\mathrm{m}$ & Start of cylinder section \\
+    $x_{shell2}$ & $~\mathrm{m}$ & End of cylinder section \\
+    $x_{tail}$ & $~\mathrm{m}$ & x-location of tail \\
+    $x_{vbend}$ & $~\mathrm{ft}$ & Vertical zero bending location \\
+    $x_{wing}$ & $~\mathrm{m}$ & x-location of wing c/4 \\
+    \bottomrule
+    \end{supertabular}
 
 | lcl Constants & Units & Description
 | :math:`M_{fuseD}` & :math:`~[-]` & Fuselage drag reference Mach number
