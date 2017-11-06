@@ -9,7 +9,7 @@ and sometimes cargo. The design of the fuselage is therefore coupled
 with virtually every aircraft subsystem.
 
 A detailed but still approximate analysis of fuselage structure and weight
-is done in TASOPT :raw-tex:`\cite{drela2010tasopt}`, considering
+is done in TASOPT :cite:`drela2010tasopt`, considering
 pressure loads, torsion loads, bending loads, buoyancy weight, window
 weight, payload-proportional weights, the floor, and the tail cone. The
 majority of the constraints in this model are adapted directly from

@@ -36,7 +36,4 @@ Table of contents:
         lg
         Debugging
 
-.. raw:: latex
-
-    \bibliographystyle{plain}
-    \bibliography{references.bib}
+.. bibliography:: refs.bib
