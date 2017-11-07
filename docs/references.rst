@@ -5,8 +5,7 @@ References
 
 * [Burton, 2017] Burton, M., Solar-Electric and Gas Powered, Long-Endurance UAV Sizing via Geometric Programming, Master’s thesis, Massachusetts Institute of Technology, Cambridge, MA, 2017.
 
-* [Chai, 1996] Chai, S. T. and Mason, W. H., Landing gear integration in aircraft conceptual design, Master’s thesis,
- Virginia Polytechnic Institute and State University, 1996.
+* [Chai, 1996] Chai, S. T. and Mason, W. H., Landing gear integration in aircraft conceptual design, Master’s thesis, Virginia Polytechnic Institute and State University, 1996.
 
 * [Currey, 1984] Currey, N. S., Landing Gear Design Handbook, Lockheed-Georgia Company, 1984.
 
@@ -20,8 +19,7 @@ References
 
 * [Kirschen, 2016] ] Kirschen, P. G., Signomial Programming for Aircraft Design, Master’s thesis, Massachusetts Institute of Technology, Cambridge, MA, 2016.
 
-* [Kroo, 2001] Kroo, I., Altus, S., Braun, R., Gage, P., and Sobieski, I., “Multidisciplinary optimization methods for
-aircraft preliminary design,” AIAA paper, Vol. 4325, 1994, pp. 1994.
+* [Kroo, 2001] Kroo, I., Altus, S., Braun, R., Gage, P., and Sobieski, I., “Multidisciplinary optimization methods for aircraft preliminary design,” AIAA paper, Vol. 4325, 1994, pp. 1994.
 
 * [Nita, 2012] Nita, M. and Scholz, D., Estimating the oswald factor from basic aircraft geometrical parameters, Deutsche Gesellschaft für Luft-und Raumfahrt-Lilienthal-Oberth eV, 2012.
 
