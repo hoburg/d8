@@ -129,7 +129,7 @@ TASOPT[Drela, 2011] T-series airfoils. The TASOPT
 T-series airfoils are horizontal tail airfoils intended for transonic
 use. The fit considers airfoil thickness, Reynolds number, and Mach
 number. The softmax affine function fit is developed with
-`GPfit<https://github.com/convexengineering/gpfit>`_ and has an RMS error of 1.14%.
+`GPfit <https://github.com/convexengineering/gpfit>`_ and has an RMS error of 1.14%.
 
 .. math::
 

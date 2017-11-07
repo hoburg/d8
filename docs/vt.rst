@@ -139,7 +139,7 @@ Neglecting any induced drag, the parasitic drag coefficient,
 XFOIL[Drela, 1989]data for the symmetric NACA 0008
 through 0020 airfoils. The fit considers airfoil thickness, Mach number,
 and Reynolds number. It was developed with
-`GPfit<https://github.com/convexengineering/gpfit>`_ and has an RMS error of 1.31%.
+`GPfit <https://github.com/convexengineering/gpfit>`_ and has an RMS error of 1.31%.
 
 .. math::
 

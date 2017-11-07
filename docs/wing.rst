@@ -132,7 +132,7 @@ the lift curve slope, although some algebraic manipulation is needed.
 .. math::
 
    \begin{aligned}
-   C_{L_{\alpha,w}} &\leq \frac{2\piAR_{w}}{2+\sqrt{(AR_{w}/\eta_w)^2(1+\tan^2\Lambda-M^2)+4}}
+   C_{L_{\alpha,w}} &\leq \frac{2 \pi AR_{w}}{2+\sqrt{(AR_{w}/\eta_w)^2(1+\tan^2\Lambda-M^2)+4}}
     \\
    (AR_{w}/\eta_w)^2(1+\tan^2\Lambda - M^2)+4 &\leq \left( \frac{2\pi AR_{w}}{C_{L_{\alpha,w}}}
     - 2 \right)^2 \\
@@ -255,7 +255,7 @@ TASOPT[Drela, 2011] C-series airfoils, which are
 representative of modern transonic
 airfoils[Drela, 2011]. The fit, which considers
 wing thickness, lift coefficient, Reynolds number, and Mach number, was
-developed with `GPfit<https://github.com/convexengineering/gpfit>`_ and has an RMS
+developed with `GPfit <https://github.com/convexengineering/gpfit>`_ and has an RMS
 error of approximately 5%. Constraint  is an adaption of the standard
 definition of the induced drag
 coefficient [Anderson, 2001], with an
@@ -300,7 +300,7 @@ signomials, this can easily be used in the framework.
    f(\lambda_w) \geq 0.0524 \lambda_w^4 - 0.15 \lambda_w^3 + 0.1659 \lambda_w^2 -
    0.0706 \lambda_w + 0.0119
 
- The Oswald efficiency is plotted as a function of taper ratio, as
+The Oswald efficiency is plotted as a function of taper ratio, as
 imposed by this pair of constraints, in .
 
 .. figure:: figs/e_fit.eps
