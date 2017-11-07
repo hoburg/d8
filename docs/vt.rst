@@ -72,7 +72,7 @@ are adapted to the vertical tail model to constrain its geometry, with
 two minor modifications. Constraint  can be relaxed from a signomial
 equality to a signomial inequality constraint, meanwhile Constraint 
 needs to be implemented as a signomial equality constraint. The wing
-structure model from :raw-tex:`\cite{hoburg2014geometric}` is also
+structure model from [Hoburg, 2014]_ is also
 reused, however, given that the vertical tail only has a half-span, the
 definitions of :math:`b_{vt}`, :math:`S_{vt}`, and :math:`W_{vt}` differ
 from those of their wing counterparts.
@@ -84,7 +84,7 @@ The first performance constraint specifies that the maximum moment
 exerted by the tail must be greater than or equal to the moment exerted
 by the engines in an engine-out condition, exacerbated by the windmill
 drag of the engine that is
-inoperative :raw-tex:`\cite{drela2010tasopt}`.
+inoperative [Drela, 2011]_.
 
 .. math:: {L_{vt,EO}}{l_{vt}} \geq {D_{wm}} {y_{eng}} + {T_e} {y_{eng}}
 
@@ -107,7 +107,7 @@ theory :raw-tex:`\cite{andersonfundamentals}`.
 
  The windmill drag can, to a first approximation, be lower bounded using
 a drag coefficient and a reference
-area :raw-tex:`\cite{drela2010tasopt}`, in this case the area of the
+area [Drela, 2011]_, in this case the area of the
 engine fan.
 
 .. math::

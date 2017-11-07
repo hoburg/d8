@@ -103,7 +103,7 @@ Constraint .
    \label{eq:liftadjcon}\end{aligned}
 
  The lift corrections are given as monomial equality
-constraints :raw-tex:`\cite{drela2010tasopt}`.
+constraints [Drela, 2011]_.
 
 .. math::
 
@@ -171,7 +171,7 @@ surfaces.
                            + f_{lete} + f_{ribs} + f_{spoiler} + f_{watt})
 
 Wing structural weight is constrained using an adaptation of the
-structural model from Hoburg :raw-tex:`\cite{hoburg2014geometric}`,
+structural model from Hoburg [Hoburg, 2014]_,
 which comprises 12 monomial and posynomial constraints.
 
 .. math::
@@ -251,9 +251,9 @@ Wing Drag
 Wing drag is captured by five monomial and posynomial constraints. The
 parasitic drag coefficient is constrained using a softmax affine fit of
 XFOIL:raw-tex:`\cite{drela1989xfoil}` simulation data for the
-TASOPT:raw-tex:`\cite{drela2010tasopt}` C-series airfoils, which are
+TASOPT[Drela, 2011]_ C-series airfoils, which are
 representative of modern transonic
-airfoils:raw-tex:`\cite{drela2010tasopt}`. The fit, which considers
+airfoils[Drela, 2011]_. The fit, which considers
 wing thickness, lift coefficient, Reynolds number, and Mach number, was
 developed with GPfit:raw-tex:`\cite{gpfitpaper,gpfit}` and has an RMS
 error of approximately 5%. Constraint  is an adaption of the standard
@@ -347,7 +347,7 @@ Fuel Volume
 ~~~~~~~~~~~
 
 Fuel tanks are typically located inside the wingbox. Using the geometry
-of a TASOPT-optimized 737-800:raw-tex:`\cite{drela2010tasopt}`, a
+of a TASOPT-optimized 737-800[Drela, 2011]_, a
 constraint on the maximum fuel volume in the wing was developed. For a
 wing of the same mean aerodynamic chord, thickness, and span as a TASOPT
 737-800, the maximum available fuel volumes in the wing will match

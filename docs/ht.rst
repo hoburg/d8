@@ -32,7 +32,7 @@ planform relationships and constrain the horizontal tail moment arm,
 respectively. As with the vertical tail, Constraint  needs to be
 implemented as a signomial equality constraint. The horizontal tail also
 reuses the same structural model
-from :raw-tex:`\cite{hoburg2014geometric}`.
+from [Hoburg, 2014]_.
 
 Trim Condition
 ~~~~~~~~~~~~~~
@@ -125,7 +125,7 @@ The horizontal tail employs the same drag model as the wing
 with the exception of the parasitic drag coefficient fit. The wing’s
 parasitic drag fit  is replaced by a fit to XFOIL
 :raw-tex:`\cite{drela1989xfoil}` data for the
-TASOPT:raw-tex:`\cite{drela2010tasopt}` T-series airfoils. The TASOPT
+TASOPT[Drela, 2011]_ T-series airfoils. The TASOPT
 T-series airfoils are horizontal tail airfoils intended for transonic
 use. The fit considers airfoil thickness, Reynolds number, and Mach
 number. The softmax affine function fit is developed with

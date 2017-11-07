@@ -4,7 +4,7 @@ System-level Model
 The objective of the optimization problem presented in this work is to
 minimize fuel consumption, or equivalently fuel weight,
 :math:`W_{fuel}`, using an adaptation of the Breguet range formulation
-introduced in :raw-tex:`\cite{hoburg2014geometric}`. The purpose of
+introduced in [Hoburg, 2014]_. The purpose of
 the system-level model is threefold: it enforces system-level
 performance constraints such as required range and minimum cruise speed,
 it encodes weight and drag buildups, and it constrains system-level
@@ -33,7 +33,7 @@ Flight Performance
 
 The Breguet range formulation is discretized over multiple cruise
 segments to improve accuracy, meaning the constraints
-from :raw-tex:`\cite{hoburg2014geometric}` apply during each of the
+from [Hoburg, 2014]_ apply during each of the
 :math:`N` flight segments. The :math:`n` subscript is used to represent
 the :math:`n^{th}` flight segment where :math:`n=1...N`. For
 readability, these subscripts are not used in the remainder of the
@@ -45,7 +45,7 @@ manuscript, but still apply.
    \sum_{n=1}^{N} R_{n} &\geq R_{req} \\
    R_{n+1} &= R_{n} \\
    R_{n} &\leq \frac{V_{\infty_{n}}}{n_{eng}c_{T_{n}} g} \frac{W_{{avg}_{n}}}{D_{n}} z_{bre_{n}}\\
-   W_{fuel_{n}} &\geq \left(z_{bre_{n}} + \frac{z_{bre_{n}}^2}{2}  
+   W_{fuel_{n}} &\geq \left(z_{bre_{n}} + \frac{z_{bre_{n}}^2}{2}
    + \frac{z_{bre_{n}}^{3}}{6} \right) W_{end_{n}} \\
    W_{fuel_{n}} &\geq n_{eng} {c_{T_{n}}} D_{n} t_{n} \\
    \sum_{n=1}^{N}W_{fuel_{n}} &\leq W_{f_{primary}} \\
@@ -81,7 +81,7 @@ value.
    M &\geq M_{min}\end{aligned}
 
 The takeoff model is taken directly
-from :raw-tex:`\cite{hoburg2014geometric}`. An additional constraint
+from [Hoburg, 2014]_. An additional constraint
 on takeoff velocity is added to ensure adequate margin above stall
 speed :raw-tex:`\cite{anderson2005introduction}`.
 
