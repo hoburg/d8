@@ -19,10 +19,12 @@ It is of similar level of fidelity as TASOPT, and can perform the single- and mu
 different configurations of aircraft.
 
 Two papers on the development and advantages of SPaircraft are in the pre-print stage:
+
 *`Application of Signomial Programming to Aircraft Design
 <http://hoburg.mit.edu/publications/spajoa_watermark.pdf>`_ motivates the use of signomial
 programs in aircraft design, and describes the majority of the models
 used in SPaircraft.
+
 *`Efficient and Reliable Aircraft Multidisciplinary
 Design Optimization via Signomial Programming
 <http://hoburg.mit.edu/publications/SP_tasopt_watermark.pdf>`_ extends these models to multiple
