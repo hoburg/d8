@@ -1,4 +1,5 @@
-.. Had to put the references here...
+References
+**********
 
 .. [Drela, 2011] Drela, M., TASOPT 2.08 Transport Aircraft System OPTimization, 2011.
 
