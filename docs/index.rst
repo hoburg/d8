@@ -20,18 +20,19 @@ different configurations of aircraft.
 
 Two papers on the development and advantages of SPaircraft are in the pre-print stage:
 
-*`Application of Signomial Programming to Aircraft Design
+    * `Application of Signomial Programming to Aircraft Design
 <http://hoburg.mit.edu/publications/spajoa_watermark.pdf>`_ motivates the use of signomial
 programs in aircraft design, and describes the majority of the models
 used in SPaircraft.
 
-*`Efficient and Reliable Aircraft Multidisciplinary
+    * `Efficient and Reliable Aircraft Multidisciplinary
 Design Optimization via Signomial Programming
 <http://hoburg.mit.edu/publications/SP_tasopt_watermark.pdf>`_ extends these models to multiple
 aircraft configurations, and demonstrates the advantages of SPaircraft relative to other existing
 multidisciplinary design optimization tools.
 
-If you are not able to find answers to your questions in the documentation,
+This website is under construction. If you are not able to find answers to your questions
+in the documentation,
 please feel free to post `issues <https://github.com/convexengineering/SPaircraft/issues>`_
 and suggest areas for improvement.
 
