@@ -9,13 +9,12 @@ and sometimes cargo. The design of the fuselage is therefore coupled
 with virtually every aircraft subsystem.
 
 A detailed but still approximate analysis of fuselage structure and weight
-is done in TASOPT [Drela, 2011]_ , considering
+is done in TASOPT [Drela, 2011] , considering
 pressure loads, torsion loads, bending loads, buoyancy weight, window
 weight, payload-proportional weights, the floor, and the tail cone. The
 majority of the constraints in this model are adapted directly from
 these equations.
 
-.. [Drela, 2011] Drela, M., TASOPT 2.08 Transport Aircraft System OPTimization, 2011.
 
 
 Model Assumptions
@@ -27,7 +26,7 @@ A320 do not have perfectly circular cross sections.
 
 The floor structural model and the horizontal bending model assume
 uniform floor loading. The model leverages the analytical bending models
-from [Drela, 2011]_, which makes assumptions
+from [Drela, 2011], which makes assumptions
 about symmetry in bending loads. Shell buckling is not explicitly
 modeled while designing bending structure, but is accounted for by the
 implementation of a lower yield stress for bending reinforcement
@@ -108,7 +107,7 @@ allowable cap stress and shear web stress for the beams.
 
 The nose must be long enough to have an aerodynamic profile and to
 accommodate the cockpit. A reasonable, but arbitrary, lower bound is
-employed for this work [Drela, 2011]_.
+employed for this work [Drela, 2011].
 
 .. math:: {l_{nose}} \geq 5.2 \hspace{0.2cm} \rm{m}
 
@@ -168,7 +167,7 @@ bending loads.
 The skin surface area, and, in turn, skin volume for the nose, main
 cabin, and rear bulkhead are constrained. The surface area of the nose,
 which is approximated as an ellipse, is lower bounded using Cantrell’s
-approximation [Drela, 2011]_.
+approximation [Drela, 2011].
 
 .. math::
 
@@ -212,7 +211,7 @@ the cone base).
 
 The volume of the cone is a definite integral from the base to the tip
 of the cone. This integral is
-evaluated [Drela, 2011]_ and combined with
+evaluated [Drela, 2011] and combined with
 Equations and to give a single signomial constraint on the cone skin
 volume.
 
@@ -248,7 +247,7 @@ has a constant area moment of inertia in both of its bending axes, shown
 by the dark red line in the lower plot of
 Figure [fig:fuse\_bending\_loads].
 
-To be consistent with [Drela, 2011]_, the
+To be consistent with [Drela, 2011], the
 horizontal bending moments are defined as the moments around the
 aircraft’s y-axis, caused by horizontal tail loads and fuselage inertial
 loads, and vertical bending moments as the moments around the aircraft’s
@@ -256,7 +255,7 @@ z-axis, caused by vertical tail loads.
 
 .. figure:: figs/fuse_bending_loads.png
    :alt: TASOPT fuselage bending models
-   (from[Drela, 2011]_). The top graph shows the
+   (from[Drela, 2011]). The top graph shows the
    bending load distribution on the fuselage, whereas the bottom graph
    shows the area moment of inertia distribution. The horizontal bending
    loads are shown in blue, and the vertical bending loads are shown in
@@ -264,7 +263,7 @@ z-axis, caused by vertical tail loads.
    :width: 100.0%
 
    TASOPT fuselage bending models
-   (from[Drela, 2011]_). The top graph shows the
+   (from[Drela, 2011]). The top graph shows the
    bending load distribution on the fuselage, whereas the bottom graph
    shows the area moment of inertia distribution. The horizontal bending
    loads are shown in blue, and the vertical bending loads are shown in
@@ -391,7 +390,7 @@ once in the paper to reduce redundancy.
 
 To be able to constrain the volume of required, the area of required
 must be constrained and integrated over the length of the fuselage. As
-shown by [Drela, 2011]_, with some conservative
+shown by [Drela, 2011], with some conservative
 approximation, the volume of may be determined through the integration
 of the forward and rear wingbox areas over the rear fuselage.
 
@@ -600,7 +599,7 @@ The total weight of the fuselage is lower bounded by the sum of all of
 the constituent weights. The fixed weight :math:`W_{fix}` incorporates
 pilots, cockpit windows, cockpit seats, flight instrumentation,
 navigation and communication equipment, which are expected to be roughly
-the same for all aircraft [Drela, 2011]_.
+the same for all aircraft [Drela, 2011].
 
 .. math::
 

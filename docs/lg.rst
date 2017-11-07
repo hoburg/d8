@@ -6,7 +6,7 @@ and allow it to manoeuvre while it is on the ground, including during
 taxi, takeoff, and landing. Including the landing gear in aircraft is
 important, not only because it typically weighs between three and six
 percent of the maximum aircraft takeoff
-weight :raw-tex:`\cite{chai1996landing}`, but also because of how
+weight [Chai, 1996], but also because of how
 coupled its design is to other subsystems, particularly the fuselage,
 wings, and engines. The landing gear geometry is constrained by wing
 position, engine clearance, takeoff rotation, and tip-over criteria. In
@@ -14,8 +14,8 @@ addition to being able to withstand nominal static and dynamic loads,
 the landing gear also needs to be able to absorb touchdown shock loads.
 These loads and the required geometry determine the weight of the gear.
 Many of the constraints imposed on landing gear design are described in
-:raw-tex:`\cite{raymer1992aircraft}` and
-:raw-tex:`\cite{chai1996landing}`.
+[Raymer, 1992] and
+[Chai, 1996].
 
 Model Assumptions
 -----------------
@@ -115,7 +115,7 @@ Takeoff Rotation
 The aircraft must be able to rotate on its main wheels at takeoff
 without striking the tail of the fuselage and, similarly, must be able
 to land on its main gear without striking the
-tail :raw-tex:`\cite{raymer1992aircraft}`. This constrains the
+tail [Raymer, 1992]. This constrains the
 location of the main gear. More specifically, the horizontal distance
 between the main gear and the point at which the fuselage sweeps up
 towards the tail must be sufficiently small, relative to the length of
@@ -135,7 +135,7 @@ Tip-over Criteria
 A longitudinal tip-over criterion requires that the line between the
 main gear and the be at least :math:`15^\circ` relative to the vertical
 such that the aircraft will not tip back on its tail at a maximum
-nose-up attitude :raw-tex:`\cite{raymer1992aircraft}`. This puts a
+nose-up attitude [Raymer, 1992]. This puts a
 lower bound on the x-location of the main gear, as measured from the
 nose of the aircraft. Note that :math:`\tan(\phi)` is a design variable
 here, instead of :math:`\phi`, to make the constraint -compatible.
@@ -147,7 +147,7 @@ here, instead of :math:`\phi`, to make the constraint -compatible.
    {\tan(\phi)} &\geq {\tan(\phi_{min})} \end{aligned}
 
  A lateral tip-over constraint is introduced to ensure that an aircraft
-does not tip over in a turn :raw-tex:`\cite{chai1996landing}`. The
+does not tip over in a turn [Chai, 1996]. The
 turnover angle is defined as
 
 .. math:: \tan{\psi} = \frac{z_{CG} + l_m}{{\Delta  x_n} \sin{\delta}}
@@ -166,7 +166,7 @@ turnover angle is defined as
 .. math:: 1\geq\frac{(z_{CG}+l_m)^2 ({y_m}^2 + B^2) }{ (\Delta x_n  y_m  \tan(\psi))^2}.
 
  Typically this angle, :math:`\psi`, should be no larger than
-:math:`63^\circ` :raw-tex:`\cite{raymer1992aircraft}`.
+:math:`63^\circ` [Raymer, 1992].
 
 .. math:: {\tan(\psi)}  \leq {\tan(\psi_{max})}
 
@@ -176,7 +176,7 @@ Landing Gear Weight
 The total landing gear system weight is lower bounded by accounting for
 the weights of each assembly. An additional weight fraction is used to
 account for weight that is proportional to the weight of the
-wheels :raw-tex:`\cite{currey1984landing}`.
+wheels [Currey, 1984].
 
 .. math::
 
@@ -216,7 +216,7 @@ land with the main gear struts perfectly normal to the runway surface.
    {I_n} &= \pi{r_n}^{3} {t_n} \end{aligned}
 
  A machining constraint is used to ensure that the strut walls are not
-too thin to be fabricated :raw-tex:`\cite{chai1996landing}`.
+too thin to be fabricated [Chai, 1996].
 
 .. math::
 
@@ -225,7 +225,7 @@ too thin to be fabricated :raw-tex:`\cite{chai1996landing}`.
     \frac{2 r_n}{t_n} &\leq 40 \end{aligned}
 
  The wheel weights can be estimated using historical relations from
-:raw-tex:`\cite{currey1984landing, raymer1992aircraft}`, which are,
+[Currey, 1984] and [Raymer, 1992], which are,
 again, conveniently in monomial form.
 
 .. math::
@@ -281,13 +281,13 @@ main and nose gear, respectively.
  For the nose gear, there is an additional dynamic load due to the
 braking condition. A typical braking deceleration of
 :math:`3 \mathrm{m/s^2}` is
-assumed :raw-tex:`\cite{raymer1992aircraft}`.
+assumed [Raymer, 1992].
 
 .. math:: {L_{n_{dyn}}} \geq 0.31W \frac{{l_m} + {z_{CG}}}{{B}}
 
  The nose gear requires adequate load for satisfactory steering
 performance. A typical desirable range is between 5% and 20% of the
-total load :raw-tex:`\cite{raymer1992aircraft}`.
+total load [Raymer, 1992].
 
 .. math::
 
@@ -303,7 +303,7 @@ aircraft. Their purpose is to reduce the vertical load on the aircraft
 at touchdown, and they are typically sized by a hard landing condition.
 The maximum stroke of the shock absorber can be determined by
 considering the aircraft’s kinetic energy, and the target maximum
-load :raw-tex:`\cite{torenbeek1982synthesis}`.
+load [Torenbeek, 1982].
 
 .. math::
 
@@ -313,7 +313,7 @@ load :raw-tex:`\cite{torenbeek1982synthesis}`.
 
  As a preliminary model, the oleo size can be estimated using historical
 relations that are conveniently in monomial
-form :raw-tex:`\cite{raymer1992aircraft}`. The length of the main gear
+form [Raymer, 1992]. The length of the main gear
 must be greater than the length of the oleo and the radius of the tyres.
 
 .. math::

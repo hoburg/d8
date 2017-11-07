@@ -32,13 +32,13 @@ planform relationships and constrain the horizontal tail moment arm,
 respectively. As with the vertical tail, Constraint  needs to be
 implemented as a signomial equality constraint. The horizontal tail also
 reuses the same structural model
-from [Hoburg, 2014]_.
+from [Hoburg, 2013].
 
 Trim Condition
 ~~~~~~~~~~~~~~
 
 The first sizing requirement is that the aircraft must satisfy the trim
-condition :raw-tex:`\cite{burton_thesis}`, which implicitly requires
+condition [Burton, 2017], which implicitly requires
 that the full aircraft moment coefficient be zero.
 
 .. math::
@@ -47,7 +47,7 @@ that the full aircraft moment coefficient be zero.
    + \frac{V_{ht} C_{L_{ht}}}{C_{L_w}}
 
  Thin airfoil theory is used to constrain the horizontal tail’s isolated
-lift curve slope :raw-tex:`\cite{anderson_aero}`.
+lift curve slope [Anderson, 2001].
 
 .. math::
 
@@ -56,7 +56,7 @@ lift curve slope :raw-tex:`\cite{anderson_aero}`.
 
  However, the horizontal tail’s lift curve slope is reduced by downwash,
 :math:`\epsilon`, from the wing and
-fuselage :raw-tex:`\cite{kroo2001aircraft}`. Note
+fuselage [Kroo, 2001]. Note
 :math:`\eta_{h_{lift}}` is the horizontal tail sectional lift
 efficiency.
 
@@ -88,7 +88,7 @@ Minimum Stability Margin
 
 The second condition is that the aircraft must maintain a minimum
 stability margin at both the forward and aft
-limits:raw-tex:`\cite{burton_thesis}`.
+limits[Burton, 2017].
 
 .. math::
 
@@ -99,7 +99,7 @@ limits:raw-tex:`\cite{burton_thesis}`.
 
  The ratio of the horizontal tail and wing lift curve slopes,
 :math:`m_{ratio}`, appears in Equation and is constrained using the
-relationship in :raw-tex:`\cite{burton_thesis}`. The constraint is a
+relationship in [Burton, 2017]. The constraint is a
 signomial equality because it is not possible to know a priori whether
 there will be upward or downward pressure on :math:`m_{ratio}`.
 
@@ -124,12 +124,12 @@ The horizontal tail employs the same drag model as the wing
 (Constraints [eq:wingdrag,eq:wingdragcoeff,eq:wingpdragcoeff,eq:wingRe,eq:induceddrag]),
 with the exception of the parasitic drag coefficient fit. The wing’s
 parasitic drag fit  is replaced by a fit to XFOIL
-:raw-tex:`\cite{drela1989xfoil}` data for the
-TASOPT[Drela, 2011]_ T-series airfoils. The TASOPT
+[Drela, 1989] data for the
+TASOPT[Drela, 2011] T-series airfoils. The TASOPT
 T-series airfoils are horizontal tail airfoils intended for transonic
 use. The fit considers airfoil thickness, Reynolds number, and Mach
 number. The softmax affine function fit is developed with
-GPfit:raw-tex:`\cite{gpfitpaper,gpfit}` and has an RMS error of 1.14%.
+`GPfit<https://github.com/convexengineering/gpfit>`_ and has an RMS error of 1.14%.
 
 .. math::
 

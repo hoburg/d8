@@ -7,7 +7,7 @@ must provide adequate yaw control authority in critical flight
 conditions. For a multi-engine aircraft, the critical flight condition
 is typically an engine failure at low speeds. The vertical tail must be
 capable of providing sufficient sideforce in this
-case :raw-tex:`\cite{raymer1992aircraft}`. The vertical tail must also
+case [Raymer, 1992]. The vertical tail must also
 provide adequate yaw rate acceleration during landing flare in crosswind
 conditions. The design of the vertical tail is therefore coupled to the
 size of the fuselage, the position of the engines, and the aircraft’s
@@ -72,7 +72,7 @@ are adapted to the vertical tail model to constrain its geometry, with
 two minor modifications. Constraint  can be relaxed from a signomial
 equality to a signomial inequality constraint, meanwhile Constraint 
 needs to be implemented as a signomial equality constraint. The wing
-structure model from [Hoburg, 2014]_ is also
+structure model from [Hoburg, 2013] is also
 reused, however, given that the vertical tail only has a half-span, the
 definitions of :math:`b_{vt}`, :math:`S_{vt}`, and :math:`W_{vt}` differ
 from those of their wing counterparts.
@@ -84,7 +84,7 @@ The first performance constraint specifies that the maximum moment
 exerted by the tail must be greater than or equal to the moment exerted
 by the engines in an engine-out condition, exacerbated by the windmill
 drag of the engine that is
-inoperative [Drela, 2011]_.
+inoperative [Drela, 2011].
 
 .. math:: {L_{vt,EO}}{l_{vt}} \geq {D_{wm}} {y_{eng}} + {T_e} {y_{eng}}
 
@@ -101,13 +101,13 @@ critical engine failure.
 
  The 3D lift coefficient is constrained by the airfoil sectional lift
 coefficient using finite wing
-theory :raw-tex:`\cite{andersonfundamentals}`.
+theory [Anderson, 2001].
 
 .. math:: C_{L_{vt,EO}}\left(1 + \frac{c_{l_{vt,EO}}}{\pi e_{vt} AR_{vt}}\right) \leq c_{l_{vt,EO}}
 
  The windmill drag can, to a first approximation, be lower bounded using
 a drag coefficient and a reference
-area [Drela, 2011]_, in this case the area of the
+area [Drela, 2011], in this case the area of the
 engine fan.
 
 .. math::
@@ -136,10 +136,10 @@ Vertical Tail Drag
 The vertical tail produces drag, regardless of the flight condition.
 Neglecting any induced drag, the parasitic drag coefficient,
 :math:`C_{D_{p_{vt}}}`, is set by a softmax affine fit of
-XFOIL:raw-tex:`\cite{drela1989xfoil}` data for the symmetric NACA 0008
+XFOIL[Drela, 1989]data for the symmetric NACA 0008
 through 0020 airfoils. The fit considers airfoil thickness, Mach number,
 and Reynolds number. It was developed with
-GPfit:raw-tex:`\cite{gpfitpaper,gpfit}` and has an RMS error of 1.31%.
+`GPfit<https://github.com/convexengineering/gpfit>`_ and has an RMS error of 1.31%.
 
 .. math::
 

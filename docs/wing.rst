@@ -52,9 +52,9 @@ structural model below.
 
  The wing taper ratio is defined by a monomial equality constraint. It
 is necessary to lower bound taper to avoid an unacceptably small
-Reynolds number at the wing tip :raw-tex:`\cite{kroo2001aircraft}`.
+Reynolds number at the wing tip [Kroo, 2001].
 For the purpose of this work, the taper is lower bounded using the taper
-ratio of the reference aircraft’s wing :raw-tex:`\cite{b737.org.uk}`.
+ratio of the reference aircraft’s wing.
 
 .. math::
 
@@ -103,7 +103,7 @@ Constraint .
    \label{eq:liftadjcon}\end{aligned}
 
  The lift corrections are given as monomial equality
-constraints [Drela, 2011]_.
+constraints [Drela, 2011].
 
 .. math::
 
@@ -122,7 +122,7 @@ attack, which is limited by a maximum angle of attack due to stall.
 
  The DATCOM formula is an analytic function for estimating the lift
 curve slope of a wing or tail, based on empirical
-results :raw-tex:`\cite{kroo2001aircraft}`.
+results [Kroo, 2001].
 
 .. math:: C_{L_{\alpha,w}} = \frac{2 \pi AR_{w}}{2+\sqrt{(AR_{w}/\eta_w)^2(1+\tan^2\Lambda - M^2)+4}}
 
@@ -171,11 +171,8 @@ surfaces.
                            + f_{lete} + f_{ribs} + f_{spoiler} + f_{watt})
 
 Wing structural weight is constrained using an adaptation of the
-structural model from [Hoburg, 2014]_,
+structural model from [Hoburg, 2013],
 which comprises 12 monomial and posynomial constraints.
-
-.. _[Hoburg, 2014] Hoburg, W. and Abbeel, P., “Geometric programming for aircraft design optimization,” AIAA Journal,
-Vol. 52, No. 11, 2014, pp. 2414–2426.
 
 .. math::
 
@@ -253,15 +250,15 @@ Wing Drag
 
 Wing drag is captured by five monomial and posynomial constraints. The
 parasitic drag coefficient is constrained using a softmax affine fit of
-XFOIL:raw-tex:`\cite{drela1989xfoil}` simulation data for the
-TASOPT[Drela, 2011]_ C-series airfoils, which are
+XFOIL[Drela, 1989]simulation data for the
+TASOPT[Drela, 2011] C-series airfoils, which are
 representative of modern transonic
-airfoils[Drela, 2011]_. The fit, which considers
+airfoils[Drela, 2011]. The fit, which considers
 wing thickness, lift coefficient, Reynolds number, and Mach number, was
-developed with GPfit:raw-tex:`\cite{gpfitpaper,gpfit}` and has an RMS
+developed with `GPfit<https://github.com/convexengineering/gpfit>`_ and has an RMS
 error of approximately 5%. Constraint  is an adaption of the standard
 definition of the induced drag
-coefficient :raw-tex:`\cite{anderson2005introduction}`, with an
+coefficient [Anderson, 2001], with an
 adjustment factor for wingtip devices.
 
 .. math::
@@ -291,7 +288,7 @@ adjustment factor for wingtip devices.
    C_{D_{i_w}} &\geq f_{tip} \frac{C_{L_w}^2}{\pi e AR_{w}} \label{eq:induceddrag}\end{aligned}
 
 The Oswald efficiency is constrained by a relationship
-from :raw-tex:`\cite{nita2012estimating}`, in which the authors fit a
+from [Nita, 2012], in which the authors fit a
 polynomial function to empirical data. Given that all polynomials are
 signomials, this can easily be used in the framework.
 
@@ -350,7 +347,7 @@ Fuel Volume
 ~~~~~~~~~~~
 
 Fuel tanks are typically located inside the wingbox. Using the geometry
-of a TASOPT-optimized 737-800[Drela, 2011]_, a
+of a TASOPT-optimized 737-800[Drela, 2011], a
 constraint on the maximum fuel volume in the wing was developed. For a
 wing of the same mean aerodynamic chord, thickness, and span as a TASOPT
 737-800, the maximum available fuel volumes in the wing will match

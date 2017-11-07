@@ -4,7 +4,7 @@ System-level Model
 The objective of the optimization problem presented in this work is to
 minimize fuel consumption, or equivalently fuel weight,
 :math:`W_{fuel}`, using an adaptation of the Breguet range formulation
-introduced in [Hoburg, 2014]_. The purpose of
+introduced in [Hoburg, 2013]. The purpose of
 the system-level model is threefold: it enforces system-level
 performance constraints such as required range and minimum cruise speed,
 it encodes weight and drag buildups, and it constrains system-level
@@ -33,7 +33,7 @@ Flight Performance
 
 The Breguet range formulation is discretized over multiple cruise
 segments to improve accuracy, meaning the constraints
-from [Hoburg, 2014]_ apply during each of the
+from [Hoburg, 2013] apply during each of the
 :math:`N` flight segments. The :math:`n` subscript is used to represent
 the :math:`n^{th}` flight segment where :math:`n=1...N`. For
 readability, these subscripts are not used in the remainder of the
@@ -81,9 +81,9 @@ value.
    M &\geq M_{min}\end{aligned}
 
 The takeoff model is taken directly
-from [Hoburg, 2014]_. An additional constraint
+from [Hoburg, 2013]. An additional constraint
 on takeoff velocity is added to ensure adequate margin above stall
-speed :raw-tex:`\cite{anderson2005introduction}`.
+speed [Anderson, 2001].
 
 .. math::
 
@@ -96,10 +96,8 @@ speed :raw-tex:`\cite{anderson2005introduction}`.
 
 Atmospheric pressure, density, temperature, and speed of sound are
 constrained using the atmosphere model described in
-:raw-tex:`\cite{sp_engine}`. Dynamic viscosity is constrained using
-the viscosity model developed in :raw-tex:`\cite{kirschen_thesis}`
-which is based off the Sutherland viscosity
-model:raw-tex:`\cite{sutherland1893lii}`.
+[York, 2017]. Dynamic viscosity is constrained using
+the viscosity model developed in [Kirschen, 2016].
 
 System-level Properties
 ~~~~~~~~~~~~~~~~~~~~~~~
