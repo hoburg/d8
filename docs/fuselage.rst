@@ -24,7 +24,7 @@ A320 do not have perfectly circular cross sections.
 
 The floor structural model and the horizontal bending model assume
 uniform floor loading. The model leverages the analytical bending models
-from Drela :raw-tex:`\cite{drela2010tasopt}`, which makes assumptions
+from Drela [drela2010tasopt]_, which makes assumptions
 about symmetry in bending loads. Shell buckling is not explicitly
 modeled while designing bending structure, but is accounted for by the
 implementation of a lower yield stress for bending reinforcement

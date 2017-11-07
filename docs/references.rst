@@ -1,0 +1,3 @@
+.. Had to put the references here...
+
+.. [drela2010tasopt] Drela, M., TASOPT 2.08 Transport Aircraft System OPTimization, 2011.
