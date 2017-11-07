@@ -174,7 +174,7 @@ Wing structural weight is constrained using an adaptation of the
 structural model from [Hoburg, 2014]_,
 which comprises 12 monomial and posynomial constraints.
 
-.. [Hoburg, 2014] Hoburg, W. and Abbeel, P., “Geometric programming for aircraft design optimization,” AIAA Journal,
+.. _[Hoburg, 2014] Hoburg, W. and Abbeel, P., “Geometric programming for aircraft design optimization,” AIAA Journal,
 Vol. 52, No. 11, 2014, pp. 2414–2426.
 
 .. math::
