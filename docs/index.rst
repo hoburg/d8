@@ -43,7 +43,6 @@ Table of contents:
         SPaircraft101
         Installation
         availModels
-        subModels
         system
         wing
         vt
