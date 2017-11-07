@@ -23,81 +23,11 @@ vertical tail structure, and that the aircraft has two engines.
 Model Description
 -----------------
 
-The vertical tail model has 42 free variables and 31 constraints.
+Variable tables are available for download below:
 
-| lcl Free Variables & Units & Description
-| :math:`AR_{vt}` & :math:`~[-]` & Vertical tail aspect ratio
-| :math:`C_{D_{p_{vt}}}` & :math:`~[-]` & Viscous drag coefficient
-| :math:`C_{L_{vt,EO}}` & :math:`~[-]` & Vertical tail lift coefficient
-  during engine out
-| :math:`C_{L_{vt,landing}}` & :math:`~[-]` & Vertical tail lift
-  coefficient during landing
-| :math:`C_{L_{vt}}` & :math:`~[-]` & Vertical tail lift coefficient
-| :math:`D_{vt}` & :math:`~\mathrm{[N]}` & Vertical tail viscous drag,
-  cruise
-| :math:`D_{wm}` & :math:`~\mathrm{[N]}` & Engine out windmill drag
-| :math:`I_{z}` & :math:`~\mathrm{[kg m^2]}` & Total aircraft moment of
-  inertia
-| :math:`L_{vt,EO}` & :math:`~\mathrm{[N]}` & Vertical tail lift in
-  engine out
-| :math:`L_{vt_{max}}` & :math:`~\mathrm{[N]}` & Maximum load for
-  structural sizing
-| :math:`M` & :math:`~[-]` & Cruise Mach number
-| :math:`Re_{vt}` & :math:`~[-]` & Vertical tail reynolds number
-| :math:`S_{vt}` & :math:`~\mathrm{[m^{2}]}` & Vertical tail reference
-  area (half)
-| :math:`V_{\infty}` & :math:`~\mathrm{[\tfrac{m}{s}]}` & Freestream
-  velocity
-| :math:`W_{struct}` & :math:`~\mathrm{[lbf]}` & Full span weight
-| :math:`W_{vt}` & :math:`~\mathrm{[lbf]}` & Vertical tail weight
-| :math:`\Delta x_{lead_{vt}}` & :math:`~\mathrm{[m]}` & Distance from
-  CG to VT leading edge
-| :math:`\Delta x_{trail_{vt}}` & :math:`~\mathrm{[m]}` & Distance from
-  CG to VT trailing edge
-| :math:`\bar{c}_{vt}` & :math:`~\mathrm{[m]}` & Vertical tail mean aero
-  chord
-| :math:`\lambda_{vt}` & :math:`~[-]` & Vertical tail taper ratio
-| :math:`\mu` & :math:`~\mathrm{[\tfrac{N\cdot s}{m^{2}}]}` & Dynamic
-  viscosity
-| :math:`\rho_{\infty}` & :math:`~\mathrm{[\tfrac{kg}{m^{3}}]}` &
-  Freestream density
-| :math:`\tau_{vt}` & :math:`~[-]` & Vertical tail thickness/chord ratio
-| :math:`b_{vt}` & :math:`~\mathrm{[m]}` & Vertical tail half span
-| :math:`c_{root_{vt}}` & :math:`~\mathrm{[m]}` & Vertical tail root
-  chord
-| :math:`c_{tip_{vt}}` & :math:`~\mathrm{[m]}` & Vertical tail tip chord
-| :math:`l_{fuse}` & :math:`~\mathrm{[m]}` & Length of fuselage
-| :math:`l_{vt}` & :math:`~\mathrm{[m]}` & Vertical tail moment arm
-| :math:`x_{CG_{vt}}` & :math:`~\mathrm{[m]}` & Location of vertical
-  tail CG
-| :math:`x_{CG}` & :math:`~\mathrm{[m]}` & Location of aircraft CG
-| :math:`z_{\bar{c}_{vt}}` & :math:`~\mathrm{[m]}` & Vertical location
-  of mean aerodynamic chord
+* :download:`Free variables <tables/vt_freevars.pdf>`
 
-| lcl Constants & Units & Description
-| :math:`A_{fan}` & :math:`~\mathrm{[m^{2}]}` & Engine reference area
-| :math:`C_{D_{wm}}` & :math:`~[-]` & Windmill drag coefficient
-| :math:`C_{L_{vt,max}}` & :math:`~[-]` & Max lift coefficient
-| :math:`T_e` & :math:`~\mathrm{[N]}` & Thrust per engine at takeoff
-| :math:`V_1` & :math:`~\mathrm{[\tfrac{m}{s}]}` & Minimum takeoff
-  velocity
-| :math:`V_{land}` & :math:`~\mathrm{[\tfrac{m}{s}]}` & Landing velocity
-| :math:`V_{ne}` & :math:`~\mathrm{[\tfrac{m}{s}]}` & Never exceed
-  velocity
-| :math:`\lambda_{vt_{min}}` & :math:`~[-]` & Minimum vertical tail
-  taper ratio
-| :math:`\rho_{TO}` & :math:`~\mathrm{[\tfrac{kg}{m^{3}}]}` & Air
-  density at takeoff
-| :math:`\tan(\Lambda_{vt})` & :math:`~[-]` & Tangent of leading edge
-  sweep (40 deg)
-| :math:`c_{l_{vt,EO}}` & :math:`~[-]` & Sectional lift force
-  coefficient (engine out)
-| :math:`e_{vt}` & :math:`~[-]` & Span efficiency of vertical tail
-| :math:`g` & :math:`~\mathrm{[\tfrac{m}{s^{2}}]}` & Gravitational
-  acceleration
-| :math:`\dot{r}_{req}` & :math:`~[s^{-2}]` & Max required yaw rate
-  acceleration at landing
-| :math:`y_{eng}` & :math:`~\mathrm{[m]}` & Engine moment arm
+* :download:`Fixed variables <tables/vt_fixedvars.pdf>`
 
 Vertical Tail Geometry and Structure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -15,88 +15,11 @@ mounted to the fuselage and nominally produces downforce in cruise.
 Model Description
 -----------------
 
-The horizontal tail model has 50 free variables and 33 constraints.
+Variable tables are available for download below:
 
-| lcl Free Variables & Units & Description
-| :math:`C_{D_{ht}}` & :math:`~[-]` & Horizontal tail drag coefficient
-| :math:`C_{D_{0_{ht}}}` & :math:`~[-]` & Horizontal tail parasitic drag
-  coefficient
-| :math:`C_{L_{ht}}` & :math:`~[-]` & Lift coefficient (htail)
-| :math:`C_{L_w}` & :math:`~[-]` & Lift coefficient (wing)
-| :math:`C_{L_{\alpha h_{0}}}` & :math:`~[-]` & Isolated lift curve
-  slope (htail)
-| :math:`C_{L_{\alpha,ht}}` & :math:`~[-]` & Lift curve slope (htail)
-| :math:`C_{L_{\alpha,w}}` & :math:`~[-]` & Lift curve slope (wing)
-| :math:`D_{ht}` & :math:`~\mathrm{[N]}` & Horizontal tail drag
-| :math:`L_{ht}` & :math:`~\mathrm{[N]}` & Horizontal tail downforce
-| :math:`L_{ht_{max}}` & :math:`~\mathrm{[N]}` & Maximum tail load
-| :math:`M` & :math:`~[-]` & Mach number
-| :math:`Re_{ht}` & :math:`~[-]` & Horizontal tail Reynolds number
-| :math:`S.M.` & :math:`~[-]` & Stability margin
-| :math:`S_{ht}` & :math:`~\mathrm{[m^{2}]}` & Horizontal tail area
-| :math:`V_{\infty}` & :math:`~\mathrm{[\tfrac{m}{s}]}` & Freestream
-  velocity
-| :math:`V_{ht}` & :math:`~[-]` & Horizontal tail volume
-| :math:`W_{ht}` & :math:`~\mathrm{[lbf]}` & Horizontal tail weight
-| :math:`AR_w` & :math:`~[-]` & Wing aspect ratio
-| :math:`AR_{ht}` & :math:`~[-]` & Horizontal tail aspect ratio
-| :math:`\Delta x_{lead_{ht}}` & :math:`~\mathrm{[m]}` & Distance from
-  CG to HT leading edge
-| :math:`\Delta x_{trail_{ht}}` & :math:`~\mathrm{[m]}` & Distance from
-  CG to HT trailing edge
-| :math:`\alpha_{ht}` & :math:`~[-]` & Horizontal tail angle of attack
-| :math:`\bar{c}_w` & :math:`~\mathrm{[m]}` & Mean aerodynamic chord
-  (wing)
-| :math:`\bar{c}_{ht}` & :math:`~\mathrm{[m]}` & Mean aerodynamic chord
-  (ht)
-| :math:`\lambda_{ht}` & :math:`~[-]` & Horizontal tail taper ratio
-| :math:`\mu` & :math:`~\mathrm{[\tfrac{N\cdot s}{m^{2}}]}` & Dynamic
-  viscosity
-| :math:`\rho_{\infty}` & :math:`~\mathrm{[\tfrac{kg}{m^{3}}]}` &
-  Freestream density
-| :math:`\tau_{ht}` & :math:`~[-]` & Horizontal tail thickness/chord
-  ratio
-| :math:`b_{ht}` & :math:`~\mathrm{[m]}` & Horizontal tail span
-| :math:`c_{root_{ht}}` & :math:`~\mathrm{[m]}` & Horizontal tail root
-  chord
-| :math:`c_{tip_{ht}}` & :math:`~\mathrm{[m]}` & Horizontal tail tip
-  chord
-| :math:`e_{ht}` & :math:`~[-]` & Oswald efficiency factor
-| :math:`f(\lambda_{ht})` & :math:`~[-]` & Empirical efficiency function
-  of taper
-| :math:`l_{fuse}` & :math:`~\mathrm{[m]}` & Fuselage length
-| :math:`l_{ht}` & :math:`~\mathrm{[m]}` & Horizontal tail moment arm
-| :math:`m_{ratio}` & :math:`~[-]` & Ratio of HT and wing lift curve
-  slopes
-| :math:`p_{ht}` & :math:`~[-]` & Substituted variable = 1 + 2\*taper
-| :math:`q_{ht}` & :math:`~[-]` & Substituted variable = 1 + taper
-| :math:`w_{fuse}` & :math:`~\mathrm{[m]}` & Fuselage width
-| :math:`x_w` & :math:`~\mathrm{[m]}` & Position of wing aerodynamic
-  center
-| :math:`x_{CG}` & :math:`~\mathrm{[m]}` & x-location of CG
-| :math:`y_{\bar{c}_{ht}}` & :math:`~\mathrm{[m]}` & Spanwise location
-  of mean aerodynamic chord
+* :download:`Free variables <tables/ht_freevars.pdf>`
 
-| lcl Constants & Units & Description
-| :math:`C_{L_{ht,max}}` & :math:`~[-]` & Max horizontal tail lift
-  coefficient
-| :math:`C_{L_{w,max}}` & :math:`~[-]` & Max lift coefficient, wing
-| :math:`C_{m_{ac}}` & :math:`~[-]` & Moment coefficient about
-  aerodynamic centre (wing)
-| :math:`S.M._{min}` & :math:`~[-]` & Minimum allowed stability margin
-| :math:`V_{ne}` & :math:`~\mathrm{[\tfrac{m}{s}]}` & Never exceed
-  velocity
-| :math:`\Delta x_{CG}` & :math:`~\mathrm{[m]}` & CG travel range
-| :math:`\alpha_{ht,max}` & :math:`~[-]` & Max angle of attack, htail
-| :math:`\eta_{ht}` & :math:`~[-]` & Tail efficiency
-| :math:`\lambda_{ht_{min}} ` & :math:`~[-]` & Minimum horizontal tail
-  taper ratio
-| :math:`\rho_0` & :math:`~\mathrm{[\tfrac{kg}{m^{3}}]}` & Air density
-  (0 ft)
-| :math:`\tan(\Lambda_{ht})` & :math:`~[-]` & tangent of horizontal tail
-  sweep
-| :math:`g` & :math:`~\mathrm{[\tfrac{m}{s^{2}}]}` & Gravitational
-  acceleration
+* :download:`Fixed variables <tables/ht_fixedvars.pdf>`
 
 Horizontal Tail Geometry and Structure
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
