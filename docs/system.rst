@@ -22,9 +22,9 @@ sophisticated mission profile is left for future work.
 Model Description
 -----------------
 
-:download:`**Free variables** <tables/ac_freevars.pdf>`_
+:download:`**Free variables** <tables/ac_freevars.pdf>`
 
-:download:`**Fixed variables**<tables/ac_fixedvars.pdf>`_
+:download:`**Fixed variables**<tables/ac_fixedvars.pdf>`
 
 Flight Performance
 ~~~~~~~~~~~~~~~~~~
