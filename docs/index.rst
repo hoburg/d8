@@ -31,8 +31,8 @@ Design Optimization via Signomial Programming
 aircraft configurations, and demonstrates the advantages of SPaircraft relative to other existing
 multidisciplinary design optimization tools.
 
-This website is under construction. If you are not able to find answers to your questions
-in the documentation,
+This website is under construction, and may not reflect the most up-to-date models.
+If you are not able to find answers to your questions in the documentation,
 please feel free to post `issues <https://github.com/convexengineering/SPaircraft/issues>`_
 and suggest areas for improvement.
 
