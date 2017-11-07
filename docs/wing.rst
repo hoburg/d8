@@ -37,7 +37,7 @@ dominate.
 
 .. math:: {S_{w}} = {b_{w}} \frac{c_{root_{w}} + c_{tip_{w}}}{2} \label{eq:planformarea}
 
- The mean aerodynamic chord relationship for a trapezoidal wing can be
+The mean aerodynamic chord relationship for a trapezoidal wing can be
 written as a signomial constraint, and its spanwise location can be
 written as a monomial equality constraint. These constraints make use of
 dummy variables, :math:`p_w` and :math:`q_w`, introduced by the
@@ -50,7 +50,7 @@ structural model below.
    + \lambda_{w}^2}{q_{w}}\right) c_{root_{w}} \label{eq:meanaerochord} \\
    y_{\bar{c}_w} &= \frac{b_w q_w}{3 p_w} \label{eq:spanwisemac}\end{aligned}
 
- The wing taper ratio is defined by a monomial equality constraint. It
+The wing taper ratio is defined by a monomial equality constraint. It
 is necessary to lower bound taper to avoid an unacceptably small
 Reynolds number at the wing tip [Kroo, 2001].
 For the purpose of this work, the taper is lower bounded using the taper
@@ -62,7 +62,7 @@ ratio of the reference aircraft’s wing.
    \lambda_{w} &= \frac{c_{tip_{w}}}{c_{root_{w}}} \label{eq:taperratio}\\
    {\lambda_{w}} &\geq \lambda_{w_{min}} \label{eq:mintaperratio}\end{aligned}
 
- Finally, a maximum span constraint can be imposed to reflect, for
+Finally, a maximum span constraint can be imposed to reflect, for
 example, a gate size constraint.
 
 .. math:: b_w \leq b_{w,max}
@@ -81,7 +81,7 @@ fuselage lift.
    L_{total} &\geq W + L_{ht}\\
    L_{total} &= f_{L_{total/wing}} L_{w}\end{aligned}
 
- The standard equation for the lift of a wing is a natural monomial
+The standard equation for the lift of a wing is a natural monomial
 equality constraint.
 
 .. math::
@@ -89,7 +89,7 @@ equality constraint.
    \begin{aligned}
    L_w = \frac12 \rho_{\infty} V_{\infty}^2 S_w C_{L_w}\end{aligned}
 
- However, this assumes a continuous unobstructed wing planform.
+However, this assumes a continuous unobstructed wing planform.
 Correcting for lift loss at the fuselage and at the wing tips, gives the
 adjusted Equation , which can be rearranged into the posynomial
 Constraint .
@@ -102,7 +102,7 @@ Constraint .
    \frac12 \rho_{\infty} V_{\infty}^2 S_w C_{L_w} &\geq L_w + \Delta L_o + 2 \Delta L_t
    \label{eq:liftadjcon}\end{aligned}
 
- The lift corrections are given as monomial equality
+The lift corrections are given as monomial equality
 constraints [Drela, 2011].
 
 .. math::
@@ -111,7 +111,7 @@ constraints [Drela, 2011].
    \Delta L_o &= \eta_o f_{L_o} \frac{b_w}{2} p_o \\
    \Delta L_t &= f_{L_t} p_o c_{root_{w}} \lambda_w^2\end{aligned}
 
- The lift coefficient of the wing goes linearly with the angle of
+The lift coefficient of the wing goes linearly with the angle of
 attack, which is limited by a maximum angle of attack due to stall.
 
 .. math::
@@ -120,13 +120,13 @@ attack, which is limited by a maximum angle of attack due to stall.
        C_{L_w} &= C_{L_{\alpha,w}}\alpha_w \\
        \alpha_{w} &\leq \alpha_{w,max}\end{aligned}
 
- The DATCOM formula is an analytic function for estimating the lift
+The DATCOM formula is an analytic function for estimating the lift
 curve slope of a wing or tail, based on empirical
 results [Kroo, 2001].
 
 .. math:: C_{L_{\alpha,w}} = \frac{2 \pi AR_{w}}{2+\sqrt{(AR_{w}/\eta_w)^2(1+\tan^2\Lambda - M^2)+4}}
 
- This relationship can be used as a signomial inequality to constrain
+This relationship can be used as a signomial inequality to constrain
 the lift curve slope, although some algebraic manipulation is needed.
 
 .. math::
@@ -141,7 +141,7 @@ the lift curve slope, although some algebraic manipulation is needed.
    \frac{C_{L_{\alpha,w}}^2}{\eta_w^2}\left(1 + \tan^2\Lambda - M^2\right) +
    \frac{8\pi C_{L_{\alpha,w}}}{AR_{w}} &\leq 4\pi^2 \end{aligned}
 
- Maximum wing lift is constrained using an assumed load factor,
+Maximum wing lift is constrained using an assumed load factor,
 :math:`N_{lift}`.
 
 .. math::
@@ -149,7 +149,7 @@ the lift curve slope, although some algebraic manipulation is needed.
    \label{e:Lmax}
    f_{L_{total/wing}} L_{w_{max}} \geq N_{lift} W_{total} + L_{ht_{max}}
 
- Finally, wing loading is constrained to be less than a user specified
+Finally, wing loading is constrained to be less than a user specified
 maximum.
 
 .. math::
@@ -189,11 +189,11 @@ which comprises 12 monomial and posynomial constraints.
    {AR_{w}} &= \frac{{b_{w}}^{2}}{{S_{w}}} \\
    {\tau_{w}} &\leq 0.14 \end{aligned}
 
- The original root bending moment constraint,
+The original root bending moment constraint,
 
 .. math:: {M_r} \geq \frac{{AR_{w}} {L_{w_{max}}} {p_{w}}}{24},
 
- is replaced with a more sophisticated signomial constraint that
+is replaced with a more sophisticated signomial constraint that
 considers the load relief effect due to the weight of the engine and the
 fuel tanks. To derive the constraint, the lift per unit span of wing is
 assumed to be proportional to the local chord, and the wing planform
@@ -206,7 +206,7 @@ area is partitioned into an untapered (rectangular) area
    A_{tri} &= \frac{1}{2} (1-\lambda_w) c_{root_{w}} b_w \\
    A_{rect} &= c_{tip_{w}} b_w\end{aligned}
 
- The wing area component loads are treated as point loads to determine
+The wing area component loads are treated as point loads to determine
 the equivalent wing root moment.
 
 .. math::
@@ -229,7 +229,7 @@ intermediary variables :math:`A_{tri}` and :math:`A_{rect}`, since
    &= \frac{b_{w}}{12} (c_{root_{w}} + 2 c_{tip_{w}}).
    \label{eq:Asub}\end{aligned}
 
- Substituting Equation  into Constraint  yields the following wing root
+Substituting Equation  into Constraint  yields the following wing root
 moment constraint.
 
 .. math::
@@ -240,7 +240,7 @@ moment constraint.
               + 2 c_{tip_{w}}\right)\right) \\
               & - N_{lift} W_{engine} y_{eng} \nonumber\end{aligned}
 
- Note that this provides a conservative estimate for the root moment,
+Note that this provides a conservative estimate for the root moment,
 since it assumes that the lift per unit area is constant throughout the
 wing, whereas in reality the lift per unit area diminishes towards the
 wingtips.
@@ -326,7 +326,7 @@ wing-half span, it can be calculated by
    \label{eq:dXACwingDerivation}
    \Delta x_{ac_w} = \frac{2}{S} \int_{0}^{b/2} c(y) \delta x(y) dy,
 
- where the local root chord :math:`c(y)` and the local quarter chord
+where the local root chord :math:`c(y)` and the local quarter chord
 offset :math:`\delta x(y)` are given by:
 
 .. math::
@@ -337,7 +337,7 @@ offset :math:`\delta x(y)` are given by:
    \label{eq:dxy}
    \delta x(y) &= y \tan(\Lambda)\end{aligned}
 
- By substituting Equations and into Equation , expanding out the
+By substituting Equations and into Equation , expanding out the
 integral and relaxing the equality, :math:`\Delta x_{ac_w}` can be
 constrained as follows.
 

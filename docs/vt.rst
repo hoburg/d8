@@ -45,7 +45,7 @@ aerodynamic chord.
    l_{vt}\leq\Delta x_{lead_{vt}}+z_{\bar{c}_{vt}}{\tan(\Lambda_{LE})}+0.25\bar{c}_{vt}
    \label{eq:vtmomentarm}
 
- The x-coordinates of the leading and trailing edge at the root are
+The x-coordinates of the leading and trailing edge at the root are
 related by the root chord. The tail trailing edge is upper bounded by
 imposing a constraint that the tail root cannot extend beyond the end of
 the fuselage. Together these constraints put an upper bound on the
@@ -65,7 +65,7 @@ the never-exceed speed.
    \begin{aligned}
    L_{vt_{max}} &= \frac12 \rho_{TO} V_{ne}^2 S_{vt}C_{L_{v,max}}\end{aligned}
 
- The remaining geometry and structural constraints were already
+The remaining geometry and structural constraints were already
 introduced in the wing model.
 Constraints [eq:planformarea,eq:meanaerochord,eq:spanwisemac,eq:taperratio,eq:mintaperratio]
 are adapted to the vertical tail model to constrain its geometry, with
@@ -88,7 +88,7 @@ inoperative [Drela, 2011].
 
 .. math:: {L_{vt,EO}}{l_{vt}} \geq {D_{wm}} {y_{eng}} + {T_e} {y_{eng}}
 
- The worst case engine out condition is likely to occur during takeoff,
+The worst case engine out condition is likely to occur during takeoff,
 when the velocity is lowest but the engine force required to safely
 complete takeoff is highest. The force exerted by the vertical tail in
 this critical low speed case is constrained by its maximum lift
@@ -99,13 +99,13 @@ critical engine failure.
 
 .. math:: {L_{vt,EO}} = \frac12{\rho_{TO}}{V_1}^{2} {S_{vt}} {C_{L_{vt,EO}}}
 
- The 3D lift coefficient is constrained by the airfoil sectional lift
+The 3D lift coefficient is constrained by the airfoil sectional lift
 coefficient using finite wing
 theory [Anderson, 2001].
 
 .. math:: C_{L_{vt,EO}}\left(1 + \frac{c_{l_{vt,EO}}}{\pi e_{vt} AR_{vt}}\right) \leq c_{l_{vt,EO}}
 
- The windmill drag can, to a first approximation, be lower bounded using
+The windmill drag can, to a first approximation, be lower bounded using
 a drag coefficient and a reference
 area [Drela, 2011], in this case the area of the
 engine fan.

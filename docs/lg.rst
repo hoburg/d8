@@ -50,7 +50,7 @@ y-coordinates of the nose and main gear.
    {T} &= 2{y_m} \\
    {x_m} &\geq {x_n} + {B}\end{aligned}
 
- The geometric relationships between the x-coordinates of the main gear,
+The geometric relationships between the x-coordinates of the main gear,
 nose gear and the position must be enforced. These relationships are:
 
 .. math::
@@ -59,7 +59,7 @@ nose gear and the position must be enforced. These relationships are:
    \label{ngdef} {x_n} + {\Delta  x_n} &= {x_{CG}} \\
    \label{mgdef} {x_{CG}} + {\Delta  x_m} &=  {x_m} \end{aligned}
 
- Equations and must be satisfied exactly, meaning the constraints that
+Equations and must be satisfied exactly, meaning the constraints that
 enforce them must be tight. As will be shown below, the load through the
 nose gear and main gear is proportional to the distance from the to the
 main and nose gear respectively. Because there is downward pressure on
@@ -74,7 +74,7 @@ relationships.
    {x_n} + {\Delta x_n} &\geq {x_{CG}} \\
    {x_{CG}} + {\Delta x_m} &\geq {x_m}\end{aligned}
 
- The main gear position in the spanwise (:math:`y`) direction is, on one
+The main gear position in the spanwise (:math:`y`) direction is, on one
 side, lower bounded by the length of the gear itself and, on the other
 side, upper bounded by the spanwise location of the engines. Both of
 these constraints are necessary to allow the landing gear to retract in
@@ -96,7 +96,7 @@ gear and the wing dihedral. This relationship is a signomial constraint.
 
 .. math:: {l_n} + z_{wing} + y_m \tan(\gamma) \geq {l_m}
 
- For aircraft with engines mounted under the wing, the length of the
+For aircraft with engines mounted under the wing, the length of the
 main gear is also constrained by the engine diameter, because the
 engines must have sufficient clearance from the ground. A signomial
 constraint provides another lower bound on the length of the main gear.
@@ -146,26 +146,26 @@ here, instead of :math:`\phi`, to make the constraint -compatible.
    {x_m} &\geq \left( {l_m} + {z_{CG}} \right) {\tan(\phi)} + {x_{CG}}\\
    {\tan(\phi)} &\geq {\tan(\phi_{min})} \end{aligned}
 
- A lateral tip-over constraint is introduced to ensure that an aircraft
+A lateral tip-over constraint is introduced to ensure that an aircraft
 does not tip over in a turn [Chai, 1996]. The
 turnover angle is defined as
 
 .. math:: \tan{\psi} = \frac{z_{CG} + l_m}{{\Delta  x_n} \sin{\delta}}
 
- where
+where
 
 .. math:: \tan{\delta} = \frac{y_m}{B}.
 
- Using the relationship
+Using the relationship
 
 .. math:: \cos\left(\arctan\left(\frac{y_m}{B}\right)\right)=\frac{B}{\sqrt{B^2 + y_m^2}},
 
- this constraint can be rewritten in, not only -compatible, but
+this constraint can be rewritten in, not only -compatible, but
 -compatible form as
 
 .. math:: 1\geq\frac{(z_{CG}+l_m)^2 ({y_m}^2 + B^2) }{ (\Delta x_n  y_m  \tan(\psi))^2}.
 
- Typically this angle, :math:`\psi`, should be no larger than
+Typically this angle, :math:`\psi`, should be no larger than
 :math:`63^\circ` [Raymer, 1992].
 
 .. math:: {\tan(\psi)}  \leq {\tan(\psi_{max})}
@@ -185,7 +185,7 @@ wheels [Currey, 1984].
    {W_{mg}} &\geq {n_{mg}} \left(W_{ms} + {W_{mw}}(1 + f_{add_m}) \right) \\
    {W_{ng}} &\geq {W_{ns}} + {W_{nw}}(1 +  f_{add_n})\end{aligned}
 
- The weight of each strut for both the main and nose struts is lower
+The weight of each strut for both the main and nose struts is lower
 bounded by simplistically assuming a thin-walled cylinder with constant
 cross sectional area.
 
@@ -195,7 +195,7 @@ cross sectional area.
    {W_{ms}} &\geq 2 \pi {r_m}{t_m} {l_m}  {\rho_{st}}g\\
    {W_{ns}} &\geq 2 \pi {r_n}{t_n} {l_n}  {\rho_{st}}g\end{aligned}
 
- It is assumed that the strut is sized by compressive yield and, more
+It is assumed that the strut is sized by compressive yield and, more
 stringently, by buckling, again assuming a thin-walled cylinder. This
 constrains the area moment of inertia of the strut cross section, which
 puts upward pressure on the radius and thickness of the struts. The
@@ -215,7 +215,7 @@ land with the main gear struts perfectly normal to the runway surface.
     {L_n} &\leq \frac{\pi^2{E}{I_n}}{{K}^{2}{l_n}^{2}}\\
    {I_n} &= \pi{r_n}^{3} {t_n} \end{aligned}
 
- A machining constraint is used to ensure that the strut walls are not
+A machining constraint is used to ensure that the strut walls are not
 too thin to be fabricated [Chai, 1996].
 
 .. math::
@@ -224,7 +224,7 @@ too thin to be fabricated [Chai, 1996].
     \frac{2 r_m}{t_m} &\leq 40 \\
     \frac{2 r_n}{t_n} &\leq 40 \end{aligned}
 
- The wheel weights can be estimated using historical relations from
+The wheel weights can be estimated using historical relations from
 [Currey, 1984] and [Raymer, 1992], which are,
 again, conveniently in monomial form.
 
@@ -244,7 +244,7 @@ again, conveniently in monomial form.
    d_{t_n} &= 0.8 d_{t_m} \\
    w_{t_n} &= 0.8 w_{t_m} \end{aligned}
 
- Main gear tyre size can also be estimated using statistical relations.
+Main gear tyre size can also be estimated using statistical relations.
 The nose gear tyres are assumed to be 80% of the size of the main gear
 tyres.
 
@@ -256,7 +256,7 @@ tyres.
    d_{t_n} &= 0.8 d_{t_m} \\
    w_{t_n} &= 0.8 w_{t_m} \end{aligned}
 
- In addition, simple retraction space constraints are used to ensure
+In addition, simple retraction space constraints are used to ensure
 that the gear assemblies are not too wide to fit inside the fuselage.
 
 .. math::
@@ -285,7 +285,7 @@ assumed [Raymer, 1992].
 
 .. math:: {L_{n_{dyn}}} \geq 0.31W \frac{{l_m} + {z_{CG}}}{{B}}
 
- The nose gear requires adequate load for satisfactory steering
+The nose gear requires adequate load for satisfactory steering
 performance. A typical desirable range is between 5% and 20% of the
 total load [Raymer, 1992].
 
@@ -311,7 +311,7 @@ load [Torenbeek, 1982].
    E_{land} &= \frac{W}{2g} w_{ult}^2 \\
    S_{sa} &= \frac{1}{\eta_s} \frac{E_{land}}{L_m \lambda_{LG}}\end{aligned}
 
- As a preliminary model, the oleo size can be estimated using historical
+As a preliminary model, the oleo size can be estimated using historical
 relations that are conveniently in monomial
 form [Raymer, 1992]. The length of the main gear
 must be greater than the length of the oleo and the radius of the tyres.

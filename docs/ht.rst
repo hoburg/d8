@@ -46,7 +46,7 @@ that the full aircraft moment coefficient be zero.
    \frac{x_w}{\bar{c}_w} \leq \frac{x_{CG}}{\bar{c}_w} + \frac{C_{m_{ac}}}{C_{L_w}} 
    + \frac{V_{ht} C_{L_{ht}}}{C_{L_w}}
 
- Thin airfoil theory is used to constrain the horizontal tail’s isolated
+Thin airfoil theory is used to constrain the horizontal tail’s isolated
 lift curve slope [Anderson, 2001].
 
 .. math::
@@ -54,7 +54,7 @@ lift curve slope [Anderson, 2001].
    \begin{aligned}
    C_{L_{ht}} &= C_{L_{\alpha,ht}} \alpha\end{aligned}
 
- However, the horizontal tail’s lift curve slope is reduced by downwash,
+However, the horizontal tail’s lift curve slope is reduced by downwash,
 :math:`\epsilon`, from the wing and
 fuselage [Kroo, 2001]. Note
 :math:`\eta_{h_{lift}}` is the horizontal tail sectional lift
@@ -65,7 +65,7 @@ efficiency.
    C_{L_{\alpha,ht}} = C_{L_{\alpha,ht_0}} \left(1 - \frac{\partial \epsilon}
    {\partial \alpha}\right) \eta_{h_{lift}}
 
- The downwash can be approximated as the downwash far behind an
+The downwash can be approximated as the downwash far behind an
 elliptically loaded wing.
 
 .. math::
@@ -75,7 +75,7 @@ elliptically loaded wing.
    \implies \frac{\partial \epsilon}{\partial \alpha} &\approx
    \frac{2 C_{L_{\alpha,w}}}{\pi AR_w}\end{aligned}
 
- Thus, an additional posynomial constraint is introduced to constrain
+Thus, an additional posynomial constraint is introduced to constrain
 the corrected lift curve slope.
 
 .. math::
@@ -97,7 +97,7 @@ limits[Burton, 2017].
    S.M._{min} + \frac{\Delta x_{CG}}{\bar{c}_w} + \frac{C_{m_{ac}}}{C_{L_{w,max}}} 
    &\leq V_{ht} m_{ratio} + \frac{V_{ht} C_{L_{h,max}}}{C_{L_{w,max}}}\end{aligned}
 
- The ratio of the horizontal tail and wing lift curve slopes,
+The ratio of the horizontal tail and wing lift curve slopes,
 :math:`m_{ratio}`, appears in Equation and is constrained using the
 relationship in [Burton, 2017]. The constraint is a
 signomial equality because it is not possible to know a priori whether
