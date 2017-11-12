@@ -17,6 +17,7 @@ from aircraft import Mission
 from subs.optimal_D8 import get_optimal_D8_subs
 from subs.optimal_777300ER import get_optimal_777300ER_subs
 from subs.optimal_737 import get737_optimal_subs
+from subs.optimal_737 import get737_optimal_engine_subs
 from subs.b737_M072 import get_M072_737_subs
 from subs.D8_no_BLI import get_D8_no_BLI_subs
 from subs.D8_eng_wing import get_D8_eng_wing_subs
@@ -249,14 +250,14 @@ def gen_777_plots(sol):
     plt.savefig('777_altitude_profile.eps', bbox_inches="tight")
     plt.show()
 
-def run_optimal_777(objective, fixedBPR, pRatOpt = False):
+def run_optimal_777(objective, fixedBPR, pRatOpt = False,  detailed_engine = True, detailed_flight_profile = True):
     # User definitions
     Nclimb = 3
     Ncruise = 2
     Nmission = 1
     aircraft = 'optimal777'
 
-    m = Mission(Nclimb, Ncruise, objective, aircraft, Nmission)
+    m = Mission(Nclimb, Ncruise, objective, aircraft, detailed_engine, detailed_flight_profile, Nmission)
     
     substitutions = get_optimal_777300ER_subs()
 
@@ -288,14 +289,14 @@ def run_optimal_777(objective, fixedBPR, pRatOpt = False):
 
     return sol
 
-def run_optimal_D8(objective, fixedBPR, pRatOpt = False):
+def run_optimal_D8(objective, fixedBPR, pRatOpt = False,  detailed_engine = True, detailed_flight_profile = True):
     # User definitions
     Nclimb = 3
     Ncruise = 2
     Nmission = 1
     aircraft = 'optimalD8'
 
-    m = Mission(Nclimb, Ncruise, objective, aircraft, Nmission)
+    m = Mission(Nclimb, Ncruise, objective, aircraft, detailed_engine, detailed_flight_profile, Nmission)
     
     substitutions = get_optimal_D8_subs()
 
@@ -334,14 +335,17 @@ def run_optimal_D8(objective, fixedBPR, pRatOpt = False):
 
     return sol
 
-def run_optimal_737(objective, fixedBPR, pRatOpt = False):
+def run_optimal_737(objective, fixedBPR, pRatOpt = False,  detailed_engine = True, detailed_flight_profile = True):
     # User definitions
-    Nclimb = 3
     Ncruise = 2
     Nmission = 1
+    if not detailed_flight_profile:
+        Nclimb = 0
+    else:
+        Nclimb = 3
     aircraft = 'optimal737'
 
-    m = Mission(Nclimb, Ncruise, objective, aircraft, Nmission)
+    m = Mission(Nclimb, Ncruise, objective, aircraft, detailed_engine, detailed_flight_profile, Nmission)
     
     substitutions = get737_optimal_subs()
 
@@ -356,15 +360,25 @@ def run_optimal_737(objective, fixedBPR, pRatOpt = False):
            'n_{pass}': 180.,
         })
 
-    if fixedBPR:
+    #get engine subs
+    engine_subs = get737_optimal_engine_subs(detailed_engine)
+    if detailed_engine:
+        substitutions.update(engine_subs)
+        if fixedBPR:
+            substitutions.update({
+                '\\alpha_{max}': 6.97,
+            })
+        if pRatOpt:
+            #del substitutions['\pi_{f_D}']
+            del substitutions['\pi_{lc_D}']
+            del substitutions['\pi_{hc_D}']
+    else:
         substitutions.update({
-            '\\alpha_{max}': 6.97,
+           'TSFC': np.ones(Ncruise+Nclimb)*engine_subs['TSFC'],                      
+           'F_TO': engine_subs['F_TO'],
+           'A_{2}': engine_subs['A_{2}'],
+           'W_{engsys}': engine_subs['W_{engsys}']
         })
-        
-    if pRatOpt:
-        #del substitutions['\pi_{f_D}']
-        del substitutions['\pi_{lc_D}']
-        del substitutions['\pi_{hc_D}']
 
     m.substitutions.update(substitutions)
 
@@ -374,20 +388,20 @@ def run_optimal_737(objective, fixedBPR, pRatOpt = False):
     sol = m_relax.localsolve(verbosity=4, iteration_limit=200, reltol=0.01)
     post_process(sol)
 
-    percent_diff(sol, 'b737800', Nclimb)
-
-    post_compute(sol, Nclimb)
+    if detailed_engine:
+        percent_diff(sol, 'b737800', Nclimb)
+        post_compute(sol, Nclimb)
 
     return sol
 
-def run_M072_737(objective, fixedBPR, pRatOpt = False):
+def run_M072_737(objective, fixedBPR, pRatOpt = False,  detailed_engine = True, detailed_flight_profile = True):
     # User definitions
     Nclimb = 3
     Ncruise = 2
     Nmission = 1
     aircraft = 'M072_737'
 
-    m = Mission(Nclimb, Ncruise, objective, aircraft, Nmission)
+    m = Mission(Nclimb, Ncruise, objective, aircraft, detailed_engine, detailed_flight_profile, Nmission)
     
     substitutions = get_M072_737_subs()
 
@@ -426,14 +440,14 @@ def run_M072_737(objective, fixedBPR, pRatOpt = False):
 
     return sol
 
-def run_D8_eng_wing(objective, fixedBPR, pRatOpt = False):
+def run_D8_eng_wing(objective, fixedBPR, pRatOpt = False,  detailed_engine = True, detailed_flight_profile = True):
     # User definitions
     Nclimb = 3
     Ncruise = 2
     Nmission = 1
     aircraft = 'D8_eng_wing'
 
-    m = Mission(Nclimb, Ncruise, objective, aircraft, Nmission)
+    m = Mission(Nclimb, Ncruise, objective, aircraft, detailed_engine, detailed_flight_profile, Nmission)
     
     substitutions = get_D8_eng_wing_subs()
 
@@ -471,14 +485,14 @@ def run_D8_eng_wing(objective, fixedBPR, pRatOpt = False):
 
     return sol
 
-def run_D8_no_BLI(objective, fixedBPR, pRatOpt = False):
+def run_D8_no_BLI(objective, fixedBPR, pRatOpt = False,  detailed_engine = True, detailed_flight_profile = True):
     # User definitions
     Nclimb = 3
     Ncruise = 2
     Nmission = 1
     aircraft = 'D8_no_BLI'
 
-    m = Mission(Nclimb, Ncruise, objective, aircraft, Nmission)
+    m = Mission(Nclimb, Ncruise, objective, aircraft, detailed_engine, detailed_flight_profile, Nmission)
     
     substitutions = get_D8_no_BLI_subs()
 
@@ -517,7 +531,8 @@ def run_D8_no_BLI(objective, fixedBPR, pRatOpt = False):
     return sol
 
 def test():
-    run_optimal_737('W_{f_{total}}', True, False)
+    run_optimal_737('W_{f_{total}}', True, False, True)
+    run_optimal_737('W_{f_{total}}', True, False, True, False, False)
 
 ##    OLD CODE DOESN'T CURRENTLY WORK
     
