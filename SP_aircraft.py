@@ -339,7 +339,7 @@ def run_optimal_737(objective, fixedBPR, pRatOpt, mutategparg):
     # User definitions
     Nclimb = 3
     Ncruise = 2
-    Nmission = 4
+    Nmission = 1
     aircraft = 'optimal737'
 
     m = Mission(Nclimb, Ncruise, objective, aircraft, Nmission)
