@@ -283,12 +283,12 @@ class Atmosphere(Model):
     """
 
     Upper Unbounded
-    ---------------  # TOOD: h is considered unbounded because SignomialEqualities are not detected
+    ---------------  # TODO: h is considered unbounded because SignomialEqualities are not detected
     rho, T_atm, h
 
     Lower Unbounded
     ---------------
-    rho, T_atm, h
+    rho
     """
     def setup(self, alt, **kwargs):
         p_sl = Variable("p_{sl}", 101325, "Pa", "Pressure at sea level")
