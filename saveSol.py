@@ -67,13 +67,11 @@ def genDesFile(sol, aircraft = 'D82', i = 0, swpt = False):
         crootht = sol('c_{root_{ht}}')[i].to('m')
         ctipht = sol('c_{tip_{ht}}')[i].to('m')
         bht = sol('b_{ht}')[i].to('m')
-        xCGht = sol('x_{CG_{ht}}')[i]
         lht = sol('l_{ht}')[i].to('m')
         tanht = sol('\\tan(\Lambda_{ht})_Mission/Aircraft/HorizontalTail/HorizontalTailNoStruct')[i]
 
         # Vertical Tail descriptors
         xCGvt = sol('x_{CG_{vt}}')[i].to('m')
-        xtail = sol('x_{tail}')[i].to('m')
         Svt = sol('S_{vt}')[i].to('m^2')
         bvt = sol('b_{vt}')[i].to('m')
         lvt = sol('l_{vt}')[i].to('m')
@@ -131,7 +129,6 @@ def genDesFile(sol, aircraft = 'D82', i = 0, swpt = False):
 
         # Vertical Tail descriptors
         xCGvt = sol('x_{CG_{vt}}').to('m')
-        xtail = sol('x_{tail}').to('m')
         Svt = sol('S_{vt}').to('m^2')
         bvt = sol('b_{vt}').to('m')
         lvt = sol('l_{vt}').to('m')
