@@ -77,8 +77,6 @@ def genDesFile(sol, aircraft = 'D82', i = 0, swpt = False):
         lvt = sol('l_{vt}')[i].to('m')
         crootvt = sol('c_{root_{vt}}')[i].to('m')
         ctipvt = sol('c_{tip_{vt}}')[i].to('m')
-        # dxleadvt = sol('\\Delta x_{lead_v}')[i].to('m')
-        # dxtrailvt = sol('\\Delta x_{trail_v}')[i].to('m')
         tanvt = sol('\\tan(\Lambda_{vt})_Mission/Aircraft/VerticalTail/VerticalTailNoStruct')[i]
 
         # Engine descriptors

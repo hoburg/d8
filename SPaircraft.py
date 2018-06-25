@@ -88,6 +88,6 @@ def test():
     pRatOpt = False
     mutategparg = True
     sol, m, m_relax = optimize_aircraft(objective, aircraft, substitutions, fixedBPR, pRatOpt, mutategparg)
-    Nclimb = 3
+    Nclimb = m.Nclimb
     percent_diff(sol, aircraft, Nclimb)
     post_compute(sol, Nclimb)

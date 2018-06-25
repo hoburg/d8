@@ -786,6 +786,7 @@ class Mission(Model):
             BLI = False
 
         if optimalD8 or D8_no_BLI:
+            eng = 3
             D8fam = True
         else:
             D8fam = False
