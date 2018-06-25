@@ -31,7 +31,7 @@ from post_compute import post_compute
 from percent_diff import percent_diff
 
 # VSP visualization tools
-from saveSol import updateOpenVSP, genDesFile, genDesFileSweep
+from saveSol import updateOpenVSP, genFile, genFileSweep
 
 # Aircraft options:
 # 'D8_eng_wing', 'optimal737', 'optimal777', 'optimalD8', 'D8_no_BLI', 'M072_737'
