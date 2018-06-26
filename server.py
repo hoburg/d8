@@ -1,8 +1,11 @@
 from SimpleWebSocketServer import SimpleWebSocketServer, WebSocket
 import json
 from SPaircraft import Mission
-from saveSol import genFile, genFileSweep
+from saveSol import gendes, gencsm
 from shutil import copyfile
+
+from subs.optimalD8 import get_optimalD8_subs
+from aircraft import Mission
 
 EXIT = [False]
 ID = 0
@@ -33,15 +36,13 @@ class SPaircraftServer(WebSocket):
             self.data = json.loads(self.data)
             print self.data
 
-            Ncoldpipes = self.data["Cold_Channels"]
-            Nhotpipes = self.data["Hot_Channels"]
-            if (Ncoldpipes, Nhotpipes) == LASTSOL[0][0]:
-                x0 = LASTSOL[0][1]["variables"]
-            else:
-                x0 = None
-
-            m = Layer(Ncoldpipes, Nhotpipes)
-            m.cost = 1/m.Q
+            objective = 'W_{f_{total}}'
+            aircraft = 'optimalD8'
+            substitutions = get_optimalD8_subs()
+            fixedBPR = False
+            pRatOpt = True
+            mutategparg = True
+            m.cost = m['W_{f_{total}}']
 
             for name, value in self.data.items():
                 try:
@@ -79,8 +80,8 @@ if __name__ == "__main__":
     objective = 'W_{f_{total}}'
     aircraft = 'optimald8'
     substitutions = get_optimalD8_subs()
-    fixedBPR = True
-    pRatOpt = False
+    fixedBPR = False
+    pRatOpt = True
     mutategparg = True
     sol, m, m_relax = optimize_aircraft(objective, aircraft, substitutions, fixedBPR, pRatOpt, mutategparg)
     sol = m.localsolve()
