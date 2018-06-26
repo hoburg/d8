@@ -138,12 +138,12 @@ class Aircraft(Model):
         # Design parameters for .csm generation
         self.design_parameters = OrderedDict([
             # Wing descriptors
-            ('wing:b',         self.wing['b']),
-            ('wing:croot',     self.wing['c_{root}']),
-            ('wing:ctip',      self.wing['c_{tip}']),
-            ('wing:S',         self.wing['S']),
-            ('wing:xwing',     self.fuse['x_{wing}']),
-            ('wing:dihedral',  7.),
+            ('wing:b',             self.wing['b']),
+            ('wing:croot',         self.wing['c_{root}']),
+            ('wing:ctip',          self.wing['c_{tip}']),
+            ('wing:S',             self.wing['S']),
+            ('wing:xwing',         self.fuse['x_{wing}']),
+            ('wing:tanw',          self.wing['\\tan(\\Lambda)']),
             # Fuselage descriptors
             ('fuselage:hfloor',    self.fuse['h_{floor}']),
             ('fuselage:lnose',     self.fuse['l_{nose}']),
@@ -156,26 +156,27 @@ class Aircraft(Model):
             ('fuselage:wfloor',    self.fuse['w_{floor}']),
             ('fuselage:wdb',       self.fuse['w_{db}']),
             ('fuselage:Rfuse',     self.fuse['R_{fuse}']),
+            ('fuselage:dRfuse',    self.fuse['\\Delta R_{fuse}']),
             # Horizontal tail descriptors
-            ('ht:xCGht',     self.HT['x_{CG_{ht}}']),
-            ('ht:crootht',   self.HT['c_{root_{ht}}']),
-            ('ht:ctipht',    self.HT['c_{tip_{ht}}']),
-            ('ht:bht',       self.HT['b_{ht}']),
-            ('ht:lht',       self.HT['l_{ht}']),
-            ('ht:tanht',     self.HT['\\tan(\Lambda_{ht})']),
+            ('ht:xCGht',           self.HT['x_{CG_{ht}}']),
+            ('ht:crootht',         self.HT['c_{root_{ht}}']),
+            ('ht:ctipht',          self.HT['c_{tip_{ht}}']),
+            ('ht:bht',             self.HT['b_{ht}']),
+            ('ht:lht',             self.HT['l_{ht}']),
+            ('ht:tanht',           self.HT['\\tan(\Lambda_{ht})']),
             # Vertical tail descriptors
-            ('vt:xCGvt',     self.VT['x_{CG_{vt}}']),
-            ('vt:Svt',       self.VT['S_{vt}']),
-            ('vt:bvt',       self.VT['b_{vt}']),
-            ('vt',       self.VT['l_{vt}']),
-            ('vt:crootvt',   self.VT['c_{root_{vt}}']),
-            ('vt:ctipvt',    self.VT['c_{tip_{vt}}']),
-            ('vt:tanvt',     self.VT['\\tan(\Lambda_{vt})']),
+            ('vt:xCGvt',           self.VT['x_{CG_{vt}}']),
+            ('vt:Svt',             self.VT['S_{vt}']),
+            ('vt:bvt',             self.VT['b_{vt}']),
+            ('vt',                 self.VT['l_{vt}']),
+            ('vt:crootvt',         self.VT['c_{root_{vt}}']),
+            ('vt:ctipvt',          self.VT['c_{tip_{vt}}']),
+            ('vt:tanvt',           self.VT['\\tan(\Lambda_{vt})']),
             # Engine descriptors
-            ('engine:df',        self.engine['d_{f}']),
-            ('engine:lnace',     lnace),
-            ('engine:yeng',      self.VT['y_{eng}']),
-            ('engine:xeng',      xeng),
+            ('engine:df',          self.engine['d_{f}']),
+            ('engine:lnace',       lnace),
+            ('engine:yeng',        self.VT['y_{eng}']),
+            ('engine:xeng',        xeng),
         ])
 
         constraints = []
