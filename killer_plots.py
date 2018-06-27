@@ -1,5 +1,6 @@
 # only needed for plotting
 import matplotlib.pyplot as plt
+import numpy as np
 
 # Percent diffs
 from percent_diff import percent_diff
@@ -10,6 +11,7 @@ from gpkit.small_scripts import mag
 from saveSol import genSolOut
 
 # Models and substitutions
+from aircraft import Mission
 from SPaircraft import optimize_aircraft
 from subs.optimalD8 import get_optimalD8_subs
 from subs.optimal737 import get_optimal737_subs
@@ -17,7 +19,7 @@ from subs.M072_737 import get_M072_737_subs
 from subs.D8_no_BLI import get_D8_no_BLI_subs
 from subs.D8_eng_wing import get_D8_eng_wing_subs
 
-def standard_killer_plot_max_opt_eng():
+def standard_killer_plot():
     """
     Generates the standard killer plots from the TASOPT paper
     """
@@ -37,23 +39,23 @@ def standard_killer_plot_max_opt_eng():
         sol[i] = optimize_aircraft(m, substitutions, fixedBPRList[i], pRatOptList[i], mutategpargList[i])
         wf.append(sol[i]('W_{f_{total}}'))
 
-    wing_sens = [sol[i]['sensitivities']['constants']['C_{wing}_Mission/Aircraft/Wing'] for i in range(0,6)]
-    HT_sens = [sol[i]['sensitivities']['constants']['C_{ht}_Mission/Aircraft/HorizontalTail'] for i in range(0,6)]
-    VT_sens = [sol[i]['sensitivities']['constants']['C_{VT}_Mission/Aircraft/VerticalTail'] for i in range(0,6)]
-    fuse_sens = [sol[i]['sensitivities']['constants']['C_{fuse}_Mission/Aircraft/Fuselage'] for i in range(0,6)]
-    engine_sens = [sol[i]['sensitivities']['constants']['C_{engsys}_Mission/Aircraft'] for i in range(0,6)]
-    lg_sens = [sol[i]['sensitivities']['constants']['C_{lg}_Mission/Aircraft'] for i in range(0,6)]
-    Mmin_sens = [sol[i]['sensitivities']['constants']['M_{min}_Mission/Aircraft'] for i in range(0,6)]
+    wing_sens = [sol[i]['sensitivities']['constants']['C_{wing}'] for i in range(0,6)]
+    HT_sens = [sol[i]['sensitivities']['constants']['C_{ht}'] for i in range(0,6)]
+    VT_sens = [sol[i]['sensitivities']['constants']['C_{VT}'] for i in range(0,6)]
+    fuse_sens = [sol[i]['sensitivities']['constants']['C_{fuse}'] for i in range(0,6)]
+    engine_sens = [sol[i]['sensitivities']['constants']['C_{engsys}'] for i in range(0,6)]
+    lg_sens = [sol[i]['sensitivities']['constants']['C_{lg}'] for i in range(0,6)]
+    Mmin_sens = [sol[i]['sensitivities']['constants']['M_{min}'] for i in range(0,6)]
 
-    ytest = wf/wf[0]
-    xtest = [0, 1, 2, 3, 4, 5, 6]
-    xlabels = ['Optimized 737-800 M = 0.8', 'Slow to M = 0.72', 'D8 fuselage, Pi tail', 'Rear podded engines', 'Integrated engines, BLI = D8', 'Optimize engine', '2010 Engines']
+    ytest = [mag(wf[i]/wf[0])[0] for i in range(0,6)]
+    xtest = [0, 1, 2, 3, 4, 5]
+    xlabels = ['Optimized 737-800 M = 0.8', 'Slow to M = 0.72', 'D8 fuselage, Pi tail', 'Rear podded engines', 'Integrated engines, BLI = D8', 'Optimize engine']
 
     plt.plot(xtest, ytest, "o--")
     plt.plot([0, 1, 2, 3, 4, 5, 6], [1, .88, .81, .82, .67, .66, .63], "o--")
     plt.plot([0, 1, 2, 3, 6], [1, .868, .871, .865, .602], "o--")
     plt.plot([0, 1, 2, 3, 4, 5, 6], [1, 41129./43843, 38402./43843, 37180./43843, 32987./43843, 32383./43843, 29753./43843], "o--")
-    plt.xticks(xtest, xlabels,  rotation='vertical')
+    plt.xticks(np.linspace(0,6,7), xlabels,  rotation='vertical')
     plt.ylim([0,1.1])
     plt.xlim([-.5, 6.5])
     plt.grid()

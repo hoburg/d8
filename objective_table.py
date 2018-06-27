@@ -1,5 +1,6 @@
 """
-script to generate the values in the SP Aircraft different objective table
+script to generate the values in the SP_TASOPT paper for
+aircraft optimized for different objectives
 """
 from gpkit import units
 from aircraft import Mission
