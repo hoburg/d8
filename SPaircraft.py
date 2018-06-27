@@ -67,7 +67,7 @@ def test():
     Nclimb = 3 # number of climb segments
     Ncruise = 2 # number of cruise segments
     Nmission = 1 # number of missions
-    config = 'optimalD8' # String describing configuration:
+    config = 'optimal737' # String describing configuration:
     # currently one of: 'D8_eng_wing', 'optimal737', 'optimal777', 'optimalD8', 'D8_no_BLI', 'M072_737'
     m = Mission(Nclimb, Ncruise, config, Nmission)
 
@@ -75,7 +75,7 @@ def test():
     m.cost = m['W_{f_{total}}'].sum()
 
     # Inputs to the model
-    substitutions = get_optimalD8_subs()
+    substitutions = get_optimal737_subs()
     substitutions.update({'R_{req}': 3000.*units('nmi'), #6000*units('nmi'),
                          'n_{pass}': 180.})              #450.,)
 
