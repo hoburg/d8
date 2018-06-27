@@ -57,12 +57,11 @@ def optimize_aircraft(m, substitutions, fixedBPR=False, pRatOpt=True, mutategpar
         del substitutions['\pi_{hc_D}']
 
     m.substitutions.update(substitutions)
-    m_relax = Model(m.cost, relaxed_constants(BCS(m)))
-
-    sol = m_relax.localsolve(verbosity=4, iteration_limit=200, reltol=0.01, mutategp=mutategparg)
+    m_relax = Model(m.cost, BCS(m))
+    m_relax = relaxed_constants(m_relax)
+    sol = m_relax.localsolve(verbosity=2, iteration_limit=200, reltol=0.01, mutategp=mutategparg)
     post_process(sol)
-
-    return sol, m, m_relax
+    return sol
 
 def test():
     Nclimb = 3 # number of climb segments

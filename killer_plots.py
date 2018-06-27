@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 # Percent diffs
 from percent_diff import percent_diff
-
+from gpkit import units
 from gpkit.small_scripts import mag
 
 # Solution saving
@@ -18,23 +18,24 @@ from subs.D8_no_BLI import get_D8_no_BLI_subs
 from subs.D8_eng_wing import get_D8_eng_wing_subs
 
 def standard_killer_plot_max_opt_eng():
-    # Note that the killer plot is designed for the following user inputs
+    """
+    Generates the standard killer plots from the TASOPT paper
+    """
     Nclimb = 3; Ncruise = 2; Nmission = 1;
     subsList = [get_optimal737_subs(), get_M072_737_subs(), get_D8_eng_wing_subs(), get_D8_no_BLI_subs(), get_optimalD8_subs(), get_optimalD8_subs()]
     configList = ['optimal737', 'M072_737', 'D8_eng_wing', 'D8_no_BLI', 'optimalD8', 'optimalD8']
     fixedBPRList = [True, True, True, True, True, False]
     pRatOptList = [False, False, False, False, False, True]
     mutategpargList = [False, False, False, False, False, False]
-    sol = []
+    sol = {}; wf = [];
     for i in range(0,6):
         m = Mission(Nclimb, Ncruise, configList[i], Nmission)
         m.cost = m['W_{f_{total}}'].sum()
         substitutions = subsList[i]
         substitutions.update({'R_{req}': 3000.*units('nmi'),
                               'n_{pass}': 180.})
-        sol.append(optimize_aircraft(m, substitutions, fixedBPRList[i], pRatOptList[i], mutategpargList[i]))
-    wf = [sol[i]['W_{f_{total}}'] for i in range(0,6)]
-
+        sol[i] = optimize_aircraft(m, substitutions, fixedBPRList[i], pRatOptList[i], mutategpargList[i])
+        wf.append(sol[i]('W_{f_{total}}'))
 
     wing_sens = [sol[i]['sensitivities']['constants']['C_{wing}_Mission/Aircraft/Wing'] for i in range(0,6)]
     HT_sens = [sol[i]['sensitivities']['constants']['C_{ht}_Mission/Aircraft/HorizontalTail'] for i in range(0,6)]
@@ -45,13 +46,6 @@ def standard_killer_plot_max_opt_eng():
     Mmin_sens = [sol[i]['sensitivities']['constants']['M_{min}_Mission/Aircraft'] for i in range(0,6)]
 
     ytest = wf/wf[0]
-    for i in range(len(ytest)):
-        if i == 0:
-            ytest[i] = ytest[i]
-        if i != 0:
-            ytest[i] = mag(ytest[i][0])
-        
-
     xtest = [0, 1, 2, 3, 4, 5, 6]
     xlabels = ['Optimized 737-800 M = 0.8', 'Slow to M = 0.72', 'D8 fuselage, Pi tail', 'Rear podded engines', 'Integrated engines, BLI = D8', 'Optimize engine', '2010 Engines']
 
