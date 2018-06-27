@@ -49,7 +49,7 @@ def standard_killer_plot():
 
     ytest = [mag(wf[i]/wf[0])[0] for i in range(0,6)]
     xtest = [0, 1, 2, 3, 4, 5]
-    xlabels = ['Optimized 737-800 M = 0.8', 'Slow to M = 0.72', 'D8 fuselage, Pi tail', 'Rear podded engines', 'Integrated engines, BLI = D8', 'Optimize engine']
+    xlabels = ['Optimized 737-800 M = 0.8', 'Slow to M = 0.72', 'D8 fuselage, Pi tail', 'Rear podded engines', 'Integrated engines, BLI = D8', 'Optimize engine', '2020 Engines']
 
     plt.plot(xtest, ytest, "o--")
     plt.plot([0, 1, 2, 3, 4, 5, 6], [1, .88, .81, .82, .67, .66, .63], "o--")
